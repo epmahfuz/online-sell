@@ -1,0 +1,31 @@
+.category-sidebar{
+    height: calc(100vh - 88px);
+    width: 200px;
+    max-width: 216px;
+    padding: 16px;
+    border-right: 1px solid gray;
+    .category-list{
+        .category{
+            padding: 4px 0;
+            .left{
+                .category-icon{
+                    img{
+                        height: 20px;
+                        width: 20px;
+                    }
+                }
+                .category-name{
+    
+                }
+            }
+            .category-indicator{
+                //padding-top: 2px;
+                mat-icon{
+                    font-size: 20px;
+                    height: 20px;
+                    width: 20px;
+                }
+            }
+        }
+    }
+}

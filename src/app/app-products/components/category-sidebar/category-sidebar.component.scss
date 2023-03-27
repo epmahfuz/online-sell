@@ -1,12 +1,17 @@
 .category-sidebar{
-    height: calc(100vh - 88px);
-    width: 200px;
-    max-width: 216px;
-    padding: 16px;
-    border-right: 1px solid gray;
+    
+    height: 100%;
+    box-sizing: border-box;
+    padding: 16px 0px 16px 16px;
+    border-right: 1px solid #ccc;
     .category-list{
+        .category:hover{
+            background: linear-gradient(to right,#fff 0,#008000 100%)
+        }
         .category{
-            padding: 4px 0;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 8px 0;
             .left{
                 .category-icon{
                     img{
@@ -19,7 +24,8 @@
                 }
             }
             .category-indicator{
-                //padding-top: 2px;
+                color: black;
+                margin-right: 8px;
                 mat-icon{
                     font-size: 20px;
                     height: 20px;

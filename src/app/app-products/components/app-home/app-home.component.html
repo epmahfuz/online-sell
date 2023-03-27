@@ -1,6 +1,15 @@
 <div class="app-home">
-    <app-search-bar></app-search-bar>
-    <div class="category-products">
-        <app-category-sidebar></app-category-sidebar>
+    <div class="top-bar">
+        <app-search-bar></app-search-bar>
     </div>
-</div>
+    <div class="main-content" fxLayout="row" fxLayoutAlign="start start">
+        <div class="category-products">
+            <app-category-sidebar></app-category-sidebar>
+        </div>
+        <div class="products-and-carousel">
+            <app-top-carousel></app-top-carousel>
+            <app-product-list></app-product-list>
+        </div>
+    </div>
+    
+</div> 

@@ -1,0 +1,12 @@
+<div class="top-carousel">
+    <ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="allDiscount">
+        <div *nguCarouselDef="let item;" class="item" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="center center">
+            <!-- <p>{{item.name}}</p> -->
+            <img src="{{item.img}}" alt="">
+        </div>
+        <ul class="myPoint" NguCarouselPoint>
+          <li *ngFor="let i of myCarousel.pointNumbers; let j = index" [class.active]="j==myCarousel.activePoint"
+            (click)="myCarousel.moveTo(j)"></li>
+        </ul>
+    </ngu-carousel>
+</div>

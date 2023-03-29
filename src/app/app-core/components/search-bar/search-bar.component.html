@@ -1,16 +1,28 @@
-<div class="search-bar" fxLayout="row" fxLayoutAlign="start center">
-    <div class="menu-icon">
-        <mat-icon>menu</mat-icon>
+<div class="search-bar" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="left-part" fxLayoutAlign="start center"  fxFlex="80%">
+        <div class="menu-icon">
+            <mat-icon>menu</mat-icon>
+        </div>
+        <div class="logo">
+            <img src="../../../../assets/images/tartaja2.png" alt="">
+            <!-- <img src="https://agorasuperstores.com/assets/images/logo.png" alt=""> -->
+        </div>
+        <div class="search-input"  fxFlex="70%" fxLayout="row" fxLayoutAlign="space-between center">
+            <input placeholder="Search" type="text">
+            <span class="search-icon" fxLayout="column" fxLayoutAlign="center center">
+                <mat-icon>search</mat-icon>
+            </span>
+        </div>
     </div>
-    <div class="logo">
-        <img src="../../../../assets/images/tartaja2.png" alt="">
-        <!-- <img src="https://agorasuperstores.com/assets/images/logo.png" alt=""> -->
-    </div>
-    <div class="search-input"  fxFlex="40%" fxLayout="row" fxLayoutAlign="space-between center">
-        <input placeholder="Search" type="text">
-        <span class="search-icon" fxLayout="column" fxLayoutAlign="center center">
-            <mat-icon>search</mat-icon>
-        </span>
+    <div class="right-part" fxLayout="row" fxLayoutAlign="start center">
+        <div class="cart-section" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start center">
+            <div class="cart-logo">
+                <mat-icon>shopping_cart</mat-icon>
+                <span *ngIf="cartItemCounter" class="item-counter">{{cartItemCounter}}</span>
+            </div>
+            <div *ngIf="!cartItemCounter"  class="cart-price">My Cart</div>
+            <div *ngIf="cartItemCounter"  class="cart-price">৳ {{cartTotalPrice}}</div>
+        </div>
     </div>
 </div>
 

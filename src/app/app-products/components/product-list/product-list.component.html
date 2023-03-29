@@ -6,84 +6,16 @@
         <div class="product-list-header-text">All Products</div>
     </div>
     <div class="product-list-view" fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="start center">
-        <div class="single-product" fxLayout="column" fxLayoutGap="6px" fxLayoutAlign="center center">
-            <img class="product-img" src="https://chaldn.com/_mpimage/premium-rui-fish-headless-curry-cut-7-11-pcs-30-gm-500-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D127448&q=best&v=1&m=400&webp=1" alt="">
-            <div class="product-name">Premium Rui Fish Headless Curry Cut (7-11 pcs) ±30 gm</div>
-            <div class="product-quantity">2 pcs</div>
-            <div class="product-price">$ 500</div>
-            <div class="add-to-cart-button"  fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
+        <div class="single-product" fxLayout="column" fxLayoutGap="6px" fxLayoutAlign="center center"
+        *ngFor="let product of productList">
+            <img class="product-img" src="{{product.imgLink}}" alt="">
+            <div class="product-name">{{product.name}}</div>
+            <div class="product-quantity">{{product.quantity}} pcs</div>
+            <div class="product-price">$ {{product.price}}</div>
+            <div class="add-to-cart-button" (click)="addToCart(product)"  fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
                 <mat-icon>add_shopping_cart</mat-icon>
-                <div class="add-to-cart-button-text">Add to cart</div>
-            </div>
-        </div>
-        <div class="single-product" fxLayout="column" fxLayoutGap="6px" fxLayoutAlign="center center">
-            <img class="product-img" src="https://chaldn.com/_mpimage/premium-rui-fish-headless-curry-cut-7-11-pcs-30-gm-500-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D127448&q=best&v=1&m=400&webp=1" alt="">
-            <div class="product-name">Premium Rui Fish Headless Curry Cut (7-11 pcs) ±30 gm</div>
-            <div class="product-quantity">2 pcs</div>
-            <div class="product-price">$ 500</div>
-            <div class="add-to-cart-button" fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
-                <mat-icon>add_shopping_cart</mat-icon>
-                <div class="add-to-cart-button-text">Add to cart</div>
-            </div>
-        </div>
-        <div class="single-product" fxLayout="column" fxLayoutGap="6px" fxLayoutAlign="center center">
-            <img class="product-img" src="https://chaldn.com/_mpimage/premium-rui-fish-headless-curry-cut-7-11-pcs-30-gm-500-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D127448&q=best&v=1&m=400&webp=1" alt="">
-            <div class="product-name">Premium Rui Fish Headless Curry Cut (7-11 pcs) ±30 gm</div>
-            <div class="product-quantity">2 pcs</div>
-            <div class="product-price">$ 500</div>
-            <div class="add-to-cart-button"  fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
-                <mat-icon>add_shopping_cart</mat-icon>
-                <div class="add-to-cart-button-text">Add to cart</div>
-            </div>
-        </div>
-        <div class="single-product" fxLayout="column" fxLayoutGap="6px" fxLayoutAlign="center center">
-            <img class="product-img" src="https://chaldn.com/_mpimage/premium-rui-fish-headless-curry-cut-7-11-pcs-30-gm-500-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D127448&q=best&v=1&m=400&webp=1" alt="">
-            <div class="product-name">Premium Rui Fish Headless Curry Cut (7-11 pcs) ±30 gm</div>
-            <div class="product-quantity">2 pcs</div>
-            <div class="product-price">$ 500</div>
-            <div class="add-to-cart-button" fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
-                <mat-icon>add_shopping_cart</mat-icon>
-                <div class="add-to-cart-button-text">Add to cart</div>
-            </div>
-        </div>
-        <div class="single-product" fxLayout="column" fxLayoutGap="6px" fxLayoutAlign="center center">
-            <img class="product-img" src="https://chaldn.com/_mpimage/premium-rui-fish-headless-curry-cut-7-11-pcs-30-gm-500-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D127448&q=best&v=1&m=400&webp=1" alt="">
-            <div class="product-name">Premium Rui Fish Headless Curry Cut (7-11 pcs) ±30 gm</div>
-            <div class="product-quantity">2 pcs</div>
-            <div class="product-price">$ 500</div>
-            <div class="add-to-cart-button"  fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
-                <mat-icon>add_shopping_cart</mat-icon>
-                <div class="add-to-cart-button-text">Add to cart</div>
-            </div>
-        </div>
-        <div class="single-product" fxLayout="column" fxLayoutGap="6px" fxLayoutAlign="center center">
-            <img class="product-img" src="https://chaldn.com/_mpimage/premium-rui-fish-headless-curry-cut-7-11-pcs-30-gm-500-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D127448&q=best&v=1&m=400&webp=1" alt="">
-            <div class="product-name">Premium Rui Fish Headless Curry Cut (7-11 pcs) ±30 gm</div>
-            <div class="product-quantity">2 pcs</div>
-            <div class="product-price">$ 500</div>
-            <div class="add-to-cart-button" fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
-                <mat-icon>add_shopping_cart</mat-icon>
-                <div class="add-to-cart-button-text">Add to cart</div>
-            </div>
-        </div>
-        <div class="single-product" fxLayout="column" fxLayoutGap="6px" fxLayoutAlign="center center">
-            <img class="product-img" src="https://chaldn.com/_mpimage/premium-rui-fish-headless-curry-cut-7-11-pcs-30-gm-500-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D127448&q=best&v=1&m=400&webp=1" alt="">
-            <div class="product-name">Premium Rui Fish Headless Curry Cut (7-11 pcs) ±30 gm</div>
-            <div class="product-quantity">2 pcs</div>
-            <div class="product-price">$ 500</div>
-            <div class="add-to-cart-button"  fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
-                <mat-icon>add_shopping_cart</mat-icon>
-                <div class="add-to-cart-button-text">Add to cart</div>
-            </div>
-        </div>
-        <div class="single-product" fxLayout="column" fxLayoutGap="6px" fxLayoutAlign="center center">
-            <img class="product-img" src="https://chaldn.com/_mpimage/premium-rui-fish-headless-curry-cut-7-11-pcs-30-gm-500-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D127448&q=best&v=1&m=400&webp=1" alt="">
-            <div class="product-name">Premium Rui Fish Headless Curry Cut (7-11 pcs) ±30 gm</div>
-            <div class="product-quantity">2 pcs</div>
-            <div class="product-price">$ 500</div>
-            <div class="add-to-cart-button" fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
-                <mat-icon>add_shopping_cart</mat-icon>
-                <div class="add-to-cart-button-text">Add to cart</div>
+                <div *ngIf="!product.counterInCart" class="add-to-cart-button-text">Add to cart</div>
+                <div *ngIf="product.counterInCart" class="add-to-cart-button-text">{{product.counterInCart}}</div>
             </div>
         </div>
     </div>

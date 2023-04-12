@@ -1,59 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductModel } from '../../../app-shared/models/all-models';
 import { CartService } from '../../../app-shared/services/cart.service';
+import { ProductService } from '../../services/product.service';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  selector: 'app-cart-details',
+  templateUrl: './cart-details.component.html',
+  styleUrls: ['./cart-details.component.scss']
 })
-export class ProductListComponent implements OnInit {
-  productList: ProductModel[] = [
-    {
-      id:'1',
-      name: 'Premium Rui Fish Headless',
-      quantity: 3,
-      price: 10,
-      imgLink: 'https://chaldn.com/_mpimage/premium-rui-fish-headless-curry-cut-7-11-pcs-30-gm-500-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D127448&q=best&v=1&m=400&webp=1',
-      counterInCart: 0
-    },
-    {
-      id:'2',
-      name: 'Premium Rui Fish Headless Curry Cut (7-11 pcs) ±30 gm',
-      quantity: 2,
-      price: 120,
-      imgLink: 'https://chaldn.com/_mpimage/premium-rui-fish-headless-curry-cut-7-11-pcs-30-gm-500-gm?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D127448&q=best&v=1&m=400&webp=1',
-      counterInCart: 0
-    }
-  ];
+export class CartDetailsComponent implements OnInit {
   addedInCart: ProductModel[] = [];
+  cartItemCounter:number = 0;
+  cartTotalPrice: number = 0;
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private productService: ProductService
   ) { }
-
   ngOnInit(): void {
     this.patchCartInfo();
     this.cartUpdateRealtime();
   }
 
-  cartUpdateRealtime() {
-    this.cartService.$updateCartInfo.subscribe((cartItem) => {
-      if (cartItem) {
-        if(cartItem.isDeleted){
-          let foundIndex = this.productList.findIndex(product=> product.id === cartItem.id);
-          this.productList[foundIndex].counterInCart = 0;
-        }
-        this.patchCartInfo();
-      }
+  patchCartInfo() {
+    this.addedInCart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    this.cartItemCounter = 0;
+    this.cartTotalPrice = 0;
+    this.addedInCart.forEach((cartProduct: ProductModel) => {
+      this.cartItemCounter += cartProduct.counterInCart;
+      this.cartTotalPrice += (cartProduct.price * cartProduct.counterInCart);
     });
   }
 
-  patchCartInfo(){
-    this.addedInCart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    this.addedInCart.forEach((cartProduct:ProductModel) => {
-      let foundIndex = this.productList.findIndex(product=> product.id === cartProduct.id);
-      this.productList[foundIndex] = cartProduct;
+  cartUpdateRealtime() {
+    this.cartService.$updateCartInfo.subscribe((cartItem) => {
+      if (cartItem) {
+        this.patchCartInfo();
+      }
     });
   }
 
@@ -67,7 +50,7 @@ export class ProductListComponent implements OnInit {
   saveInLocalStorage(){
     localStorage.setItem('cart', JSON.stringify(this.addedInCart));
   }
-  
+
   increaseInCart(product:ProductModel){
     product.counterInCart += 1;
     this.updateCounterInCart(product);
@@ -88,6 +71,20 @@ export class ProductListComponent implements OnInit {
     product.counterInCart -= 1;
     this.updateCounterInCart(product);
     this.saveInLocalStorage();
-    this.cartService.$updateCartInfo.next({ id: product.id, price: product.price, counter: -1, isDeleted: false});
+    let isDeleted = product.counterInCart>0 ? false: true;
+    this.cartService.$updateCartInfo.next({ id: product.id, price: product.price, counter: -1, isDeleted: isDeleted});
+  }
+
+  deleteCartItem(product:ProductModel){
+    let cartItemCounter = product.counterInCart;
+    product.counterInCart = 0;
+    this.updateCounterInCart(product);
+    this.saveInLocalStorage();
+    let isDeleted = true;
+    this.cartService.$updateCartInfo.next({ id: product.id, price: product.price, counter: cartItemCounter*(-1), isDeleted: isDeleted});
+  }
+
+  closeCartView(){
+    this.productService.$cartViewChange.next(true);
   }
 }

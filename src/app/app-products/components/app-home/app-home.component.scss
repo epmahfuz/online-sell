@@ -18,10 +18,23 @@
             overflow: auto;
         }
 
-        .products-and-carousel {
+        .products-carousel-and-cart {
             height: 100%;
             width: calc(100% - 216px);
-            overflow: auto;
+            //overflow: auto;
+
+            .products-carousel{
+                height: calc(100vh - 64px);
+                width: calc(100% - 320px);
+                //overflow: auto;
+            }
+            .cart-details{
+                position: fixed;
+                right: 0;
+                height: calc(100vh - 64px);
+                width: 320px;
+                box-shadow: -2px 0 12px 0 rgba(143, 143, 143, .38);
+            }
         }
     }
 }

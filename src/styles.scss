@@ -1,9 +1,92 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-margin: 0 !important;
-font-family: sans-serif; 
-}
 @font-face {
-    font-family: sans-serif;
-    src: url("./assets/fonts/MuliSansSerif.ttf");
+  font-family: sans-serif;
+  src: url("./assets/fonts/MuliSansSerif.ttf");
+}
+
+// color pallete
+// e5f2e5 : light - baground
+// 4ca64c : place order - pre-primary
+// 008000 : primary color
+// 006600 : dark - border - hover
+
+
+body {
+  margin: 0 !important;
+  font-family: sans-serif;
+
+  .h-100 {
+    height: 100%;
   }
+
+  .primary-button:hover {
+    background: #008000;
+    color: white;
+    //border: none;
+  }
+
+  .primary-button {
+    border-radius: 4px;
+    width: 100%;
+    height: 37px;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #ebebeb;
+    color: #008000;
+    padding: 6px 0;
+    text-align: center;
+    transition: all ease-in-out .15s;
+
+    .primary-button-text {
+      font-size: 14px;
+      font-weight: 700;
+    }
+  }
+
+  .counter-increase-decrease {
+    border-radius: 4px;
+    width: 100%;
+    height: 37px;
+    background-color: #008000;
+    border: 1px solid #ebebeb;
+    color: white;
+    text-align: center;
+    transition: all ease-in-out .15s;
+
+    .add-remove-button {
+      background-color: #008000;
+      padding: 0 4px;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      cursor: pointer;
+      border: unset;
+      color: white;
+    }
+
+    .remove-button {
+      border-radius: 4px 0 0 4px;
+      border-right: 1px solid #006600;
+
+      // mat-icon {}
+    }
+
+    .item-counter {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .add-button {
+      border-radius: 0 4px 4px 0;
+      border-left: 1px solid #006600;
+
+      // mat-icon {}
+    }
+  }
+
+}
+
+// Sample Flex Design
+// fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start center"
+//     fxLayout="column" fxFlex="75%",
+//         fxLayout="row"  fxLayoutGap="16px"

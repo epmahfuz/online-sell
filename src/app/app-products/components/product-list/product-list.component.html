@@ -11,11 +11,19 @@
             <img class="product-img" src="{{product.imgLink}}" alt="">
             <div class="product-name">{{product.name}}</div>
             <div class="product-quantity">{{product.quantity}} pcs</div>
-            <div class="product-price">$ {{product.price}}</div>
-            <div class="add-to-cart-button" (click)="addToCart(product)"  fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
+            <div class="product-price">৳ {{product.price}}</div>
+            <div *ngIf="!product.counterInCart" class="primary-button" (click)="addToCart(product)"  fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
                 <mat-icon>add_shopping_cart</mat-icon>
-                <div *ngIf="!product.counterInCart" class="add-to-cart-button-text">Add to cart</div>
-                <div *ngIf="product.counterInCart" class="add-to-cart-button-text">{{product.counterInCart}}</div>
+                <div class="primary-button-text">Add to cart</div>
+            </div>
+            <div *ngIf="product.counterInCart" class="counter-increase-decrease" fxLayout="row" fxLayoutAlign="space-between center">
+                <button (click)="decreaseInCart(product)" class="add-remove-button remove-button">
+                    <mat-icon class="mat-24">remove</mat-icon>
+                </button>
+                <div class="item-counter">{{product.counterInCart}} in cart</div>
+                <button (click)="increaseInCart(product)" class="add-remove-button add-button">
+                    <mat-icon class="">add</mat-icon>
+                </button>
             </div>
         </div>
     </div>

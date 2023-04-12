@@ -1,0 +1,51 @@
+<div class="cart-details">
+    <div class="cart-header" fxLayout="row" fxLayoutAlign="center">
+        <button class="close-button" (click)="closeCartView()">
+            <mat-icon class="material-symbols-outlined">
+                arrow_circle_right
+            </mat-icon>
+        </button>
+        <div class="cart-header-title">Items in your cart</div>
+    </div>
+    <div class="cart-item-list">
+        <div *ngFor="let product of addedInCart">
+            <div class="cart-item" fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="h-100" fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start center">
+                    <div class="item-img">
+                        <img src="{{product.imgLink}}"
+                            alt="">
+                    </div>
+                    <div class="item-name-quantity h-100" fxLayout="column" fxLayoutGap="12px" fxLayoutAlign="space-between start">
+                        <div class="item-name">
+                            {{product.name}}
+                            <div class="short-description"> {{product.quantity}}</div>
+                        </div>
+                        <div class="counter-increase-decrease" fxLayout="row" fxLayoutAlign="space-between center">
+                            <button (click)="decreaseInCart(product)" class="add-remove-button remove-button">
+                                <mat-icon class="mat-24">remove</mat-icon>
+                            </button>
+                            <div class="item-counter">{{product.counterInCart}}</div>
+                            <button (click)="increaseInCart(product)" class="add-remove-button add-button">
+                                <mat-icon class="">add</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-100 close-button-price" fxLayout="column" fxLayoutAlign="space-between center">
+                    <div (click)="deleteCartItem(product)" class="close-button">
+                        <mat-icon>delete</mat-icon>
+                    </div>
+                    <div class="item-price">৳{{product.price}}</div>
+                </div>
+            </div>
+            <hr />
+        </div>
+        
+    </div>
+    <div *ngIf="cartTotalPrice" class="cart-footer">
+        <button class="place-order-amount">
+            <span class="place-order">Place Order</span>
+            <span class="total-amount">৳ {{cartTotalPrice}}</span>
+        </button>
+    </div>
+</div>

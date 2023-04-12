@@ -1,5 +1,5 @@
 <div class="search-bar" fxLayout="row" fxLayoutAlign="space-between center">
-    <div class="left-part" fxLayoutAlign="start center"  fxFlex="80%">
+    <div class="left-part" fxLayoutAlign="start center"  fxFlex="70%">
         <div class="menu-icon">
             <mat-icon>menu</mat-icon>
         </div>
@@ -14,8 +14,12 @@
             </span>
         </div>
     </div>
-    <div class="right-part" fxLayout="row" fxLayoutAlign="start center">
-        <div class="cart-section" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start center">
+    <div class="right-part" fxFlex="28%" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="primary-button" (click)="onClickSignIn()"  fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
+            <mat-icon>login</mat-icon>
+            <div class="primary-button-text">Sign in</div>
+        </div>
+        <div (click)="cartViewOn()" class="cart-section" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start center">
             <div class="cart-logo">
                 <mat-icon>shopping_cart</mat-icon>
                 <span *ngIf="cartItemCounter" class="item-counter">{{cartItemCounter}}</span>

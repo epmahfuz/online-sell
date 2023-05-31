@@ -45,8 +45,8 @@ export class SearchBarComponent implements OnInit {
 
   onClickSignIn(){
     const dialogRef = this.dialog.open(SignInModalComponent, {
-      width: '820px',
-      disableClose: true,
+      width: '320px',
+      disableClose: false,
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

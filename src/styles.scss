@@ -9,7 +9,9 @@
 // 4ca64c : place order - pre-primary
 // 008000 : primary color
 // 006600 : dark - border - hover
-
+:root{
+  --theme-primary-500: #008000;
+}
 
 body {
   margin: 0 !important;
@@ -20,7 +22,7 @@ body {
   }
 
   .primary-button:hover {
-    background: #008000;
+    background: var(--theme-primary-500);
     color: white;
     //border: none;
   }
@@ -32,7 +34,7 @@ body {
     cursor: pointer;
     background-color: #fff;
     border: 1px solid #ebebeb;
-    color: #008000;
+    color: var(--theme-primary-500);
     padding: 6px 0;
     text-align: center;
     transition: all ease-in-out .15s;
@@ -47,14 +49,14 @@ body {
     border-radius: 4px;
     width: 100%;
     height: 37px;
-    background-color: #008000;
+    background-color: var(--theme-primary-500);
     border: 1px solid #ebebeb;
     color: white;
     text-align: center;
     transition: all ease-in-out .15s;
 
     .add-remove-button {
-      background-color: #008000;
+      background-color: var(--theme-primary-500);
       padding: 0 4px;
       display: flex;
       align-items: center;
@@ -84,8 +86,9 @@ body {
     }
   }
 
-}
+  
 
+}
 // Sample Flex Design
 // fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start center"
 //     fxLayout="column" fxFlex="75%",

@@ -1,1 +1,39 @@
-<p>sign-in-modal works!</p>
+<div class="sign-in-modal" fxLayout="column" fxLayoutGap="16px">
+    <div class="top-section">
+        <div class="cont_tabs_login">
+            <ul class='ul_tabs'>
+              <li [ngClass]="{'active' : submitFor=='signIn'}">
+                <a (click)="sign_in()">SIGN IN</a>
+                <span class="linea_bajo_nom"></span>
+              </li>
+              <li [ngClass]="{'active' : submitFor=='signUp'}">
+                <a (click)="sign_up()">SIGN UP</a>
+                <span class="linea_bajo_nom"></span>
+              </li>
+            </ul>
+        </div>
+    </div>
+    <div class="body-section">
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Username" formControlName="username">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input type="password" matInput placeholder="Password" formControlName="password">
+          </mat-form-field>
+        </p>
+
+        <p *ngIf="error" class="error">
+          {{ error }}
+        </p>
+
+        <div  class="button">
+          <button type="submit"  mat-raised-button>{{ submitFor=='signIn' ? 'Sign in' : 'Sign up'}}</button>
+        </div>
+      </form>
+    </div>
+</div>

@@ -18,7 +18,15 @@ body {
   font-family: sans-serif;
 
   .h-100 {
-    height: 100%;
+    height: 100% !important;
+  }
+
+  .w-100{
+    width: 100% !important;
+  }
+
+  .display-none{
+    display: none !important;
   }
 
   .primary-button:hover {
@@ -86,8 +94,22 @@ body {
     }
   }
 
-  
+  .icon-button:hover {
+    color: #db1e3d;
+  }
+  .icon-button {
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    color: #b1aeae;
+    background: transparent;
 
+    mat-icon {
+        height: 24px;
+        width: 24px;
+        font-size: 24px;
+    }
+  }
 }
 // Sample Flex Design
 // fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start center"

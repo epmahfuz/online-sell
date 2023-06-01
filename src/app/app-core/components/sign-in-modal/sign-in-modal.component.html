@@ -1,3 +1,6 @@
+<div (click)="closeModal()" class="icon-button">
+  <mat-icon>close</mat-icon>
+</div>
 <div class="sign-in-modal" fxLayout="column" fxLayoutGap="16px">
     <div class="top-section">
         <div class="cont_tabs_login">
@@ -17,7 +20,7 @@
       <form [formGroup]="form" (ngSubmit)="submit()">
         <p>
           <mat-form-field>
-            <input type="text" matInput placeholder="Username" formControlName="username">
+            <input type="text" matInput placeholder="Email" formControlName="username">
           </mat-form-field>
         </p>
 
@@ -31,7 +34,8 @@
           {{ error }}
         </p>
 
-        <div  class="button">
+        <div [ngClass]="changePosition==true ? 'left-position': 'right-position'" class="button" 
+          (mouseover)="changeButtonPosition()">
           <button type="submit"  mat-raised-button>{{ submitFor=='signIn' ? 'Sign in' : 'Sign up'}}</button>
         </div>
       </form>

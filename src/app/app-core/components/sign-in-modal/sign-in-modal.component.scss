@@ -18,9 +18,14 @@
    }
 }
 
-
+.icon-button{
+  float: right;
+  margin-top: -12px;
+  margin-right: -12px;
+}
 .sign-in-modal {
   .top-section {
+    cursor: pointer;
     .cont_tabs_login {
       position: relative;
         float: left;
@@ -100,13 +105,17 @@
     }
 
     .button {
-      display: flex;
-      justify-content: flex-end;
       text-transform: capitalize;
       button{
         background: var(--theme-primary-500);
         text-transform: capitalize;
       }
+    }
+    .left-position{
+      float: left;
+    }
+    .right-position{
+      float: right;
     }
     input{
       color: black;

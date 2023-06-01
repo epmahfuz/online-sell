@@ -3,10 +3,10 @@
         <app-search-bar></app-search-bar>
     </div>
     <div class="main-content" fxLayout="row" fxLayoutAlign="start start">
-        <div class="category-products">
+        <div [ngClass]="categorySidebar==true ? '': 'display-none'" class="category-products">
             <app-category-sidebar></app-category-sidebar>
         </div>
-        <div class="products-carousel-and-cart" fxLayout="row" fxLayoutAlign="space-between start">
+        <div [ngClass]="categorySidebar==true ? '': 'w-100'" class="products-carousel-and-cart" fxLayout="row" fxLayoutAlign="space-between start">
             <div *ngIf="isCartViewOn" class="products-carousel">
                 <app-top-carousel></app-top-carousel>
                 <app-product-list></app-product-list>

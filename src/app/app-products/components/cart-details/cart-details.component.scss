@@ -13,14 +13,8 @@
         width: 100%;
         padding: 12px;
 
-        .close-button {
-            padding: 0;
-            height: 33px;
-            width: 33px;
-            cursor: pointer;
-            border: none;
+        .icon-button {
             color: var(--theme-primary-500);
-            background: transparent;
 
             mat-icon {
                 height: 32px;
@@ -96,16 +90,8 @@
                 }
             }
 
-            .close-button-price {
+            .item-delete-button {
                 min-height: 96px;
-                .close-button:hover {
-                    color: #db1e3d;
-                }
-
-                .close-button {
-                    cursor: pointer;
-                    color: #b1aeae;
-                }
             }
         }
     }

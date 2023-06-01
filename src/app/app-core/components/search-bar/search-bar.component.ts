@@ -4,6 +4,7 @@ import { CartService } from '../../../app-shared/services/cart.service';
 import { ProductService } from '../../../app-products/services/product.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SignInModalComponent } from '../sign-in-modal/sign-in-modal.component';
+import { CommonService } from '../../../app-shared/services/common.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -16,12 +17,17 @@ export class SearchBarComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private productService: ProductService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private commmonService: CommonService
   ) { }
  
   ngOnInit(): void {
     this.patchCartInfo();
     this.cartUpdateRealtime();
+  }
+
+  onClickMenuBar(){
+    this.commmonService.$categorySidebar.next(true);
   }
 
   patchCartInfo(){

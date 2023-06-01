@@ -10,6 +10,10 @@
         height: inherit;
 
         .menu-icon {
+            color: var(--theme-primary-500);
+            border: none;
+            background: transparent;
+            cursor: pointer;
             mat-icon {
                 font-size: 36px;
                 height: 36px;

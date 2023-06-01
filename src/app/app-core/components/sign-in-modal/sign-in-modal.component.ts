@@ -15,14 +15,24 @@ export class SignInModalComponent implements OnInit {
   ) { }
 
   submitFor = 'signIn';
+  changePosition = false;
+  isValid = false;
 
   ngOnInit(): void {
+  }
+  closeModal(){
+    this.dialogRef.close(true);
   }
   sign_in(){
     this.submitFor = 'signIn';
   }
   sign_up(){
     this.submitFor = 'signUp';
+  }
+  changeButtonPosition(){
+    if(this.isValid == false){
+      this.changePosition = this.changePosition === true ? false : true;
+    }
   }
   form: FormGroup = new FormGroup({
     username: new FormControl(''),

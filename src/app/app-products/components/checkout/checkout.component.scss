@@ -21,6 +21,7 @@
         .products-carousel-and-cart {
             height: 100%;
             width: calc(100% - 216px);
+            overflow: auto;
 
             .products-carousel{
                 height: calc(100vh - 64px);

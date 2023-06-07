@@ -1,4 +1,5 @@
 export interface ProductModel {
+    catId: string,
     id: string,
     name: string, 
     price: number,

@@ -1,4 +1,5 @@
 .app-home {
+    position: fixed;
     .top-bar {
         height: 64px;
         position: -webkit-sticky;
@@ -21,7 +22,7 @@
         .products-carousel-and-cart {
             height: 100%;
             width: calc(100% - 216px);
-            //overflow: auto;
+            overflow: auto;
 
             .products-carousel{
                 height: calc(100vh - 64px);

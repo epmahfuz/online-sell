@@ -6,5 +6,6 @@ import { Subject } from 'rxjs';
 })
 export class ProductService {
   public $cartViewChange = new Subject<boolean>();
+  public $selectedCategoryId = new Subject<string>();
   constructor() { }
 }

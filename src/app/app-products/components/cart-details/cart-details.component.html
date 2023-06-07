@@ -43,7 +43,7 @@
         
     </div>
     <div *ngIf="cartTotalPrice" class="cart-footer">
-        <button class="place-order-amount">
+        <button (click)="onClickPlaceOrder()" class="place-order-amount">
             <span class="place-order">Place Order</span>
             <span class="total-amount">৳ {{cartTotalPrice}}</span>
         </button>

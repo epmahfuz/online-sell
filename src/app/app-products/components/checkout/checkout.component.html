@@ -1,4 +1,4 @@
-<div class="app-home">
+<div class="app-checkout">
     <div class="top-bar">
         <app-search-bar></app-search-bar>
     </div>
@@ -7,9 +7,9 @@
             <app-category-sidebar></app-category-sidebar>
         </div>
         <div [ngClass]="categorySidebar==true ? '': 'w-100'" class="products-carousel-and-cart" fxLayout="row" fxLayoutAlign="space-between start">
-            <div [ngClass]="isCartViewOn==true ? 'products-carousel': ''">
-                <app-top-carousel></app-top-carousel>
-                <app-product-list></app-product-list>
+            <div  [ngClass]="isCartViewOn==true ? 'products-carousel': ''">
+                <!-- <app-top-carousel></app-top-carousel>
+                <app-product-list></app-product-list> -->
             </div>
             <div *ngIf="isCartViewOn" class="cart-details">
                 <app-cart-details></app-cart-details>

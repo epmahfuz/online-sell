@@ -5,6 +5,7 @@ import { ProductService } from '../../../app-products/services/product.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SignInModalComponent } from '../sign-in-modal/sign-in-modal.component';
 import { CommonService } from '../../../app-shared/services/common.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -18,7 +19,8 @@ export class SearchBarComponent implements OnInit {
     private cartService: CartService,
     private productService: ProductService,
     private dialog: MatDialog,
-    private commmonService: CommonService
+    private commmonService: CommonService,
+    private router: Router,
   ) { }
  
   ngOnInit(): void {
@@ -62,5 +64,9 @@ export class SearchBarComponent implements OnInit {
 
   cartViewOn(){
     this.productService.$cartViewChange.next(true);
+  }
+
+  onLogoClick(){
+    this.router.navigate(['']).then((r) => r);
   }
 }

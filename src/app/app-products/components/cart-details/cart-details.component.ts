@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductModel } from '../../../app-shared/models/all-models';
 import { CartService } from '../../../app-shared/services/cart.service';
 import { ProductService } from '../../services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-details',
@@ -14,7 +15,8 @@ export class CartDetailsComponent implements OnInit {
   cartTotalPrice: number = 0;
   constructor(
     private cartService: CartService,
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router,
   ) { }
   ngOnInit(): void {
     this.patchCartInfo();
@@ -82,6 +84,10 @@ export class CartDetailsComponent implements OnInit {
     this.saveInLocalStorage();
     let isDeleted = true;
     this.cartService.$updateCartInfo.next({ id: product.id, price: product.price, counter: cartItemCounter*(-1), isDeleted: isDeleted});
+  }
+
+  onClickPlaceOrder(){
+    this.router.navigate(['checkout']).then((r) => r);
   }
 
   closeCartView(){

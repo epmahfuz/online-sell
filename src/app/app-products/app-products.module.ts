@@ -10,8 +10,10 @@ import { NguCarouselModule } from '@ngu/carousel';
 import { TopCarouselComponent } from './components/top-carousel/top-carousel.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 const routes: Routes = [
   { path: '', component: AppHomeComponent },
+  { path: 'checkout', component: CheckoutComponent },
 ]
 
 @NgModule({
@@ -20,7 +22,8 @@ const routes: Routes = [
     CategorySidebarComponent,
     TopCarouselComponent,
     ProductListComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,

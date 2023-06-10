@@ -24,6 +24,11 @@
                         <label for="name">Name</label>
                         <input type="text" id="name" placeholder="Enter your name" required>
                       </div> 
+                      <mat-form-field class="mat-form-field" appearance="outline">
+                        <mat-label class="label-text">Category Name</mat-label>
+                        <input required matInput name="FirstName" placeholder="Enter name" />
+                        <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
+                      </mat-form-field>
                       <div class="form-group">
                         <label for="address">Address</label>
                         <textarea id="address" placeholder="Enter your address" required></textarea>

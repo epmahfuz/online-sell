@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { NguCarouselModule } from '@ngu/carousel';
 import { TopCarouselComponent } from './components/top-carousel/top-carousel.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { HighlightedCategoryComponent } from './components/highlighted-category/highlighted-category.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
     TopCarouselComponent,
     ProductListComponent,
     CartDetailsComponent,
+    HighlightedCategoryComponent,
     CheckoutComponent
   ],
   imports: [

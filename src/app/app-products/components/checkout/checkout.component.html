@@ -10,6 +10,43 @@
             <div  [ngClass]="isCartViewOn==true ? 'products-carousel': ''">
                 <!-- <app-top-carousel></app-top-carousel>
                 <app-product-list></app-product-list> -->
+                <div class="checkout-container">
+                    <h2>Checkout</h2>
+                    
+                    <div class="cart-summary">
+                      <!-- Display cart summary here -->
+                    </div>
+                    
+                    <form class="checkout-form">
+                      <h3>Billing Information</h3>
+                      
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Enter your name" required>
+                      </div> 
+                      <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" placeholder="Enter your address" required></textarea>
+                      </div>
+                      
+                      <h3>Payment Information</h3>
+                      
+                      <div class="payment-card">
+                        <h4 class="payment-system">Bkash</h4>
+                        <img src="https://chaldn.com/asset/Egg.ChaldalWeb.Fabric/Egg.ChaldalWeb1/1.0.0+Deploy-Release-267/Default/components/shared/NewFooter/images/bkash.png" width="30px" height="30px" alt="bkash" class="payment-logo">
+                      </div> 
+                      <div class="payment-card">
+                        <h4 class="payment-system">Nagad</h4>
+                        <img src="https://chaldn.com/asset/Egg.ChaldalWeb.Fabric/Egg.ChaldalWeb1/1.0.0+Deploy-Release-267/Default/components/shared/NewFooter/images/NagadLogo.png" width="30px" height="30px" alt="bkash" class="payment-logo">
+                      </div> 
+                      <div class="payment-card">
+                        <h4 class="payment-system">Mastercard</h4>
+                        <img src="https://chaldn.com/asset/Egg.ChaldalWeb.Fabric/Egg.ChaldalWeb1/1.0.0+Deploy-Release-267/Default/components/shared/NewFooter/images/mastercard.png" width="30px" height="30px" alt="bkash" class="payment-logo">
+                      </div> 
+                      <button type="submit">Place Order</button>
+                    </form>
+                  </div>
+                  
             </div>
             <div *ngIf="isCartViewOn" class="cart-details">
                 <app-cart-details></app-cart-details>

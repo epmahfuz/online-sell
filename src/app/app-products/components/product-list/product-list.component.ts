@@ -76,7 +76,7 @@ export class ProductListComponent implements OnInit {
     {
       catId:"2",
       id:'8',
-      name: 'Hilsa (Ilish)-(Freshly Stored Diamond Harbour Ilish)Medium-Whole, Bengali Cut & Cleaned {With Head & Tail} (1.2 Kg)',
+      name: 'Hilsa (Ilish) Medium-Whole, Bengali Cut & Cleaned (1.2 Kg)',
       quantity: 1,
       price: 1500,
       imgLink: 'https://kolkatafish.com/wp-content/uploads/2020/10/Hilsa-S-1_Fotor-450x450.jpg',

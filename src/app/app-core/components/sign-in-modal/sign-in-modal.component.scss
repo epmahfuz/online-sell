@@ -1,23 +1,8 @@
 ::ng-deep{
-  .mat-dialog-container {
-    background: white;
-  }
-  .mat-form-field-appearance-legacy .mat-form-field-label{
-    color: #707070;
-  }
   .mat-form-field-flex{
     border-bottom: 1px solid #707070;
   }
-  .mat-focused .mat-form-field-label {
-    /*change color of label*/
-    color: var(--theme-primary-500) !important;
-   }
-   .mat-form-field-ripple {
-    /*change color of underline when focused*/
-    background-color: var(--theme-primary-500) !important;
-   }
 }
-
 .icon-button{
   float: right;
   margin-top: -12px;

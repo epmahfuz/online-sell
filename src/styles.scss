@@ -110,7 +110,37 @@ body {
         font-size: 24px;
     }
   }
+  
+  //material common design change
+  .mat-dialog-container {
+    background: white;
+    color: gray;
+  }
+  .mat-form-field-appearance-outline .mat-form-field-outline{
+    color: gray;
+  }
+  .mat-form-field-appearance-legacy .mat-form-field-label{
+    color: #707070;
+  }
+  .mat-focused .mat-form-field-label {
+  /*change color of label*/
+    color: var(--theme-primary-500) !important;
+  }
+  .mat-form-field-ripple {
+  /*change color of underline when focused*/
+    background-color: var(--theme-primary-500) !important;
+  }
+  .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick{
+    color: var(--theme-primary-500) !important;
+  }
+  .mat-input-element{
+  color: black;
+  }
+  .mat-form-field-label{
+  color: gray;
+  }
 }
+
 // Sample Flex Design
 // fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start center"
 //     fxLayout="column" fxFlex="75%",

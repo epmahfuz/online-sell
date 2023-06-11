@@ -111,7 +111,7 @@ body {
     }
   }
   
-  //material common design change
+//material Form filed design change - Start
   .mat-dialog-container {
     background: white;
     color: gray;
@@ -123,22 +123,29 @@ body {
     color: #707070;
   }
   .mat-focused .mat-form-field-label {
-  /*change color of label*/
     color: var(--theme-primary-500) !important;
   }
   .mat-form-field-ripple {
-  /*change color of underline when focused*/
     background-color: var(--theme-primary-500) !important;
   }
   .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick{
     color: var(--theme-primary-500) !important;
   }
   .mat-input-element{
-  color: black;
+    color: black !important;
   }
   .mat-form-field-label{
-  color: gray;
+    color: gray;
   }
+  .mat-form-field{
+    input::placeholder{
+      color:gray;
+    }
+  }
+  .mat-focused .mat-form-field-required-marker{
+    color: red;
+  }
+//material Form filed design change - End
 }
 
 // Sample Flex Design

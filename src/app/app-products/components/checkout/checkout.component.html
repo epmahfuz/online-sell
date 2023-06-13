@@ -10,10 +10,9 @@
       <app-category-sidebar></app-category-sidebar>
     </div>
     <div
-      [ngClass]="categorySidebar == true ? '' : 'w-100'"
+      [ngClass]="{'w-100' : categorySidebar == false, 'place-content-center' : isCartViewOn==false }"
       class="products-carousel-and-cart"
       fxLayout="row"
-      fxLayoutAlign="space-between start"
     >
       <div  [ngClass]="isCartViewOn==true ? 'products-carousel': ''"> 
         <div class="checkout-container">

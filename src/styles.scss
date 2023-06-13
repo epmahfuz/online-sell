@@ -29,6 +29,10 @@ body {
     display: none !important;
   }
 
+  .place-content-center{
+    place-content: center !important;
+  }
+
   .primary-button:hover {
     background: var(--theme-primary-500);
     color: white;

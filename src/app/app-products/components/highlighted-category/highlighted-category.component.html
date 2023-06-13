@@ -2,19 +2,17 @@
   <div class="title-box">
     <span class="category-title"> Our Product Categories</span>
   </div>
-  <div class="category-card-list">
+  <div class="category-card-list"  fxLayout="row" fxLayoutGap="30px" fxLayoutAlign="start center">
     <div
       class="category-card"
+      fxLayout="column" fxLayoutGap="6px" fxLayoutAlign="center"
       *ngFor="let category of categoryList"
       [ngClass]="{ 'category-active': category.id == selectedCatId }"
       (click)="onClickCategory(category.id)"
     >
     <div class="left" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center">
       <div class="category-name">{{ category.name}}</div>
-      <div class="category-icon">
-          <img src="{{category.iconLink}}" alt="">
-
-      </div>
+      <div class="category-icon"><img src="{{category.iconLink}}" alt=""></div>
     </div>
   </div>
   </div>

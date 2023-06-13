@@ -1,61 +1,184 @@
 <div class="app-checkout">
-    <div class="top-bar">
-        <app-search-bar></app-search-bar>
+  <div class="top-bar">
+    <app-search-bar></app-search-bar>
+  </div>
+  <div class="main-content" fxLayout="row" fxLayoutAlign="start start">
+    <div
+      [ngClass]="categorySidebar == true ? '' : 'display-none'"
+      class="category-products"
+    >
+      <app-category-sidebar></app-category-sidebar>
     </div>
-    <div class="main-content" fxLayout="row" fxLayoutAlign="start start">
-        <div [ngClass]="categorySidebar==true ? '': 'display-none'" class="category-products">
-            <app-category-sidebar></app-category-sidebar>
-        </div>
-        <div [ngClass]="categorySidebar==true ? '': 'w-100'" class="products-carousel-and-cart" fxLayout="row" fxLayoutAlign="space-between start">
-            <div  [ngClass]="isCartViewOn==true ? 'products-carousel': ''">
-                <!-- <app-top-carousel></app-top-carousel>
-                <app-product-list></app-product-list> -->
-                <div class="checkout-container">
-                    <h2>Checkout</h2>
-                    
-                    <div class="cart-summary">
-                      <!-- Display cart summary here -->
-                    </div>
-                    
-                    <form class="checkout-form">
-                      <h3>Billing Information</h3>
-                      
-                      <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" placeholder="Enter your name" required>
-                      </div> 
-                      <mat-form-field class="mat-form-field" appearance="outline">
-                        <mat-label class="label-text">Full Name</mat-label>
-                        <input required matInput name="FirstName" placeholder="Enter your full name" />
-                        <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
-                      </mat-form-field>
-                      <div class="form-group">
-                        <label for="address">Address</label>
-                        <textarea id="address" placeholder="Enter your address" required></textarea>
-                      </div>
-                      
-                      <h3>Payment Information</h3>
-                      
-                      <div class="payment-card">
-                        <h4 class="payment-system">Bkash</h4>
-                        <img src="https://chaldn.com/asset/Egg.ChaldalWeb.Fabric/Egg.ChaldalWeb1/1.0.0+Deploy-Release-267/Default/components/shared/NewFooter/images/bkash.png" width="30px" height="30px" alt="bkash" class="payment-logo">
-                      </div> 
-                      <div class="payment-card">
-                        <h4 class="payment-system">Nagad</h4>
-                        <img src="https://chaldn.com/asset/Egg.ChaldalWeb.Fabric/Egg.ChaldalWeb1/1.0.0+Deploy-Release-267/Default/components/shared/NewFooter/images/NagadLogo.png" width="30px" height="30px" alt="bkash" class="payment-logo">
-                      </div> 
-                      <div class="payment-card">
-                        <h4 class="payment-system">Mastercard</h4>
-                        <img src="https://chaldn.com/asset/Egg.ChaldalWeb.Fabric/Egg.ChaldalWeb1/1.0.0+Deploy-Release-267/Default/components/shared/NewFooter/images/mastercard.png" width="30px" height="30px" alt="bkash" class="payment-logo">
-                      </div> 
-                      <button type="submit">Place Order</button>
-                    </form>
-                  </div>
-                  
+    <div
+      [ngClass]="categorySidebar == true ? '' : 'w-100'"
+      class="products-carousel-and-cart"
+      fxLayout="row"
+      fxLayoutAlign="space-between start"
+    >
+      <div  [ngClass]="isCartViewOn==true ? 'products-carousel': ''"> 
+        <div class="checkout-container">
+          <form class="checkout-form">
+            <h3 class="checkout-title">
+              Shipping Address
+              <span class="checkout-sub-title"
+                >(Please Fill Out Your Information)</span
+              >
+            </h3>
+            <div class="checkout-field-parent">
+              <mat-form-field class="mat-form-field" appearance="outline">
+                <mat-label class="label-text">Full Name</mat-label>
+                <input
+                  required
+                  matInput
+                  name="FirstName"
+                  placeholder="Enter your full name"
+                />
+                <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
+              </mat-form-field>
+              <div class="checkout-phone-feild-conteiner">
+                <mat-form-field class="mat-form-field" appearance="outline">
+                  <mat-label class="label-text">Phone No</mat-label>
+                  <input
+                    required
+                    matInput
+                    name="Phone No"
+                    placeholder="Enter your Phone No"
+                  />
+                  <!-- <mat-error *ngIf="Phone.invalid && Phone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field class="mat-form-field" appearance="outline">
+                  <mat-label class="label-text">Alternative Phone No</mat-label>
+                  <input
+                    required
+                    matInput
+                    name="Alternative Phone No"
+                    placeholder="Enter your alternative Phone No"
+                  />
+                  <!-- <mat-error *ngIf="AlternativePhone.invalid && AlternativePhone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
+                </mat-form-field>
+              </div>
+              <mat-form-field class="mat-form-field" appearance="outline">
+                <mat-label class="label-text">Address</mat-label>
+                <input
+                  required
+                  matInput
+                  name="Address"
+                  placeholder="Enter your address"
+                />
+                <!-- <mat-error *ngIf="Address.invalid && Address.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
+              </mat-form-field>
             </div>
-            <div *ngIf="isCartViewOn" class="cart-details">
-                <app-cart-details></app-cart-details>
+            <h3 class="checkout-title">
+              Payment Method
+              <span class="checkout-sub-title"
+                >(Please select only one! payment method)</span
+              >
+            </h3>
+            <div class="checkout-payment-card">
+              <div class="payment-card">
+                <div
+                  class="left"
+                  fxLayout="row"
+                  fxLayoutGap="5px"
+                  fxLayoutAlign="flex-start center"
+                >
+                  <input
+                    type="radio"
+                    name="Cash on Delivery"
+                    class="card-radio"
+                  />
+                  <label for="Cash on Delivery" class="payment-icon">
+                    <img
+                      width="35px"
+                      height="35px"
+                      src="https://www.rokomari.com/static/200/images/cod.png"
+                      alt=""
+                    />
+                    <span class="payment-title">Cash on Delivery</span>
+                  </label>
+                </div>
+              </div>
+              <div class="payment-card">
+                <div
+                  class="left"
+                  fxLayout="row"
+                  fxLayoutGap="5px"
+                  fxLayoutAlign="flex-start center"
+                >
+                  <input type="radio" name="Bkash" class="card-radio" />
+                  <label for="Bkash" class="payment-icon">
+                    <img
+                      class="payment-image"
+                      src="https://www.rokomari.com/static/200/images/bkash.png"
+                      alt=""
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div class="payment-card">
+                <div
+                  class="left"
+                  fxLayout="row"
+                  fxLayoutGap="5px"
+                  fxLayoutAlign="flex-start center"
+                >
+                  <input type="radio" name="Nagad" class="card-radio" />
+                  <label for="Nagad" class="payment-icon">
+                    <img
+                      class="payment-image"
+                      src="https://www.rokomari.com/static/200/images/Nagad-Logo.png"
+                      alt=""
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div class="payment-card">
+                <div
+                  class="left"
+                  fxLayout="row"
+                  fxLayoutGap="5px"
+                  fxLayoutAlign="flex-start center"
+                >
+                  <input type="radio" name="Rocket" class="card-radio" />
+                  <label for="Rocket" class="payment-icon">
+                    <img
+                      class="payment-image"
+                      src="https://www.rokomari.com/static/200/images/rocket.png"
+                      alt=""
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div class="payment-card">
+                <div
+                  class="left"
+                  fxLayout="row"
+                  fxLayoutGap="5px"
+                  fxLayoutAlign="flex-start center"
+                >
+                  <input type="radio" name="Master Card" class="card-radio" />
+                  <label for="Master Card" class="payment-icon">
+                    <img
+                      class="payment-image"
+                      src="https://www.rokomari.com/static/200/images/svg/icons/rok-icon-ssl.svg"
+                      alt=""
+                    />
+                  </label>
+                </div>
+              </div>
             </div>
+            <button type="submit">Place Order</button>
+          </form>
         </div>
+      </div>
+
+      <div *ngIf="isCartViewOn" class="cart-details">
+        <app-cart-details></app-cart-details>
+      </div>
     </div>
-</div> 
+    
+  </div>
+</div>

@@ -13,6 +13,14 @@ const routes: Routes = [
       ),
     data: { isFullScreen: false, isPublic: false },
   },
+  {
+    path: 'admin-panel',
+    loadChildren: () => 
+      import('../app-admin-panel/app-admin-panel.module').then(
+        (module) => module.AppAdminPanelModule
+      ),
+    data: { isFullScreen: false, isPublic: false },
+  },
 ];
 
 @NgModule({

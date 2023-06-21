@@ -2,7 +2,7 @@
     <div class="navigation">
         <ul>
             <li>
-                <a href="#">
+                <p>
                     <span class="icon" 
                     style="display: flex;
                     justify-content: center;
@@ -10,70 +10,70 @@
                         <img width="35px" height="35px" src="../../../../assets/images/tartaja2.png" alt="">
                     </span>
                     <span class="title">Tartaja</span>
-                </a>
+                </p>
             </li>
 
-            <li>
-                <a href="#">
+            <li id="dashboard">
+                <p>
                     <span class="icon">
                         <i class="fa-solid fa-house"></i>
                     </span>
                     <span class="title">Dashboard</span>
-                </a>
+                </p>
             </li>
 
-            <li>
-                <a href="#">
+            <li id="customer">
+                <p>
                     <span class="icon">
                         <i class="fa-solid fa-user-group"></i>
                     </span>
                     <span class="title">Customers</span>
-                </a>
+                </p>
             </li>
 
             <li>
-                <a href="#">
+                <p>
                     <span class="icon">
                         <i class="fa-regular fa-message"></i>
                     </span>
                     <span class="title">Messages</span>
-                </a>
+                </p>
             </li>
 
             <li>
-                <a href="#">
+                <p>
                     <span class="icon">
                         <i class="fa-solid fa-question"></i>
                     </span>
                     <span class="title">Help</span>
-                </a>
+                </p>
             </li>
 
             <li>
-                <a href="#">
+                <p>
                     <span class="icon">
                         <i class="fa-solid fa-gear"></i>
                     </span>
                     <span class="title">Settings</span>
-                </a>
+                </p>
             </li>
 
             <li>
-                <a href="#">
+                <p>
                     <span class="icon">
                         <i class="fa-solid fa-lock"></i>
                     </span>
                     <span class="title">Password</span>
-                </a>
+                </p>
             </li>
 
             <li>
-                <a href="#">
+                <p>
                     <span class="icon">
                         <i class="fa-solid fa-right-from-bracket"></i>
                     </span>
                     <span class="title">Sign Out</span>
-                </a>
+                </p>
             </li>
         </ul>
     </div>
@@ -97,211 +97,275 @@
             </div>
         </div>
 
-        <!-- ======================= Cards ================== -->
-        <div class="cardBox">
-            <div class="card">
+        <!-- ======================= Dashboard ================== -->
+        <div id="dashboard-content" class="content">
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">1,504</div>
+                        <div class="cardName">Daily Views</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">80</div>
+                        <div class="cardName">Sales</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">284</div>
+                        <div class="cardName">Comments</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">$7,842</div>
+                        <div class="cardName">Earning</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================ Order Details List ================= -->
+            <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>Recent Orders</h2>
+                        <a href="#" class="btn">View All</a>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Price</td>
+                                <td>Payment</td>
+                                <td>Status</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Star Refrigerator</td>
+                                <td>$1200</td>
+                                <td>Paid</td>
+                                <td><span class="status delivered">Delivered</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Dell Laptop</td>
+                                <td>$110</td>
+                                <td>Due</td>
+                                <td><span class="status pending">Pending</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Apple Watch</td>
+                                <td>$1200</td>
+                                <td>Paid</td>
+                                <td><span class="status return">Return</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Addidas Shoes</td>
+                                <td>$620</td>
+                                <td>Due</td>
+                                <td><span class="status inProgress">In Progress</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Star Refrigerator</td>
+                                <td>$1200</td>
+                                <td>Paid</td>
+                                <td><span class="status delivered">Delivered</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Dell Laptop</td>
+                                <td>$110</td>
+                                <td>Due</td>
+                                <td><span class="status pending">Pending</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Apple Watch</td>
+                                <td>$1200</td>
+                                <td>Paid</td>
+                                <td><span class="status return">Return</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Addidas Shoes</td>
+                                <td>$620</td>
+                                <td>Due</td>
+                                <td><span class="status inProgress">In Progress</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ================= New Customers ================ -->
+                <div class="recentCustomers">
+                    <div class="cardHeader">
+                        <h2>Recent Customers</h2>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
+                            </td>
+                            <td>
+                                <h4>David <br> <span>Italy</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
+                            </td>
+                            <td>
+                                <h4>Amit <br> <span>India</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
+                            </td>
+                            <td>
+                                <h4>David <br> <span>Italy</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
+                            </td>
+                            <td>
+                                <h4>Amit <br> <span>India</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
+                            </td>
+                            <td>
+                                <h4>David <br> <span>Italy</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
+                            </td>
+                            <td>
+                                <h4>Amit <br> <span>India</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
+                            </td>
+                            <td>
+                                <h4>David <br> <span>Italy</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
+                            </td>
+                            <td>
+                                <h4>Amit <br> <span>India</span></h4>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+       </div>
+        <!-- ======================= Add-product ================== -->
+       <div id="customer-content" class="content" style="margin-top: 30px;">
+        <div class="checkout-container">
+            <form class="checkout-form">
+              <h3 class="checkout-title">
+                Add Your Product
+              </h3>
+              <div class="checkout-field-parent">
+                <mat-form-field class="mat-form-field product-field" appearance="outline">
+                  <mat-label class="label-text">Product Name</mat-label>
+                  <input
+                    required
+                    matInput
+                    name="ProductName"
+                    placeholder="Enter your product Name"
+                  />
+                  <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field class="mat-form-field product-field" appearance="outline">
+                  <mat-label class="label-text">Product description</mat-label>
+                  <input
+                    required
+                    matInput
+                    name="Product description"
+                    placeholder="Enter your product description"
+                  />
+                  <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
+                </mat-form-field>
+                <div class="checkout-phone-feild-conteiner product-field">
+                  <mat-form-field class="mat-form-field" appearance="outline">
+                    <mat-label class="label-text">Product Quantity</mat-label>
+                    <input
+                      required
+                      matInput
+                      name="Product quantity"
+                      placeholder="Enter your product quantity"
+                    />
+                    <!-- <mat-error *ngIf="Phone.invalid && Phone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
+                  </mat-form-field>
+                  <mat-form-field class="mat-form-field" appearance="outline">
+                    <mat-label class="label-text">Product price</mat-label>
+                    <input
+                      required
+                      matInput
+                      name="Product price"
+                      placeholder="Enter your product price"
+                    />
+                    <!-- <mat-error *ngIf="AlternativePhone.invalid && AlternativePhone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
+                  </mat-form-field>
+                </div>
                 <div>
-                    <div class="numbers">1,504</div>
-                    <div class="cardName">Daily Views</div>
+                    <label class="choose-label">Choose your product photo
+                        <input type="file" size="60" >
+                    </label> 
+                    
                 </div>
-
-                <div class="iconBx">
-                    <i class="fa-solid fa-eye"></i>
-                </div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="numbers">80</div>
-                    <div class="cardName">Sales</div>
-                </div>
-
-                <div class="iconBx">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="numbers">284</div>
-                    <div class="cardName">Comments</div>
-                </div>
-
-                <div class="iconBx">
-                    <i class="fa-solid fa-comments"></i>
-                </div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="numbers">$7,842</div>
-                    <div class="cardName">Earning</div>
-                </div>
-
-                <div class="iconBx">
-                    <i class="fa-solid fa-dollar-sign"></i>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================ Order Details List ================= -->
-        <div class="details">
-            <div class="recentOrders">
-                <div class="cardHeader">
-                    <h2>Recent Orders</h2>
-                    <a href="#" class="btn">View All</a>
-                </div>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Name</td>
-                            <td>Price</td>
-                            <td>Payment</td>
-                            <td>Status</td>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>Star Refrigerator</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
-                            <td><span class="status delivered">Delivered</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Dell Laptop</td>
-                            <td>$110</td>
-                            <td>Due</td>
-                            <td><span class="status pending">Pending</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Apple Watch</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
-                            <td><span class="status return">Return</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Addidas Shoes</td>
-                            <td>$620</td>
-                            <td>Due</td>
-                            <td><span class="status inProgress">In Progress</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Star Refrigerator</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
-                            <td><span class="status delivered">Delivered</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Dell Laptop</td>
-                            <td>$110</td>
-                            <td>Due</td>
-                            <td><span class="status pending">Pending</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Apple Watch</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
-                            <td><span class="status return">Return</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Addidas Shoes</td>
-                            <td>$620</td>
-                            <td>Due</td>
-                            <td><span class="status inProgress">In Progress</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- ================= New Customers ================ -->
-            <div class="recentCustomers">
-                <div class="cardHeader">
-                    <h2>Recent Customers</h2>
-                </div>
-
-                <table>
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>Amit <br> <span>India</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>Amit <br> <span>India</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>Amit <br> <span>India</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                        </td>
-                        <td>
-                            <h4>Amit <br> <span>India</span></h4>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+              </div>
+              
+              <button type="submit">Add Product</button>
+            </form>
+          </div>
+       </div>
     </div>
 </div>

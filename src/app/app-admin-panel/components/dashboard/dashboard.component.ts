@@ -11,22 +11,34 @@ export class DashboardComponent implements OnInit {
   toggle: HTMLElement;
   navigation: HTMLElement;
   main: HTMLElement;
-
+  contentElements: NodeListOf<HTMLElement>;
   constructor() { }
 
   ngOnInit(): void {
     // add hovered class to selected list item
     this.list = document.querySelectorAll(".navigation li");
+    this.contentElements = document.querySelectorAll(".content");
 
-    const activeLink = (item: HTMLLIElement) => {
-      this.list.forEach((li: HTMLLIElement) => {
-        li.classList.remove("hovered");
+    this.list.forEach((item) => {
+      item.addEventListener("click", () => {
+        const itemId = item.id;
+        this.contentElements.forEach((content) => {
+          if (content.id === `${itemId}-content`) {
+            content.style.display = "block";
+          } else {
+            content.style.display = "none";
+          }
+        });
+        
+        this.list.forEach((li) => {
+          if (li === item) {
+            li.classList.add("hovered");
+          } else {
+            li.classList.remove("hovered");
+          }
+        });
       });
-      item.classList.add("hovered");
-    };
-
-    this.list.forEach((item: HTMLLIElement) => item.addEventListener("mouseover", () => activeLink(item)));
-
+    });
     // Menu Toggle
     this.toggle = document.querySelector(".toggle");
     this.navigation = document.querySelector(".navigation");

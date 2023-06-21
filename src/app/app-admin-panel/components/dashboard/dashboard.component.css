@@ -406,6 +406,7 @@
 /* add-product-style */
 .checkout-container {
   max-width: 600px;
+  height: calc(100vh - 200px);
   margin: 0 auto;
   padding: 5px 20px 20px 20px;
   border-radius: 5px;
@@ -495,7 +496,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  margin-top: 27px;
+  margin-top: 136px;
 }
 
 button:hover {

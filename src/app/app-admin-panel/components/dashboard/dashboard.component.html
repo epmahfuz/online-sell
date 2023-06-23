@@ -22,21 +22,21 @@
                 </p>
             </li>
 
-            <li id="customer">
+            <li id="product">
                 <p>
                     <span class="icon">
                         <i class="fas fa-file-medical"></i>
                     </span>
-                    <span class="title">Add Product</span>
+                    <span class="title">Product</span>
                 </p>
             </li>
 
-            <li>
+            <li id="productlist">
                 <p>
                     <span class="icon">
-                        <i class="fa-regular fa-message"></i>
+                        <i class="fa-solid fa-list-ul"></i>
                     </span>
-                    <span class="title">Messages</span>
+                    <span class="title">Product Lists</span>
                 </p>
             </li>
 
@@ -305,14 +305,15 @@
                 </div>
             </div>
        </div>
-        <!-- ======================= Add-product ================== -->
-       <div id="customer-content" class="content" style="margin-top: 30px;">
-        <div class="checkout-container">
-            <form class="checkout-form">
-              <h3 class="checkout-title">
+       
+        <!-- ======================= product ================== -->
+       <div id="product-content" class="content" style="margin-top: 30px; display: none;">
+        <div class="product-container">
+            <form class="product-form">
+              <h3 class="product-title">
                 Add Your Product
               </h3>
-              <div class="checkout-field-parent">
+              <div class="product-field-parent">
                 <mat-form-field class="mat-form-field product-field" appearance="outline">
                   <mat-label class="label-text">Product Name</mat-label>
                   <input
@@ -333,7 +334,7 @@
                   />
                   <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
                 </mat-form-field>
-                <div class="checkout-phone-feild-conteiner product-field">
+                <div class="product-phone-feild-conteiner product-field">
                   <mat-form-field class="mat-form-field" appearance="outline">
                     <mat-label class="label-text">Product Quantity</mat-label>
                     <input
@@ -355,8 +356,8 @@
                     <!-- <mat-error *ngIf="AlternativePhone.invalid && AlternativePhone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
                   </mat-form-field>
                 </div>
-                <div>
-                    <label class="choose-label">Choose your product photo
+                <div style="padding-bottom:40px;">
+                    <label class="product-choose-label">Choose your product photo
                         <input type="file" size="60" >
                     </label> 
                     
@@ -367,5 +368,84 @@
             </form>
           </div>
        </div>
+
+       <!-- ======================= product list ================== -->
+       <div id="productlist-content" class="content" style="margin-top: 30px; display: none;">
+        <div class="product-list">
+            <div class="pro-header">
+                <h2>Product Lists</h2> 
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td class="name-td">Name</td>
+                        <td>Price</td>
+                        <td>Payment</td>
+                        <td class="status-td">Status</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Star Refrigerator</td>
+                        <td>$1200</td>
+                        <td>Paid</td>
+                        <td><span class="status product-list-delivered">Delivered</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Dell Laptop</td>
+                        <td>$110</td>
+                        <td>Due</td>
+                        <td><span class="status product-list-pending">Pending</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Apple Watch</td>
+                        <td>$1200</td>
+                        <td>Paid</td>
+                        <td><span class="status product-list-return">Return</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Addidas Shoes</td>
+                        <td>$620</td>
+                        <td>Due</td>
+                        <td><span class="status product-list-inProgress">In Progress</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Star Refrigerator</td>
+                        <td>$1200</td>
+                        <td>Paid</td>
+                        <td><span class="status product-list-delivered">Delivered</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Dell Laptop</td>
+                        <td>$110</td>
+                        <td>Due</td>
+                        <td><span class="status product-list-pending">Pending</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Apple Watch</td>
+                        <td>$1200</td>
+                        <td>Paid</td>
+                        <td><span class="status product-list-return">Return</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Addidas Shoes</td>
+                        <td>$620</td>
+                        <td>Due</td>
+                        <td><span class="status product-list-inProgress">In Progress</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+       </div>
+
     </div>
 </div>

@@ -14,7 +14,7 @@
       class="products-carousel-and-cart"
       fxLayout="row"
     >
-      <div  [ngClass]="isCartViewOn==true ? 'products-carousel': ''"> 
+      <div class="m-16" [ngClass]="isCartViewOn==true ? 'checkout-main': 'w-100'"> 
         <div class="checkout-container">
           <form class="checkout-form">
             <h3 class="checkout-title">
@@ -34,7 +34,7 @@
                 />
                 <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
               </mat-form-field>
-              <div class="checkout-phone-feild-conteiner">
+              <div class="checkout-field-parent">
                 <mat-form-field class="mat-form-field" appearance="outline">
                   <mat-label class="label-text">Phone No</mat-label>
                   <input
@@ -45,7 +45,7 @@
                   />
                   <!-- <mat-error *ngIf="Phone.invalid && Phone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
                 </mat-form-field>
-                <mat-form-field class="mat-form-field" appearance="outline">
+                <!-- <mat-form-field class="mat-form-field" appearance="outline">
                   <mat-label class="label-text">Alternative Phone No</mat-label>
                   <input
                     required
@@ -53,8 +53,7 @@
                     name="Alternative Phone No"
                     placeholder="Enter your alternative Phone No"
                   />
-                  <!-- <mat-error *ngIf="AlternativePhone.invalid && AlternativePhone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
-                </mat-form-field>
+                </mat-form-field> -->
               </div>
               <mat-form-field class="mat-form-field" appearance="outline">
                 <mat-label class="label-text">Address</mat-label>
@@ -169,7 +168,7 @@
                 </div>
               </div>
             </div>
-            <button type="submit">Place Order</button>
+            <button class="mt-16" type="submit">Place Order</button>
           </form>
         </div>
       </div>

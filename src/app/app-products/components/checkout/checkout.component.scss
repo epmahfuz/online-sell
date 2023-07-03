@@ -22,10 +22,9 @@
       width: calc(100% - 216px);
       overflow: auto;
 
-      .products-carousel {
+      .checkout-main {
         height: calc(100vh - 64px);
-        width: calc(100% - 320px);
-        margin: 10px 0px 10px 0px;
+        width: calc(100% - 378px);
       }
       .cart-details {
         position: fixed;
@@ -35,9 +34,12 @@
         box-shadow: -2px 0 12px 0 rgba(143, 143, 143, 0.38);
       }
       .checkout-container {
+        margin:auto;
+        width: 100%;
+        height: max-content;
         max-width: 600px;
-        margin: 0 auto;
-        padding: 5px 20px 20px 20px;
+        //margin: 0 auto;
+        padding: 20px;
         border-radius: 5px;
         border: 1px solid #4ca64c;
         .checkout-form {
@@ -60,7 +62,7 @@
           .checkout-payment-card {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            grid-gap: 15px;
+            grid-gap: 16px;
             padding-top: 0.2rem;
             padding-bottom: 1rem;
             .payment-card {

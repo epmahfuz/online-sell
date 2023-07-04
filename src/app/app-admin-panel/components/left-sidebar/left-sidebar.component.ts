@@ -17,4 +17,7 @@ export class LeftSidebarComponent implements OnInit {
   onClickProductManagement(){
     this.router.navigate(['admin-panel']).then((r) => r);
   }
+  onClickDashboard(){
+    this.router.navigate(['admin-panel/dashboard']).then((r) => r);
+  } 
 }

@@ -1,0 +1,103 @@
+/* =============== Navigation ================ */
+.navigation {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: #01838c;;
+    border-left: 10px solid #01838c;;
+    transition: 0.5s;
+    overflow: hidden;
+  }
+  .navigation.active {
+    width: 70px;
+  }
+  
+  .navigation ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 0px;
+  }
+  
+  .navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+  }
+  
+  .navigation ul li:hover,
+  .navigation ul li.hovered {
+    background-color: #fff;
+  }
+  
+  .navigation ul li:nth-child(1) {
+    margin-bottom: 20px;
+    pointer-events: none;
+  }
+  
+  .navigation ul li p {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+  }
+  .navigation ul li:hover p,
+  .navigation ul li.hovered p {
+    color: #01838c;;
+  }
+  
+  .navigation ul li p .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 63px;
+    text-align: center;
+    font-size: 20px;
+  }
+  .navigation ul li p .icon ion-icon {
+    font-size: 1.75rem;
+  }
+  
+  .navigation ul li p .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+  }
+  
+  /* --------- curve outside ---------- */
+  .navigation ul li:hover p::before,
+  .navigation ul li.hovered p::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--white);
+    pointer-events: none;
+  }
+  .navigation ul li:hover p::after,
+  .navigation ul li.hovered p::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--white);
+    pointer-events: none;
+  }

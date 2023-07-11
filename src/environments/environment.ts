@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  ApiKey: '3453453',
+  TenantId:'dfs',
+  BusinessService: 'http://localhost:5000'
 };
 
 /*

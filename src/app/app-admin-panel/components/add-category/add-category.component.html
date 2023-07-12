@@ -19,8 +19,12 @@
                     <img src="assets/imgs/customer01.jpg" alt="">
                 </div>
             </div>
+            <div class="backbar">
+                <span><i class="fa-solid fa-arrow-left-long fa-2x"></i></span>
+                <span>Back</span>
+            </div>
                 <!-- ======================= product ================== -->
-            <div id="product-content" class="content" style="margin-top: 30px;">
+            <div id="product-content" class="content">
                 <div class="product-container">
                     <form class="product-form">
                     <h3 class="product-title">
@@ -28,45 +32,16 @@
                     </h3>
                     <div class="product-field-parent">
                         <mat-form-field class="mat-form-field product-field" appearance="outline">
-                        <mat-label class="label-text">Product Name</mat-label>
+                        <mat-label class="label-text">Category Name</mat-label>
                         <input
                             required
                             matInput
                             name="ProductName"
-                            placeholder="Enter your product Name"
+                            placeholder="Enter your category Name"
                         />
                         <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
                         </mat-form-field>
-                        <!-- <mat-form-field class="mat-form-field product-field" appearance="outline">
-                        <mat-label class="label-text">Product description</mat-label>
-                        <input
-                            required
-                            matInput
-                            name="Product description"
-                            placeholder="Enter your product description"
-                        />
-                        </mat-form-field>
-                        <div class="product-phone-feild-conteiner product-field">
-                        <mat-form-field class="mat-form-field" appearance="outline">
-                            <mat-label class="label-text">Product Quantity</mat-label>
-                            <input
-                            required
-                            matInput
-                            name="Product quantity"
-                            placeholder="Enter your product quantity"
-                            />
-                        </mat-form-field>
-                        <mat-form-field class="mat-form-field" appearance="outline">
-                            <mat-label class="label-text">Product price</mat-label>
-                            <input
-                            required
-                            matInput
-                            name="Product price"
-                            placeholder="Enter your product price"
-                            />
-                        </mat-form-field>
-                        </div> -->
-                        <div style="padding-bottom:40px;">
+                        <div style="padding-bottom:18px;">
                             <label class="product-choose-label">Choose your product photo
                                 <input type="file" size="60" >
                             </label> 
@@ -74,7 +49,7 @@
                         </div>
                     </div>
                     
-                    <button (click)="onClickAddCategory()" type="submit">Add Product</button>
+                    <button (click)="onClickAddCategory()" type="submit">Add</button>
                     </form>
                 </div>
             </div>

@@ -104,7 +104,7 @@
 
 .product-list {
     position: relative; 
-    max-width: 800px;
+    max-width: 550px;
     margin: 0 auto;
     background: var(--white);
     padding: 20px;
@@ -127,10 +127,12 @@
   .product-list table thead tr .name-td {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    color: #fff;
   }
   .product-list table thead tr .status-td {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    color:#fff;
   }
   .product-list table thead td {
     font-weight: 600;
@@ -191,3 +193,15 @@
     font-size: 14px;
     font-weight: 500;
   }
+  .btn
+  {
+    position: relative;
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    background: #01838c;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 6px;
+  }
+

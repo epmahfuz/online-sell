@@ -13,12 +13,12 @@
                     <span><i class="fa-solid fa-magnifying-glass"></i></span>
                 </label>
             </div>
-            <button style="height: 40px; color: red;" (click)="onClickAddCategory()">Add Category</button>
+            <button class="btn" (click)="onClickAddCategory()">Add Category</button>
             <div class="user">
                 <img src="assets/imgs/customer01.jpg" alt="">
             </div>
         </div>
-        
+       
         <!-- ======================= product list ================== -->
         <div id="productlist-content" class="content" style="margin-top: 30px;">
             <div class="product-list">
@@ -29,9 +29,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <td class="name-td">Name</td>
-                            <td>Price</td>
-                            <td>Payment</td>
+                            <td class="name-td">Category</td>
                             <td class="status-td">Status</td>
                         </tr>
                     </thead>
@@ -39,57 +37,41 @@
                     <tbody>
                         <tr (click)="onClickACategory()">
                             <td>Star Refrigerator</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
                             <td><span class="status product-list-delivered">Delivered</span></td>
                         </tr>
 
                         <tr (click)="onClickACategory()">
                             <td>Dell Laptop</td>
-                            <td>$110</td>
-                            <td>Due</td>
                             <td><span class="status product-list-pending">Pending</span></td>
                         </tr>
 
                         <tr (click)="onClickACategory()">
                             <td>Apple Watch</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
                             <td><span class="status product-list-return">Return</span></td>
                         </tr>
 
                         <tr (click)="onClickACategory()">
                             <td>Addidas Shoes</td>
-                            <td>$620</td>
-                            <td>Due</td>
                             <td><span class="status product-list-inProgress">In Progress</span></td>
                         </tr>
 
                         <tr (click)="onClickACategory()">
                             <td>Star Refrigerator</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
                             <td><span class="status product-list-delivered">Delivered</span></td>
                         </tr>
 
                         <tr (click)="onClickACategory()">
                             <td>Dell Laptop</td>
-                            <td>$110</td>
-                            <td>Due</td>
                             <td><span class="status product-list-pending">Pending</span></td>
                         </tr>
 
                         <tr (click)="onClickACategory()">
                             <td>Apple Watch</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
                             <td><span class="status product-list-return">Return</span></td>
                         </tr>
 
                         <tr (click)="onClickACategory()">
                             <td>Addidas Shoes</td>
-                            <td>$620</td>
-                            <td>Due</td>
                             <td><span class="status product-list-inProgress">In Progress</span></td>
                         </tr>
                     </tbody>

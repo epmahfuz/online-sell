@@ -20,9 +20,9 @@ export class CategoryService {
     }),
     withCredentials: true,
   };
+  
   constructor(private http: HttpClient,) { }
   
-    
   addProduct(payload: any): Observable<any> {
     return this.http.post(
       `${environment.BusinessService}/product/add`, 
@@ -43,12 +43,9 @@ export class CategoryService {
   }
 
   getAllCategory() {
-    // return this.http.get(
-    //   `${environment.BusinessFnbGateway}/CmsGateway/Payment/GetPaymentDetails?DtId=${paymentDetailsId}`,
-    //   this.options
-    // );
     return this.http.get(
       `${environment.BusinessService}/category/getAll`
     );
   }
+
 }

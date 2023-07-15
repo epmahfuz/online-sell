@@ -20,8 +20,10 @@
                 </div>
             </div>
             <div class="backbar">
-                <span><i class="fa-solid fa-arrow-left-long fa-2x"></i></span>
-                <span>Back</span>
+                <div class="backbar-container" (click)="onClickProductList()">
+                  <span><i class="fa-solid fa-arrow-left-long fa-2x"></i></span>
+                  <span>Back</span>
+                </div>
             </div>
                 <!-- ======================= product ================== -->
             <div id="product-content" class="content">
@@ -36,6 +38,7 @@
                         <input
                             required
                             matInput
+                            #productInput
                             name="ProductName"
                             placeholder="Enter your product Name"
                         />
@@ -46,6 +49,7 @@
                         <input
                             required
                             matInput
+                            #descriptionInput
                             name="Product description"
                             placeholder="Enter your product description"
                         />
@@ -57,6 +61,7 @@
                             <input
                             required
                             matInput
+                            #quantityInput
                             name="Product quantity"
                             placeholder="Enter your product quantity"
                             />
@@ -67,6 +72,7 @@
                             <input
                             required
                             matInput
+                            #priceInput
                             name="Product price"
                             placeholder="Enter your product price"
                             />
@@ -81,7 +87,7 @@
                         </div>
                     </div>
                     
-                    <button type="submit">Add</button>
+                    <button (click)="onClickAddProduct()" type="submit">Add</button>
                     </form>
                 </div>
             </div>

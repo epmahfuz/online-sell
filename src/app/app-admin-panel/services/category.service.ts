@@ -23,12 +23,25 @@ export class CategoryService {
   constructor(private http: HttpClient,) { }
   
     
+  addProduct(payload: any): Observable<any> {
+    return this.http.post(
+      `${environment.BusinessService}/product/add`, 
+      payload
+    );
+  }
+  getAllProduct() { 
+    return this.http.get(
+      `${environment.BusinessService}/product/getAll`
+    );
+  }
+  
   addCategory(payload: any): Observable<any> {
     return this.http.post(
       `${environment.BusinessService}/category/add`, 
       payload
     );
   }
+
   getAllCategory() {
     // return this.http.get(
     //   `${environment.BusinessFnbGateway}/CmsGateway/Payment/GetPaymentDetails?DtId=${paymentDetailsId}`,

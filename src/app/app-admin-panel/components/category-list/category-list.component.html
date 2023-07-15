@@ -35,45 +35,10 @@
                     </thead>
 
                     <tbody>
-                        <tr (click)="onClickACategory()">
-                            <td>Star Refrigerator</td>
-                            <td><span class="status product-list-delivered">Delivered</span></td>
-                        </tr>
-
-                        <tr (click)="onClickACategory()">
-                            <td>Dell Laptop</td>
+                        <tr *ngFor="let category of categories" (click)="onClickACategory()">
+                            <td>{{ category.name }}</td>
                             <td><span class="status product-list-pending">Pending</span></td>
-                        </tr>
-
-                        <tr (click)="onClickACategory()">
-                            <td>Apple Watch</td>
-                            <td><span class="status product-list-return">Return</span></td>
-                        </tr>
-
-                        <tr (click)="onClickACategory()">
-                            <td>Addidas Shoes</td>
-                            <td><span class="status product-list-inProgress">In Progress</span></td>
-                        </tr>
-
-                        <tr (click)="onClickACategory()">
-                            <td>Star Refrigerator</td>
-                            <td><span class="status product-list-delivered">Delivered</span></td>
-                        </tr>
-
-                        <tr (click)="onClickACategory()">
-                            <td>Dell Laptop</td>
-                            <td><span class="status product-list-pending">Pending</span></td>
-                        </tr>
-
-                        <tr (click)="onClickACategory()">
-                            <td>Apple Watch</td>
-                            <td><span class="status product-list-return">Return</span></td>
-                        </tr>
-
-                        <tr (click)="onClickACategory()">
-                            <td>Addidas Shoes</td>
-                            <td><span class="status product-list-inProgress">In Progress</span></td>
-                        </tr>
+                          </tr>
                     </tbody>
                 </table>
             </div>

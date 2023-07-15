@@ -103,9 +103,8 @@
 /* add-product-style */
 .product-container {
     max-width: 600px;
-    height: calc(100vh - 325px);
     margin: 0 auto;
-    padding: 5px 20px 0px 20px;
+    padding: 5px 20px 10px 20px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-radius: 5px;
     border: 1px solid #4ca64c;
@@ -173,13 +172,23 @@
   input[type="file"] {
     display: none;
   }
-  
   .backbar
   {
-      width: 100%;
-      display: flex;
-      justify-content: start;
-      align-items: center;
-      gap: 7px;
-      padding-left: 1.5rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 1.5rem;
+  }
+  .backbar-container
+  {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 7px;
+    padding: 3px;
+    border: 0.5px solid gray;
+    border-radius: 5px;
+    background-color: #01838c;
+    color: #fff;
+    cursor: pointer;
   }

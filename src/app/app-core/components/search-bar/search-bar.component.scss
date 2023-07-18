@@ -79,6 +79,19 @@
                 font-size: 16px;
             }
         }
+        .profile-button {
+            width: 170px;
+            height: unset;
+            padding: 8px 0; 
+            background-color:  #fff;
+            border: 1px solid gray;
+            border-radius: 5px;
+            color: #000;
+
+            .primary-button-text {
+                font-size: 16px;
+            }
+        }
 
         .cart-section {
             cursor: pointer;
@@ -117,4 +130,41 @@
             color: #006600;
         }
     }
+    .profile-card-container {
+        border: 1px solid gray;
+        border-radius: 6px;
+        display: none;
+        position: absolute;
+        top: 53px;
+        right: 184px;
+        width: 152px;
+        height: 100px;
+        background-color: #fff;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      .profile-card p {
+        margin: 0;
+        padding: 5px 0;
+        position: relative;
+       }
+
+       .sign-out-button {
+        position: absolute;
+        bottom: 1px;
+        left: 50%;
+        width: 100%;
+        transform: translateX(-50%);
+        background-color: var(--theme-primary-500);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        /* padding: 1px 45px; */
+        padding: 7px 0px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 }

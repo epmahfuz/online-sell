@@ -10,11 +10,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import { MyAccountComponent } from './components/my-account/my-account.component';
 
 @NgModule({
   declarations: [
     SearchBarComponent,
     SignInModalComponent,
+    MyAccountComponent,
   ], 
   imports: [
     CommonModule,

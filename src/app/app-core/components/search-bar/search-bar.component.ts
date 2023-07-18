@@ -69,4 +69,13 @@ export class SearchBarComponent implements OnInit {
   onLogoClick(){
     this.router.navigate(['']).then((r) => r);
   }
+  cardVisible: boolean = false;
+
+  showCard() {
+    this.cardVisible = true;
+  }
+
+  hideCard() {
+    this.cardVisible = false;
+  }
 }

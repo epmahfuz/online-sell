@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MyAccountComponent } from '../app-core/components/my-account/my-account.component';
 const routes: Routes = [
   { path: '', component: AppHomeComponent },
   { path: 'checkout', component: CheckoutComponent },
@@ -31,7 +32,8 @@ const routes: Routes = [
     ProductListComponent,
     CartDetailsComponent,
     HighlightedCategoryComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    MyAccountComponent
   ],
   imports: [
     CommonModule,

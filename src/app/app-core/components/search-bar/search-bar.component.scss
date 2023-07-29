@@ -87,7 +87,8 @@
             border: 1px solid gray;
             border-radius: 5px;
             color: #000;
-
+            cursor: pointer;
+            user-select: none;
             .primary-button-text {
                 font-size: 16px;
             }
@@ -132,9 +133,9 @@
     }
     .profile-card-container {
         border: 1px solid gray;
-        border-radius: 6px;
-        display: none;
+        border-radius: 6px; 
         position: absolute;
+        display: none;
         top: 53px;
         right: 184px;
         width: 152px;

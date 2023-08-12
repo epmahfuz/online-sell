@@ -11,10 +11,20 @@
   .navigation.active {
     width: 70px;
   }
-  
+  .toggle-design{
+    position: relative;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+    
+    width: 100%;
+    place-content: end;
+  }
   .navigation ul {
     position: absolute;
-    top: 0;
+   // top: 0;
     left: 0;
     width: 100%;
     padding-left: 0px;

@@ -8,9 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   list: NodeListOf<HTMLLIElement>;
-  toggle: HTMLElement;
-  navigation: HTMLElement;
-  main: HTMLElement;
   contentElements: NodeListOf<HTMLElement>;
   constructor() { }
 
@@ -39,14 +36,5 @@ export class DashboardComponent implements OnInit {
         });
       });
     });
-    // Menu Toggle
-    this.toggle = document.querySelector(".toggle");
-    this.navigation = document.querySelector(".navigation");
-    this.main = document.querySelector(".main");
-
-    this.toggle.onclick = () => {
-      this.navigation.classList.toggle("active");
-      this.main.classList.toggle("active");
-    };
   }
 }

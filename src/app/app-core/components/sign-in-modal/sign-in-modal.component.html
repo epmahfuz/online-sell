@@ -18,9 +18,14 @@
     </div>
     <div class="body-section">
       <form [formGroup]="form" (ngSubmit)="submit()">
+        <p *ngIf="submitFor=='signUp'">
+          <mat-form-field>
+            <input type="text" matInput placeholder="Name" formControlName="name">
+          </mat-form-field>
+        </p>
         <p>
           <mat-form-field>
-            <input type="text" matInput placeholder="Email" formControlName="username">
+            <input type="text" matInput placeholder="Email" formControlName="email">
           </mat-form-field>
         </p>
 
@@ -28,6 +33,14 @@
           <mat-form-field>
             <input type="password" matInput placeholder="Password" formControlName="password">
           </mat-form-field>
+        </p>
+        <p *ngIf="submitFor=='signUp'">
+          <mat-form-field>
+            <input type="text" matInput placeholder="Mobile" formControlName="mobile">
+          </mat-form-field>
+        </p>
+        <p *ngIf="submitFor=='signUp'">
+          <input type="file" name="avatar" placeholder="Avatar" formControlName="avatar"  (change)="onFileSelected($event)">
         </p>
 
         <p *ngIf="error" class="error">

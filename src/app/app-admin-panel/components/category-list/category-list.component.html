@@ -2,41 +2,38 @@
     <app-left-sidebar></app-left-sidebar>
     <!-- ========================= Main ==================== -->
     <div class="main">
-        <div class="topbar">
-            <div class="search">
-                <label>
-                    <input type="text" placeholder="Search here">
-                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                </label>
-            </div>
-            <button class="btn" (click)="onClickAddCategory()">Add Category</button>
-            <div class="user">
-                <img src="assets/imgs/customer01.jpg" alt="">
-            </div>
-        </div>
+       <app-top-bar></app-top-bar> 
        
         <!-- ======================= product list ================== -->
-        <div id="productlist-content" class="content" style="margin-top: 30px;">
+        <div id="productlist-content" class="content">
             <div class="product-list">
-                <div class="pro-header">
-                    <h2>Category Lists</h2> 
+                <div class="pro-header" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="space-between center">
+                    <div class="primary-color"  fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="space-between center">
+                        <!-- <i class="fa-solid fa-arrow-left back-icon" (click)="onClickAdminPanel()"></i> -->
+                        <h2>Category Lists</h2> 
+                    </div>
+                    <button class="btn" (click)="onClickAddCategory()">
+                        <i class="fa-solid fa-plus mr-4"></i>
+                        Add Category</button>
                 </div>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <td class="name-td">Category</td>
-                            <td class="status-td">Status</td>
-                        </tr>
-                    </thead>
+                <div class="product-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td class="name-td">Category</td>
+                                <td class="status-td">Status</td>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                        <tr *ngFor="let category of categories" (click)="onClickACategory()">
-                            <td>{{ category.name }}</td>
-                            <td><span class="status product-list-pending">Pending</span></td>
-                          </tr>
-                    </tbody>
-                </table>
+                        <tbody>
+                            <tr *ngFor="let category of categories" (click)="onClickACategory()">
+                                <td>{{ category.name }}</td>
+                                <td><span class="status product-list-pending">Pending</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

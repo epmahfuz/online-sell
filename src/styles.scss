@@ -11,6 +11,8 @@
 // 006600 : dark - border - hover
 :root{
   --theme-primary-500: #008000;
+  --theme-primary-light: #e5f2e5;
+  --theme-primary-deep: #006600;
 }
 
 body {
@@ -24,22 +26,40 @@ body {
   .w-100{
     width: 100% !important;
   }
+
+  // Margin
   .m-16{
     margin: 16px !important;
   }
+
+  // Margin Top
   .mt-16{
     margin-top: 16px !important;
   }
+
+  // Margin Righ
+  .mr-4{
+    margin-right: 4px !important;
+  }
+  .mr-24{
+    margin-right: 24px !important;
+  }
+
+  // Margin Bottom
+  .mb-16{
+    margin-bottom: 16px !important;
+  }
+  // Margin Left
   .ml-16{
     margin-left: 16px !important;
   }
   .ml-8{
     margin-left: 8px !important;
   }
-  .mr-24{
-    margin-right: 24px !important;
-  }
 
+  .primary-color{
+    color: var(--theme-primary-500) !important;
+  }
   .display-none{
     display: none !important;
   }
@@ -130,6 +150,185 @@ body {
     }
   }
   
+   /* ===================== Main ===================== */
+   .main {
+    position: absolute;
+    width: calc(100% - 321px);
+    left: 300px;
+    min-height: 100vh;
+    background: var(--white);
+    transition: 0.5s;
+  }
+  .main.active {
+    width: calc(100% - 90px);
+    left: 70px;
+  }
+  
+
+   /* ===================== product list style ===================== */
+.product-list {
+  position: relative; 
+  //max-width: 550px;
+  margin: 0 auto;
+  background: var(--white);
+  margin: 0px 20px 0px 32px;
+ // padding: 20px;
+  //box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  //border: 1px solid #999;
+  //border-radius: 20px;
+}
+.pro-header {
+  padding: 28px;
+}
+.pro-header h2 {
+  font-weight: 600;
+ // color: #01838c;
+  padding-bottom: 10px; 
+  margin: 0;
+}
+.back-icon{
+  margin-right: 12px;
+  height: 28px;
+  margin-left: 8px;
+  width: 20px;
+  font-size: 20px;
+  //margin-top: 10px;
+}
+.product-table{
+  height: calc(100vh - 192px); 
+  overflow: auto; 
+  position: relative;
+}
+.product-list  table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.product-list table thead td {
+  font-weight: 600;
+  background: gray;
+}
+.product-list table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.product-list table tr:last-child {
+  //border-bottom: none;
+}
+.product-list table tbody tr:hover {
+  background: var(--theme-primary-light);
+  color: var(--white);
+}
+.product-list table tr td {
+  padding: 16px 24px;
+}
+.product-list table tr td {
+  text-align: start;
+}
+// .product-list table tr td:last-child {
+//   text-align: center;
+// }
+// .product-list table tr td:nth-child() {
+//   text-align: center;
+// }
+// .product-list table tr td:nth-child() {
+//   text-align: center;
+// }
+.product-list-delivered {
+  padding: 2px 4px;
+  background: #8de02c;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.product-list-pending {
+  padding: 2px 4px;
+  background: #e9b10a;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.product-list-return {
+  padding: 2px 4px;
+  background: #f00;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.product-list-inProgress {
+  padding: 2px 4px;
+  background: var(--theme-primary-500);
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.btn
+{
+  font-weight: 700;
+  position: relative;
+  padding: 12px;
+  cursor: pointer;
+  border: none;
+  background: var(--theme-primary-500);
+  text-decoration: none;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 14px;
+}
+// product list - actually list - End
+
+/* add-product-style */
+.product-container {
+  max-width: 784px;
+    margin: 24px auto;
+    padding: 24px;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .product-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: #212121;
+    padding-bottom: 16px;
+  }
+  
+  .product-sub-title {
+    font-size: 13px;
+    color: #666666;
+  }
+  .product-field
+  {
+   padding-top: 0px;
+   padding-bottom: 10px;
+  }
+  .product-field-parent {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-phone-feild-conteiner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+  }
+  
+  h2,
+  h3 {
+    margin: 5px 0;
+    text-align: center;
+  }
+  .product-choose-label{
+    
+  }
+  // input[type="file"] {
+  //   display: none;
+  // }
+
+
 //material Form filed design change - Start
   .mat-dialog-container {
     background: white;

@@ -13,6 +13,8 @@ import { CategoryListComponent } from './components/category-list/category-list.
 import { AddCategoryComponent } from './components/add-category/add-category.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { LeftSidebarComponent } from './components/left-sidebar/left-sidebar.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
 const routes: Routes = [
   { path: '', component: CategoryListComponent },
   { path: 'add-category', component: AddCategoryComponent },
@@ -29,7 +31,8 @@ const routes: Routes = [
     CategoryListComponent,
     AddCategoryComponent,
     AddProductComponent,
-    LeftSidebarComponent
+    LeftSidebarComponent,
+    TopBarComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +42,8 @@ const routes: Routes = [
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    FlexLayoutModule
   ],
   exports: [DashboardComponent]
 })

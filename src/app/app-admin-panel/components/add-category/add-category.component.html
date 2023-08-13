@@ -3,35 +3,28 @@
     <app-left-sidebar></app-left-sidebar>
         <!-- ========================= Main ==================== -->
         <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-    
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                    </label>
-                </div>
-    
-                <div class="user">
-                    <img src="assets/imgs/customer01.jpg" alt="">
-                </div>
-            </div>
-            <div class="backbar">
-              <div class="backbar-container" (click)="onClickAdminPanel()">
-                <span><i class="fa-solid fa-arrow-left-long fa-2x"></i></span>
-                <span>Back</span>
-              </div>
-            </div>
+            <app-top-bar></app-top-bar> 
                 <!-- ======================= product ================== -->
-            <div id="product-content" class="content" style="margin-top: 20px;">
+              
+                        
+            <div  id="productlist-content" class="content">
+                <div class="product-list">  
+                <div class="pro-header" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="space-between center">
+                    <div class="primary-color"  fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="space-between center">
+                        <i class="fa-solid fa-arrow-left back-icon" (click)="onClickAdminPanel()"></i>
+                        <h2>Add Category</h2> 
+                    </div>
+                    
+                    <button class="btn" (click)="onClickAddCategory()">
+                        <!-- <i class="fa-solid fa-plus mr-4"></i> -->
+                        <i class="fa-solid fa-floppy-disk mr-4"></i>
+                        Save</button>
+                </div>
                 <div class="product-container">
                     <form class="product-form">
-                    <h3 class="product-title">
-                        Add Your Category
-                    </h3>
+                    <div class="product-title">
+                        Basic Information
+                    </div>
                     <div class="product-field-parent">
                         <mat-form-field class="mat-form-field product-field" appearance="outline">
                         <mat-label class="label-text">Category Name</mat-label>
@@ -45,16 +38,15 @@
                         <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
                         </mat-form-field>
                         <div style="padding-bottom:18px;">
-                            <label class="product-choose-label">Choose your product photo
-                                <input type="file" size="60" >
-                            </label> 
-                            
+                            <div class="product-choose-label mb-16">Category Image *</div> 
+                            <input type="file" size="60" >
                         </div>
                     </div>
                     
-                    <button (click)="onClickAddCategory()" type="submit">Add</button>
+                    <!-- <button (click)="onClickAddCategory()" type="submit">Add</button> -->
                     </form>
                 </div>
+            </div>
             </div>
     
         </div>

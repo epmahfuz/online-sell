@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
+import { ProductService } from '../../../app-products/services/product.service';
 import { CommonService } from '../../../app-shared/services/common.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './app-home.component.html',
-  styleUrls: ['./app-home.component.scss']
+  selector: 'app-my-account',
+  templateUrl: './my-account.component.html',
+  styleUrls: ['./my-account.component.scss']
 })
-export class AppHomeComponent implements OnInit {
-  isCartViewOn = false;
+
+export class MyAccountComponent implements OnInit {
+
+  isCartViewOn = true;
   showCategorySidebar = true;
   constructor(
     private productService: ProductService,
@@ -35,4 +37,5 @@ export class AppHomeComponent implements OnInit {
       }
     })
   }
+
 }

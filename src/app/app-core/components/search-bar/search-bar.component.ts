@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 export class SearchBarComponent implements OnInit {
   cartItemCounter:number = 0;
   cartTotalPrice: number = 0;
+  loggedIn = false;
   constructor(
     private cartService: CartService,
     private productService: ProductService,
@@ -29,7 +30,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   onClickMenuBar(){
-    this.commmonService.$categorySidebar.next(true);
+    this.commmonService.$showCategorySidebar.next(true);
   }
 
   patchCartInfo(){
@@ -73,5 +74,6 @@ export class SearchBarComponent implements OnInit {
 
   toggleCardVisibility() {
     this.cardVisible = !this.cardVisible;
+    this.router.navigate(['/my-section/profile']).then((r) => r);
   }
 }

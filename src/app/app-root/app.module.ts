@@ -22,6 +22,14 @@ const routes: Routes = [
       ),
     data: { isFullScreen: false, isPublic: false },
   },
+  {
+    path: 'my-section',
+    loadChildren: () => 
+      import('../app-my-section/app-my-section.module').then(
+        (module) => module.AppMySectionModule
+      ),
+    data: { isFullScreen: false, isPublic: false },
+  },
 ];
 
 @NgModule({

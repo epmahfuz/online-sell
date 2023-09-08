@@ -3,30 +3,31 @@
     <app-search-bar></app-search-bar>
   </div>
   <div class="main-content" fxLayout="row" fxLayoutAlign="start start">
+   
+
     <div
-      [ngClass]="categorySidebar == true ? '' : 'display-none'"
+      [ngClass]="showCategorySidebar == true ? '' : 'display-none'"
       class="category-products"
     >
       <app-category-sidebar></app-category-sidebar>
     </div>
     <div
-      [ngClass]="{'w-100' : categorySidebar == false, 'place-content-center' : isCartViewOn==false }"
+      [ngClass]="{'w-100' : showCategorySidebar == false, 'place-content-center' : isCartViewOn==false }"
       class="products-carousel-and-cart"
       fxLayout="row"
     >
-      <div class="m-16" [ngClass]="isCartViewOn==true ? 'checkout-main': 'w-100'"> 
+      <div fxLayout="row" fxLayoutAlign="center start" class="p-20" [ngClass]="isCartViewOn==true ? 'checkout-main': 'w-100'"> 
         <div class="checkout-container">
-          <form class="checkout-form">
+          <form class="checkout-form" [formGroup]="form">
             <h3 class="checkout-title">
-              Shipping Address
-              <span class="checkout-sub-title"
-                >(Please Fill Out Your Information)</span
-              >
+              Shipping Information 
             </h3>
-            <div class="checkout-field-parent">
+            <div 
+            class="checkout-field-parent">
               <mat-form-field class="mat-form-field" appearance="outline">
                 <mat-label class="label-text">Full Name</mat-label>
                 <input
+                  formControlName="name"
                   required
                   matInput
                   name="FirstName"
@@ -38,7 +39,9 @@
                 <mat-form-field class="mat-form-field" appearance="outline">
                   <mat-label class="label-text">Phone No</mat-label>
                   <input
+                    formControlName="phone"
                     required
+                    type="number"
                     matInput
                     name="Phone No"
                     placeholder="Enter your Phone No"
@@ -58,6 +61,7 @@
               <mat-form-field class="mat-form-field" appearance="outline">
                 <mat-label class="label-text">Address</mat-label>
                 <input
+                  formControlName="address"
                   required
                   matInput
                   name="Address"
@@ -72,103 +76,47 @@
                 >(Please select only one! payment method)</span
               >
             </h3>
-            <div class="checkout-payment-card">
-              <div class="payment-card">
-                <div
-                  class="left"
-                  fxLayout="row"
-                  fxLayoutGap="5px"
-                  fxLayoutAlign="flex-start center"
-                >
-                  <input
-                    type="radio"
-                    name="Cash on Delivery"
-                    class="card-radio"
-                  />
-                  <label for="Cash on Delivery" class="payment-icon">
-                    <img
-                      width="35px"
-                      height="35px"
-                      src="https://www.rokomari.com/static/200/images/cod.png"
-                      alt=""
-                    />
-                    <span class="payment-title">Cash on Delivery</span>
-                  </label>
-                </div>
+          
+            <mat-radio-group aria-label="Select an option" formControlName="paymentMethod">
+              <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="space-between center" class="mb-16">
+                <mat-radio-button [value]="1" class="radio-button">
+                  <div class="radio-content" fxLayout="column" fxLayoutAlign="center start">
+                    <img src="https://www.rokomari.com/static/200/images/cod.png" alt="Option 1 Image" height="35">
+                    <p>Cash on Delivery</p>
+                  </div>
+                </mat-radio-button>
+                <mat-radio-button [value]="2" class="radio-button">
+                  <div class="radio-content" fxLayout="column" fxLayoutAlign="center start">
+                    <img  src="https://www.rokomari.com/static/200/images/bkash.png" alt="Option 2 Image" height="35">
+                    <p>pay by Bkash</p>
+                  </div>
+                </mat-radio-button>
               </div>
-              <div class="payment-card">
-                <div
-                  class="left"
-                  fxLayout="row"
-                  fxLayoutGap="5px"
-                  fxLayoutAlign="flex-start center"
-                >
-                  <input type="radio" name="Bkash" class="card-radio" />
-                  <label for="Bkash" class="payment-icon">
-                    <img
-                      class="payment-image"
-                      src="https://www.rokomari.com/static/200/images/bkash.png"
-                      alt=""
-                    />
-                  </label>
+              <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="space-between center">
+              <mat-radio-button [value]="3" class="radio-button">
+                <div class="radio-content" fxLayout="column" fxLayoutAlign="center start">
+                  <img  src="https://www.rokomari.com/static/200/images/Nagad-Logo.png" alt="Option 2 Image" height="35">
+                  <p>Pay by Nagad</p>
                 </div>
-              </div>
-
-              <div class="payment-card">
-                <div
-                  class="left"
-                  fxLayout="row"
-                  fxLayoutGap="5px"
-                  fxLayoutAlign="flex-start center"
-                >
-                  <input type="radio" name="Nagad" class="card-radio" />
-                  <label for="Nagad" class="payment-icon">
-                    <img
-                      class="payment-image"
-                      src="https://www.rokomari.com/static/200/images/Nagad-Logo.png"
-                      alt=""
-                    />
-                  </label>
+              </mat-radio-button>
+              <mat-radio-button [value]="4" class="radio-button">
+                <div class="radio-content" fxLayout="column" fxLayoutAlign="center start">
+                  <img  src="https://www.rokomari.com/static/200/images/rocket.png" alt="Option 2 Image" height="35">
+                  <p>Pay by Rocket</p>
                 </div>
-              </div>
-
-              <div class="payment-card">
-                <div
-                  class="left"
-                  fxLayout="row"
-                  fxLayoutGap="5px"
-                  fxLayoutAlign="flex-start center"
-                >
-                  <input type="radio" name="Rocket" class="card-radio" />
-                  <label for="Rocket" class="payment-icon">
-                    <img
-                      class="payment-image"
-                      src="https://www.rokomari.com/static/200/images/rocket.png"
-                      alt=""
-                    />
-                  </label>
-                </div>
-              </div>
-
-              <div class="payment-card">
-                <div
-                  class="left"
-                  fxLayout="row"
-                  fxLayoutGap="5px"
-                  fxLayoutAlign="flex-start center"
-                >
-                  <input type="radio" name="Master Card" class="card-radio" />
-                  <label for="Master Card" class="payment-icon">
-                    <img
-                      class="payment-image"
-                      src="https://www.rokomari.com/static/200/images/svg/icons/rok-icon-ssl.svg"
-                      alt=""
-                    />
-                  </label>
-                </div>
-              </div>
+              </mat-radio-button>
             </div>
-            <button class="mt-16" type="submit">Place Order</button>
+            </mat-radio-group>
+
+            <button 
+              class="mt-52 btn"
+              (click)="onClickPlaceOrder()"
+              [class.save-disabled]="form.invalid || isSaving" 
+              [disabled]="form.invalid || isSaving"
+              type="submit">
+              Place Order
+              <!-- <mat-spinner class="float-r" diameter="24"></mat-spinner> -->
+            </button>
           </form>
         </div>
       </div>

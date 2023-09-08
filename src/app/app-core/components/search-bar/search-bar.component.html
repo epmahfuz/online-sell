@@ -15,12 +15,12 @@
         </div>
     </div>
     <div class="right-part" fxFlex="32%" fxLayout="row" fxLayoutAlign="space-between center">
-        <div class="primary-button" (click)="onClickSignIn()"  fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
+        <div *ngIf="!loggedIn" class="primary-button" (click)="onClickSignIn()"  fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
             <mat-icon>login</mat-icon>
             <div class="primary-button-text">Sign in</div>
         </div>
 
-        <div class="profile-button" fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center" (click)="toggleCardVisibility()">
+        <div *ngIf="loggedIn" class="profile-button" fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center" (click)="toggleCardVisibility()">
             <img width="25px" height="25px" src="../../../../assets/images/tartaja.png" alt="">
             <div class="primary-button-text">Md. Sumon Mia</div>
         </div>
@@ -33,15 +33,15 @@
             <div *ngIf="cartItemCounter"  class="cart-price">৳ {{cartTotalPrice}}</div>
         </div>
     </div>
-    <div class="profile-card-container" [style.display]="cardVisible ? 'block' : 'none'">
+    <!-- <div class="profile-card-container" [style.display]="cardVisible ? 'block' : 'none'">
         <div class="profile-card">
           <p>My Acount</p>
           <p>My Orders</p>
           <div class="sign-out-button">
             <mat-icon>logout</mat-icon>
             <div class="primary-button-text">Sign out</div>
+          </div>
         </div>
-        </div>
-    </div>
+    </div> -->
 </div>
 

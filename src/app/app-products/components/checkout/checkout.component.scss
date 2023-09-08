@@ -1,3 +1,19 @@
+:host::ng-deep{
+  .mat-radio-outer-circle{
+    border-color: gray;
+  } 
+  .custom-progress-bar {
+    /* Set your custom color using the background-color property */
+    background-color: #ff5733 !important; /* Change this to your desired color */
+  }
+  /* src/app/snackbar/snackbar.component.css */
+.success-snackbar {
+  background-color: #4caf50; /* Success color */
+  color: white;
+}
+}
+ 
+
 .app-checkout {
   .top-bar {
     height: 64px;
@@ -24,7 +40,7 @@
 
       .checkout-main {
         height: calc(100vh - 64px);
-        width: calc(100% - 378px);
+        width: calc(100% - 320px);
       }
       .cart-details {
         position: fixed;
@@ -34,16 +50,19 @@
         box-shadow: -2px 0 12px 0 rgba(143, 143, 143, 0.38);
       }
       .checkout-container {
-        margin:auto;
+        background: #ffffff;
+        box-shadow: 0px 4px 6px -3px #9c9c9c;
+        border-radius: 3px;
+        padding: 20px;
+        border-top: 2px solid #33c24d;
+        padding-top: 0;
         width: 100%;
         height: max-content;
         max-width: 600px;
-        //margin: 0 auto;
-        padding: 20px;
-        border-radius: 5px;
-        border: 1px solid #4ca64c;
+        
         .checkout-form {
           .checkout-title {
+            line-height: 48px;
             text-align: start;
             .checkout-sub-title {
               font-size: 13px;
@@ -51,6 +70,7 @@
             }
           }
           .checkout-field-parent {
+            font-size: 14px;
             display: flex;
             flex-direction: column;
             .checkout-phone-feild-conteiner {
@@ -59,44 +79,31 @@
               grid-gap: 15px;
             }
           }
-          .checkout-payment-card {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 16px;
-            padding-top: 0.2rem;
-            padding-bottom: 1rem;
-            .payment-card {
-              display: flex;
-              justify-content: flex-start;
-              align-items: center;
-              height: 60px;
-              padding: 10px;
-              background-color: #fafafa;
-              border: 1px solid #ccc;
-              border-radius: 5px;
-              text-align: center;
-              box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-
-              .left {
-                .card-radio {
-                  margin-right: 10px;
-                  width: 20px;
-                  height: 20px;
-                }
-                .payment-icon {
-                  display: flex;
-                  align-items: center;
-                  .payment-image {
-                    border-radius: 5px;
-                    width: 100px;
-                    height: 35px;
-                  }
-                  .payment-title {
-                    padding-left: 5px;
-                  }
-                }
-              }
+          .radio-button {
+            display: block; /* Makes the entire block clickable */
+            background-color: #fafafa;
+            width: 45%;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            border-radius: 0.25rem;
+            padding: 8px 8px 4px 12px;
+            //height: 74px;
+          }
+          
+          .radio-content {
+            display: flex; /* Arrange the image and text horizontally */
+            align-items: center; /* Center items vertically */
+         
+            p{
+              line-height: 25px;
+              display: inline-block;
+              color: #77787b;
+              margin: 0;
+              font-size: 14px;
             }
+          }
+          
+          .mat-radio-label-content {
+            margin-left: 10px; /* Adjust the spacing between the image and text */
           }
         }
         h2,

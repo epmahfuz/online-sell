@@ -1,0 +1,108 @@
+<div class="app-checkout">
+  <div class="top-bar">
+    <app-search-bar></app-search-bar>
+  </div>
+  <div class="main-content" fxLayout="row" fxLayoutAlign="start start">
+    <div
+      [ngClass]="showCategorySidebar == true ? '' : 'display-none'"
+      class="category-products"
+    >
+      <app-category-sidebar></app-category-sidebar>
+    </div>
+    <div
+      [ngClass]="{'w-100' : showCategorySidebar == false, 'place-content-center' : isCartViewOn==false }"
+      class="products-carousel-and-cart"
+      fxLayout="row"
+    >
+      <div fxLayout="row" fxLayoutAlign="center start" class="p-20" [ngClass]="isCartViewOn==true ? 'checkout-main': 'w-100'"> 
+          <!-- <div class="user-info">
+            <i class="fa-solid fa-circle-exclamation" style="color: #17a2b8"></i>
+            <span>You have not set your phone number/password yet!</span>
+          </div> -->
+          <div class="profile-info">
+            <div class="heading">
+              <h3>Personal Information</h3>
+            </div>
+            <form action="" class="mt-4">
+              <div class="checkout-field-parent">
+                <mat-form-field class="mat-form-field" appearance="outline">
+                  <mat-label class="label-text">Name</mat-label>
+                  <input
+                    required
+                    matInput
+                    value="Md Sumon Mia"
+                    readonly
+                    name="FirstName"
+                    placeholder="Enter your full name"
+                  />
+                </mat-form-field>
+              </div>
+                <div class="checkout-field-parent">
+                  <mat-form-field class="mat-form-field" appearance="outline">
+                    <mat-label class="label-text">Your Date of Birth</mat-label>
+                    <input
+                      required
+                      matInput
+                      value="15-10-1995"
+                      name="Your Date of Birth"
+                      placeholder="Enter Your Date of Birth"
+                    />
+                  </mat-form-field>
+                </div> 
+                <div class="checkout-field-parent">
+                  <mat-form-field class="mat-form-field" appearance="outline">
+                    <mat-label class="label-text">Phone number</mat-label>
+                    <input
+                      required
+                      matInput
+                      value="0172xxxxx"
+                      readonly
+                      name="Your phone number"
+                      placeholder="Enter Your Phone Number"
+                    />
+                  </mat-form-field>
+                </div> 
+                <div class="checkout-field-parent">
+                  <mat-form-field class="mat-form-field" appearance="outline">
+                    <mat-label class="label-text">Email</mat-label>
+                    <input
+                      required
+                      matInput
+                      value="abc@gmail.com"
+                      readonly
+                      name="Your Email"
+                      placeholder="Enter Your Email"
+                    />
+                  </mat-form-field>
+                </div> 
+                <div>
+                  <p >Profile Picture</p>
+                    <img src="/src/assets/images/tartaja.png" width="100px" height="100px" style="border-radius: 50%;">
+                </div>
+                <div class="checkout-field-parent">
+                  <mat-form-field class="mat-form-field" appearance="outline">
+                    <mat-label class="label-text">password</mat-label>
+                    <input
+                      required
+                      matInput
+                      value="a2385787"
+                      readonly
+                      name="Your password"
+                      placeholder="Enter Your Password"
+                    />
+                  </mat-form-field>
+                </div> 
+            </form>
+          </div>
+      </div>
+
+      <div *ngIf="isCartViewOn" class="cart-details">
+        <app-cart-details></app-cart-details>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+

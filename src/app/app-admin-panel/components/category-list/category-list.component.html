@@ -21,15 +21,24 @@
                     <table>
                         <thead>
                             <tr>
-                                <td class="name-td">Category</td>
-                                <td class="status-td">Status</td>
+                                <td>Name</td>
+                                <td>Image</td>
+                                <td>Status</td>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr *ngFor="let category of categories" (click)="onClickACategory()">
-                                <td>{{ category.name }}</td>
-                                <td><span class="status product-list-pending">Pending</span></td>
+                                <td>
+                                    {{ category.name }}
+                                </td>
+                                <td class="pt-0 pb-0">
+                                    <img *ngIf="!category.avatar" class="product-img-list" src="../../../../assets/images/no-image.jpg" alt="">
+                                    <img *ngIf="category.avatar" class="product-img-list" src="http://localhost:5000/uploads/categoryImgs/{{category.avatar}}" alt="">
+                                </td>
+                                <td>
+                                    <span class="status product-list-pending">Pending</span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

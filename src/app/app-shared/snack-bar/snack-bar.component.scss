@@ -1,0 +1,26 @@
+.main_snackbar_box{
+  .snackbar_title{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    color: #EEEEEE;
+    margin-left: 13px;
+  }
+  .snackbar_icon_delete{
+    color: #FF6D00;
+    vertical-align: middle;
+  }
+  .snackbar_icon_create{
+    color: #16E06B;
+    vertical-align: middle;
+  }
+  .snackbar_icon_close{
+    color: #9E9E9E;
+  }
+
+}
+
+::ng-deep .mat-snack-bar-container {
+  background: #212121 !important;
+}

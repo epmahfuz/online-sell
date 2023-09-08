@@ -5,7 +5,6 @@
         <div class="main">
             <app-top-bar></app-top-bar> 
                 <!-- ======================= product ================== -->
-              
                         
             <div  id="productlist-content" class="content">
                 <div class="product-list">  
@@ -15,13 +14,17 @@
                         <h2>Add Category</h2> 
                     </div>
                     
-                    <button class="btn" (click)="onClickAddCategory()">
-                        <!-- <i class="fa-solid fa-plus mr-4"></i> -->
-                        <i class="fa-solid fa-floppy-disk mr-4"></i>
-                        Save</button>
+                    <button class="btn" (click)="onClickAddCategory()"
+                            [class.save-disabled]="form.invalid || isSaving" [disabled]="form.invalid || isSaving">
+                            <i class="fa-solid fa-floppy-disk mr-4"></i>
+                            Save
+                    </button>
                 </div>
+                
                 <div class="product-container">
-                    <form class="product-form">
+                    
+
+                    <form [formGroup]="form" class="product-form">
                     <div class="product-title">
                         Basic Information
                     </div>
@@ -29,6 +32,7 @@
                         <mat-form-field class="mat-form-field product-field" appearance="outline">
                         <mat-label class="label-text">Category Name</mat-label>
                         <input
+                            formControlName="name"
                             required
                             matInput
                             #categoryInput
@@ -38,9 +42,11 @@
                         <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
                         </mat-form-field>
                         <div style="padding-bottom:18px;">
-                            <div class="product-choose-label mb-16">Category Image *</div> 
-                            <input type="file" size="60" >
+                            <div class="product-choose-label mb-16">Category Image *</div>
+                            <input size="60" type="file" name="avatar" placeholder="Avatar" formControlName="avatar"  (change)="onFileSelected($event)">
+                            <mat-spinner *ngIf="imgUploading" [diameter]="40" class="float-r"></mat-spinner>
                         </div>
+                        
                     </div>
                     
                     <!-- <button (click)="onClickAddCategory()" type="submit">Add</button> -->

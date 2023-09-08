@@ -1,0 +1,18 @@
+<div class="main_snackbar_box" fxLayout="row" fxLayoutAlign="space-between center">
+  <div>
+    <ng-container *ngIf="data.icon === 'create'">
+      <mat-icon class="snackbar_icon_create">check_circle</mat-icon>
+    </ng-container>
+    <ng-container *ngIf="data.icon === 'delete'">
+      <mat-icon class="snackbar_icon_delete">delete</mat-icon>
+    </ng-container>
+    <span class="snackbar_title">
+      {{data.message}} 
+    </span>
+  </div>
+  <div class="pl-16">
+    <button mat-icon-button (click)="snackBarRef.dismiss()">
+      <mat-icon class="snackbar_icon_close">close</mat-icon>
+    </button>
+  </div>
+</div>

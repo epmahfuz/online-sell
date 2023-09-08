@@ -36,7 +36,10 @@ body {
   .mt-16{
     margin-top: 16px !important;
   }
-
+  .mt-52{
+    margin-top: 52px !important;
+  }
+ 
   // Margin Righ
   .mr-4{
     margin-right: 4px !important;
@@ -46,6 +49,9 @@ body {
   }
 
   // Margin Bottom
+  .mb-8{
+    margin-bottom: 8px !important;
+  }
   .mb-16{
     margin-bottom: 16px !important;
   }
@@ -56,7 +62,27 @@ body {
   .ml-8{
     margin-left: 8px !important;
   }
+  // Padding
+  .p-0{
+    padding: 0 !important;
+  }
+  .p-20{
+    padding: 20px !important;
+  }
+  .pt-0{
+    padding-top: 0 !important;
+  }
+  .pb-0{
+    padding-bottom: 0 !important;
+  }
 
+  //Float 
+  .float-r{
+    float: right !important;
+  }
+  .float-l{
+    float: left !important;
+  }
   .primary-color{
     color: var(--theme-primary-500) !important;
   }
@@ -224,6 +250,10 @@ body {
 .product-list table tr td {
   text-align: start;
 }
+.product-list table tr td img{
+    height: 32px;
+    border-radius: 4px;
+}
 // .product-list table tr td:last-child {
 //   text-align: center;
 // }
@@ -281,6 +311,11 @@ body {
 // product list - actually list - End
 
 /* add-product-style */
+.save-disabled {
+  background: #DCDCDC !important;
+  color: #888888 !important;
+  cursor: not-allowed !important;
+}
 .product-container {
   max-width: 784px;
     margin: 24px auto;
@@ -366,7 +401,13 @@ body {
 //material Form filed design change - End
 }
 
-// Sample Flex Design
-// fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start center"
-//     fxLayout="column" fxFlex="75%",
-//         fxLayout="row"  fxLayoutGap="16px"
+
+// ************************* Sample Codes for frequent re-use ****************************
+
+//  Sample Flex Design
+//  fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start center"
+//      fxLayout="column" fxFlex="75%",
+//          fxLayout="row"  fxLayoutGap="16px"
+
+
+// ************************* Sample Codes for frequent re-use ****************************

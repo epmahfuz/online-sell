@@ -193,6 +193,7 @@ export class ProductListComponent implements OnInit {
   ];
   productListShow: ProductModel[];
   addedInCart: ProductModel[] = [];
+  selectedCategoryName = "All Products";
   constructor(
     private cartService: CartService,
     private productService: ProductService
@@ -216,9 +217,10 @@ export class ProductListComponent implements OnInit {
   }
 
   onChangeSelectedCategory(){
-    this.productService.$selectedCategoryId.subscribe(catId=>{
-      console.log("catId: ", catId);
-      this.categoryProductList(catId);
+    this.productService.$selectedCategoryId.subscribe(({key, value})=>{
+      console.log("catId: ", key);
+      this.selectedCategoryName = value;
+      this.categoryProductList(key);
     });
   }
 

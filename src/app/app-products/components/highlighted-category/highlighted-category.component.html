@@ -8,7 +8,7 @@
       fxLayout="column" fxLayoutGap="6px" fxLayoutAlign="center"
       *ngFor="let category of categoryList"
       [ngClass]="{ 'category-active': category.id == selectedCatId }"
-      (click)="onClickCategory(category.id)"
+      (click)="onClickCategory(category.id, category.name)"
     >
     <div class="left" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center">
       <div class="category-name">{{ category.name}}</div>

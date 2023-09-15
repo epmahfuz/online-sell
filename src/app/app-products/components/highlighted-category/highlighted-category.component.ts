@@ -28,26 +28,26 @@ export class HighlightedCategoryComponent implements OnInit{
           name:'Fresh & Frozen',
           iconLink: 'https://kolkatafish.com/wp-content/uploads/2022/09/frozen-1.jpg',
         },
-        {
-          id: "5",
-          name:'Fruits and Vegetables',
-          iconLink: 'https://chaldn.com/_mpimage/fresh-vegetables?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D23773&q=low&v=1&m=400&webp=1',
-        },
-        {
-          id: "6",
-          name:'Meat & Fish',
-          iconLink: 'https://chaldn.com/_mpimage/chicken-poultry?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D117422&q=low&v=1&m=400&webp=1',
-        },
-        {
-          id: "7",
-          name:'Health Products',
-          iconLink: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT511fTNwkvGnQZGSoonJtqcEyUa5tY3NBjrg&usqp=CAU',
-        },
-        {
-          id: "8",
-          name:'Kitchen Appliances',
-          iconLink: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoEG_--lpDEd4EidyE5cISs7yE1Sn4feKosg&usqp=CAU',
-        }
+        // {
+        //   id: "5",
+        //   name:'Fruits and Vegetables',
+        //   iconLink: 'https://chaldn.com/_mpimage/fresh-vegetables?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D23773&q=low&v=1&m=400&webp=1',
+        // },
+        // {
+        //   id: "6",
+        //   name:'Meat & Fish',
+        //   iconLink: 'https://chaldn.com/_mpimage/chicken-poultry?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D117422&q=low&v=1&m=400&webp=1',
+        // },
+        // {
+        //   id: "7",
+        //   name:'Health Products',
+        //   iconLink: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT511fTNwkvGnQZGSoonJtqcEyUa5tY3NBjrg&usqp=CAU',
+        // },
+        // {
+        //   id: "8",
+        //   name:'Kitchen Appliances',
+        //   iconLink: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoEG_--lpDEd4EidyE5cISs7yE1Sn4feKosg&usqp=CAU',
+        // }
       ]; 
       selectedCatId = "all";
       constructor(

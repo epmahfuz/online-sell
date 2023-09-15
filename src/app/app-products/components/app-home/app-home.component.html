@@ -6,9 +6,12 @@
         <div [ngClass]="showCategorySidebar==true ? '': 'display-none'" class="category-products">
             <app-category-sidebar></app-category-sidebar>
         </div>
-        <div [ngClass]="showCategorySidebar==true ? '': 'w-100'" class="products-carousel-and-cart" fxLayout="row" fxLayoutAlign="space-between start">
+        <div  #scrollContainer [ngClass]="showCategorySidebar==true ? '': 'w-100'" class="products-carousel-and-cart" fxLayout="row" fxLayoutAlign="space-between start">
             <div [ngClass]="isCartViewOn==true ? 'products-carousel': ''">
-                <app-top-carousel></app-top-carousel>
+                <div #topCarousel>
+                    <app-top-carousel></app-top-carousel>
+                </div>
+                <!-- <button (click)="scrollTo100px()"></button> -->
                 <app-highlighted-category></app-highlighted-category>
                 <app-product-list></app-product-list>
             </div>

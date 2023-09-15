@@ -9,6 +9,11 @@ import { ProductService } from '../../services/product.service';
 export class CategorySidebarComponent implements OnInit {
   categoryList=[
     {
+      id: "all",
+      name:'All Category',
+      iconLink: 'https://chaldn.com/_mpimage/meat-fish?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D23737&q=low&v=1&m=400&webp=1',
+    },
+    {
       id: "1",
       name:'Fresh Water Fish',
       iconLink: 'https://chaldn.com/_mpimage/meat-fish?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D23737&q=low&v=1&m=400&webp=1',
@@ -35,8 +40,9 @@ export class CategorySidebarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {}
-  onClickCategory(catId){
+  onClickCategory(catId, catName){
     this.selectedCatId = catId;
-    this.productService.$selectedCategoryId.next(catId);
+    const categoryKeyValuePair = { key: catId, value: catName };
+    this.productService.$selectedCategoryId.next(categoryKeyValuePair);
   }
 }

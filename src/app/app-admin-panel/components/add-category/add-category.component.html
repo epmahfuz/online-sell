@@ -43,7 +43,7 @@
                         </mat-form-field>
                         <div style="padding-bottom:18px;">
                             <div class="product-choose-label mb-16">Category Image *</div>
-                            <input size="60" type="file" name="avatar" placeholder="Avatar" formControlName="avatar"  (change)="onFileSelected($event)">
+                            <input size="60" type="file" name="avatar" placeholder="Avatar" (change)="onFileSelected($event)">
                             <mat-spinner *ngIf="imgUploading" [diameter]="40" class="float-r"></mat-spinner>
                         </div>
                         

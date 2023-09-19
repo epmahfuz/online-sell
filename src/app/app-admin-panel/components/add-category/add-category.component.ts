@@ -26,26 +26,29 @@ export class AddCategoryComponent implements OnInit {
   }
   
   onClickAddCategory(){
-    this.imgUploading = false;
     this.isSaving = true;
     const formData = new FormData();
     formData.append('name', this.form.get('name').value);
     formData.append('avatar', this.form.get('avatar').value);
 
-    // this.categoryService.addCategory(formData).subscribe(res => {
-    //   console.log("A category created !: ", res);
-    // });
+    this.categoryService.addCategory(formData).subscribe(res => {
+      console.log("A category created !: ", res);
+      this.isSaving = false;
+    });
 
-    // this.router.navigate(['admin-panel']).then((r) => r);
+    this.router.navigate(['admin-panel']).then((r) => r);
   }
 
   onFileSelected(event: any) {
     this.imgUploading = true;
     const file: File = event.target.files[0];
     this.form.get('avatar').setValue(file);
-    let timer = setTimeout(() => {
+    if (this.form.get('avatar').value === null) {
+      console.log('Avatar is still null');
+    } else {
+      console.log('Avatar has a value');
       this.imgUploading = false;
-    }, 5000);
+    }
   }
 
   onClickAdminPanel(){

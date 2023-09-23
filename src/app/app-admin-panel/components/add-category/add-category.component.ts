@@ -33,10 +33,12 @@ export class AddCategoryComponent implements OnInit {
 
     this.categoryService.addCategory(formData).subscribe(res => {
       console.log("A category created !: ", res);
-      this.isSaving = false;
+      
+      setTimeout(() => {
+        this.isSaving = false;
+        this.goToCategoryList();
+      }, 1000);
     });
-
-    this.router.navigate(['admin-panel']).then((r) => r);
   }
 
   onFileSelected(event: any) {
@@ -51,7 +53,7 @@ export class AddCategoryComponent implements OnInit {
     }
   }
 
-  onClickAdminPanel(){
+  goToCategoryList(){
     this.router.navigate(['admin-panel']).then((r) => r);
   }
 }

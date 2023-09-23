@@ -30,8 +30,8 @@ export class CategoryListComponent implements OnInit {
   // Define the function to retrieve all categories
   getAllCategories() {
     this.categoryService.getAllCategory().subscribe(
-      (categories: any[]) => { // Specify the type as any[]
-        this.categories = categories;
+      (categories:any) => { // Specify the type as any[]
+        this.categories = categories.Data;
       },
       (error) => {
         // Handle error

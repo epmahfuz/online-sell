@@ -12,6 +12,7 @@ import { CartDetailsComponent } from './components/cart-details/cart-details.com
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MyAccountComponent } from '../app-my-section/components/my-account/my-account.component';
 import { MaterialModule } from '../app-shared/material.module';
+import { CommonFooterComponent } from './components/common-footer/common-footer.component';
 
 const routes: Routes = [
   { path: '', component: AppHomeComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
     CartDetailsComponent,
     HighlightedCategoryComponent,
     CheckoutComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    CommonFooterComponent
   ],
   imports: [
     CommonModule,

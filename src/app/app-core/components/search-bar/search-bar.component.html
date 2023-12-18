@@ -19,7 +19,10 @@
             <mat-icon>login</mat-icon>
             <div class="primary-button-text">Sign in</div>
         </div>
-
+        
+<!-- <button (click)="switchLanguage('en')">English</button>
+<button (click)="switchLanguage('fr')">French</button> -->
+        
         <div *ngIf="loggedIn" class="profile-button" fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center" (click)="toggleCardVisibility()">
             <img width="25px" height="25px" src="../../../../assets/images/tartaja.png" alt="">
             <div class="primary-button-text">Md. Sumon Mia</div>

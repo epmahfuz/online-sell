@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SignInModalComponent } from '../sign-in-modal/sign-in-modal.component';
 import { CommonService } from '../../../app-shared/services/common.service';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-search-bar',
@@ -22,13 +23,22 @@ export class SearchBarComponent implements OnInit {
     private dialog: MatDialog,
     private commmonService: CommonService,
     private router: Router,
+    private translate: TranslateService
   ) { }
  
   ngOnInit(): void {
     this.patchCartInfo();
-    this.cartUpdateRealtime();
+    this.cartUpdateRealtime(); 
+    
+    // Set the default language
+    this.translate.setDefaultLang('en');
+    // Use the current browser language or the default language
+    this.translate.use(this.translate.getBrowserLang() || 'en');
   }
 
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
   onClickMenuBar(){
     this.commmonService.$showCategorySidebar.next(true);
   }

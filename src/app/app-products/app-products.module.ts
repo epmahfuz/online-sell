@@ -13,7 +13,13 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MyAccountComponent } from '../app-my-section/components/my-account/my-account.component';
 import { MaterialModule } from '../app-shared/material.module';
 import { CommonFooterComponent } from './components/common-footer/common-footer.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader'; 
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 const routes: Routes = [
   { path: '', component: AppHomeComponent },
   { path: 'checkout', component: CheckoutComponent },
@@ -36,7 +42,14 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     NguCarouselModule,
     AppCoreModule,
-    MaterialModule
+    MaterialModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ]
 })
 export class AppProductsModule { }

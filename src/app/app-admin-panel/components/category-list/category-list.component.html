@@ -28,13 +28,13 @@
                         </thead>
 
                         <tbody>
-                            <tr *ngFor="let category of categories" (click)="onClickACategory()">
+                            <tr *ngFor="let category of categories" (click)="onClickACategory(category._id)">
                                 <td>
                                     {{ category.name }}
                                 </td>
                                 <td class="pt-0 pb-0">
-                                    <img *ngIf="!category.avatar" class="product-img-list" src="../../../../assets/images/no-image.jpg" alt="">
-                                    <img *ngIf="category.avatar" class="product-img-list" src="http://localhost:5000/uploads/categoryImgs/{{category.avatar}}" alt="">
+                                    <img *ngIf="!category.image" class="product-img-list" src="../../../../assets/images/no-image.jpg" alt="">
+                                    <img *ngIf="category.image" class="product-img-list" src="{{category.image}}" alt="">
                                 </td>
                                 <td>
                                     <span class="status product-list-pending">Pending</span>

@@ -46,7 +46,7 @@ export class CartDetailsComponent implements OnInit {
     product.counterInCart += 1;
     this.addedInCart.push(product);
     this.saveInLocalStorage();
-    this.cartService.$updateCartInfo.next({id: product.id, price: product.price, counter: 1, isDeleted:false});
+    this.cartService.$updateCartInfo.next({_id: product._id, price: product.price, counter: 1, isDeleted:false});
   }
 
   saveInLocalStorage(){
@@ -57,15 +57,15 @@ export class CartDetailsComponent implements OnInit {
     product.counterInCart += 1;
     this.updateCounterInCart(product);
     this.saveInLocalStorage();
-    this.cartService.$updateCartInfo.next({id: product.id, price: product.price, counter: 1, isDeleted:false});
+    this.cartService.$updateCartInfo.next({_id: product._id, price: product.price, counter: 1, isDeleted:false});
   }
 
   updateCounterInCart(product:ProductModel){
-    let foundIndex = this.addedInCart.findIndex(cartProduct=> cartProduct.id === product.id);
+    let foundIndex = this.addedInCart.findIndex(cartProduct=> cartProduct._id === product._id);
     if(product.counterInCart){
       this.addedInCart[foundIndex] = product;
     } else {
-       this.addedInCart = this.addedInCart.filter(cartProduct => cartProduct.id != product.id );
+       this.addedInCart = this.addedInCart.filter(cartProduct => cartProduct._id != product._id );
     } 
   }
 
@@ -74,7 +74,7 @@ export class CartDetailsComponent implements OnInit {
     this.updateCounterInCart(product);
     this.saveInLocalStorage();
     let isDeleted = product.counterInCart>0 ? false: true;
-    this.cartService.$updateCartInfo.next({ id: product.id, price: product.price, counter: -1, isDeleted: isDeleted});
+    this.cartService.$updateCartInfo.next({ _id: product._id, price: product.price, counter: -1, isDeleted: isDeleted});
   }
 
   deleteCartItem(product:ProductModel){
@@ -83,7 +83,7 @@ export class CartDetailsComponent implements OnInit {
     this.updateCounterInCart(product);
     this.saveInLocalStorage();
     let isDeleted = true;
-    this.cartService.$updateCartInfo.next({ id: product.id, price: product.price, counter: cartItemCounter*(-1), isDeleted: isDeleted});
+    this.cartService.$updateCartInfo.next({ _id: product._id, price: product.price, counter: cartItemCounter*(-1), isDeleted: isDeleted});
   }
 
   onClickPlaceOrder(){

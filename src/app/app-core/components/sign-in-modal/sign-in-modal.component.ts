@@ -24,7 +24,7 @@ export class SignInModalComponent implements OnInit {
     password: [''],
     mobile: [''],
     name: [''],
-    avatar: [null] // Initialize the FormControl for the file
+    image: [null] // Initialize the FormControl for the file
   });
 
   ngOnInit(): void {
@@ -51,7 +51,7 @@ export class SignInModalComponent implements OnInit {
     formData.append('password', this.form.get('password').value);
     formData.append('mobile', this.form.get('mobile').value);
     formData.append('name', this.form.get('name').value);
-    formData.append('avatar', this.form.get('avatar').value);
+    formData.append('image', this.form.get('image').value);
     
     this.signUpService.addAnonymousUser(formData).subscribe(res=>{
       console.log("res: ", res);
@@ -72,7 +72,7 @@ export class SignInModalComponent implements OnInit {
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
-    this.form.get('avatar').setValue(file);
+    this.form.get('image').setValue(file);
   }
 
   closeModal(){

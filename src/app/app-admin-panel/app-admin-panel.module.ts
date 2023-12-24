@@ -13,8 +13,8 @@ import { MaterialModule } from '../app-shared/material.module';
 const routes: Routes = [
   { path: '', component: CategoryListComponent },
   { path: 'add-category', component: AddCategoryComponent },
-  { path: 'product-list', component: ProductListComponent },
-  { path: 'add-product', component: AddProductComponent },
+  { path: 'product-list/:id', component: ProductListComponent },
+  { path: 'add-product/:id', component: AddProductComponent },
   { path: 'dashboard', component: DashboardComponent },
 ]
 

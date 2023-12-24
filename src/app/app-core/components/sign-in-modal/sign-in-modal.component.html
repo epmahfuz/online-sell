@@ -40,7 +40,7 @@
           </mat-form-field>
         </p>
         <p *ngIf="submitFor=='signUp'">
-          <input type="file" name="avatar" placeholder="Avatar" formControlName="avatar"  (change)="onFileSelected($event)">
+          <input type="file" name="image" placeholder="Avatar" formControlName="image"  (change)="onFileSelected($event)">
         </p>
 
         <p *ngIf="error" class="error">

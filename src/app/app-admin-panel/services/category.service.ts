@@ -34,6 +34,11 @@ export class CategoryService {
       `${environment.BusinessService}/product/getAll`
     );
   }
+  getProductByCategoryId(categoryId: string) { 
+    return this.http.get(
+      `${environment.BusinessService}/product/getByCategoryId/${categoryId}`
+    );
+  }
   
   addCategory(payload: any): Observable<any> {
     return this.http.post(

@@ -23,8 +23,8 @@ export class CategoryListComponent implements OnInit {
     this.router.navigate(['admin-panel/add-category']).then((r) => r);
   }
 
-  onClickACategory(){
-    this.router.navigate(['admin-panel/product-list']).then((r) => r);
+  onClickACategory(categoryId){
+    this.router.navigate([`admin-panel/product-list/${categoryId}`]).then((r) => r);
   }
 
   // Define the function to retrieve all categories

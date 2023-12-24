@@ -18,7 +18,7 @@ export class AddCategoryComponent implements OnInit {
   imgUploading = false;
   form: FormGroup = this.fb.group({
     name: ['', Validators.required],
-    avatar: [null, Validators.required] // Initialize the FormControl for the file
+    image: [null, Validators.required] // Initialize the FormControl for the file
   });
   isSaving = false;
   ngOnInit(): void {
@@ -29,23 +29,23 @@ export class AddCategoryComponent implements OnInit {
     this.isSaving = true;
     const formData = new FormData();
     formData.append('name', this.form.get('name').value);
-    formData.append('avatar', this.form.get('avatar').value);
+    formData.append('image', this.form.get('image').value);
 
     this.categoryService.addCategory(formData).subscribe(res => {
-      console.log("A category created !: ", res);
       
-      setTimeout(() => {
-        this.isSaving = false;
-        this.goToCategoryList();
-      }, 1000);
-    });
+      console.log("A category created !: ", res);
+      this.goToCategoryList();
+    }, (error=>{
+      this.isSaving = false;
+      console.log(error);
+    }));
   }
 
   onFileSelected(event: any) {
     this.imgUploading = true;
     const file: File = event.target.files[0];
-    this.form.get('avatar').setValue(file);
-    if (this.form.get('avatar').value === null) {
+    this.form.get('image').setValue(file);
+    if (this.form.get('image').value === null) {
       console.log('Avatar is still null');
     } else {
       console.log('Avatar has a value');

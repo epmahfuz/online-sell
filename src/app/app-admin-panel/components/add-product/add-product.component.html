@@ -23,7 +23,7 @@
                             Save</button>
                     </div>
                     <div class="product-container">
-                        <form class="product-form">
+                        <form [formGroup]="form" class="product-form">
                         <div class="product-title">
                             Basic Information
                         </div>
@@ -35,6 +35,7 @@
                                 matInput
                                 #productInput
                                 name="ProductName"
+                                formControlName="name"
                                 placeholder="Enter your product Name"
                             />
                             <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
@@ -46,6 +47,7 @@
                                 matInput
                                 #descriptionInput
                                 name="Product description"
+                                formControlName="description"
                                 placeholder="Enter your product description"
                             />
                             <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
@@ -58,6 +60,7 @@
                                 matInput
                                 #quantityInput
                                 name="Product quantity"
+                                formControlName="quantity"
                                 placeholder="Enter your product quantity"
                                 />
                                 <!-- <mat-error *ngIf="Phone.invalid && Phone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
@@ -69,14 +72,16 @@
                                 matInput
                                 #priceInput
                                 name="Product price"
+                                formControlName="price"
                                 placeholder="Enter your product price"
                                 />
                                 <!-- <mat-error *ngIf="AlternativePhone.invalid && AlternativePhone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
                             </mat-form-field>
                             </div>
                             <div style="padding-bottom:18px;">
-                                <div class="product-choose-label mb-16">Product Image *</div> 
-                                <input type="file" size="60" >
+                                <div class="product-choose-label mb-16">Category Image *</div>
+                                <input size="60" type="file" name="image" placeholder="Avatar" (change)="onFileSelected($event)">
+                                <mat-spinner *ngIf="imgUploading" [diameter]="40" class="float-r"></mat-spinner>
                             </div>
                         </div>
                         </form>

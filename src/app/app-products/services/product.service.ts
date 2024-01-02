@@ -27,12 +27,13 @@ export class ProductService {
     withCredentials: true,
   };
   
-  addProduct(payload: any): Observable<any> {
+  addOrder(payload: any): Observable<any> {
     return this.http.post(
-      `${environment.BusinessService}/product/add`, 
+      `${environment.BusinessService}/order/add`, 
       payload
     );
   }
+
   getAllProduct() { 
     return this.http.get(
       `${environment.BusinessService}/product/getAll`

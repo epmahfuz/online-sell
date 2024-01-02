@@ -21,6 +21,12 @@ export class CheckoutComponent implements OnInit {
   showCategorySidebar = true;
   imgUploading = false;
   isSaving = false;
+  paymentMethodMap = new Map<number, string>([
+    [1, "CashOnDelivery"],
+    [2, "Bkash"],
+    [3, "Nagad"],
+    [4, "Rocket"],
+  ]);
   form: FormGroup = this.fb.group({
     name: ['', Validators.required],
     phone: ['', Validators.required], // Initialize the FormControl for the file
@@ -45,9 +51,55 @@ export class CheckoutComponent implements OnInit {
 
   onClickPlaceOrder(){
     this.isSaving = true;
-    this.openSuccessSnackBar();
-    this.makeEmptyCart();
-    this.redirectToHomePage();
+    this.orderPlace();
+  }
+
+  orderPlace(){
+    let payload = this.makeOrderPayload();
+    this.productService.addOrder(payload).subscribe(
+      (response : any) => {
+        this.isSaving = false;
+        console.log("response: ", response);
+        this.openSuccessSnackBar();
+        this.makeEmptyCart();
+        this.redirectToHomePage();
+      },
+      (error) => {
+        this.isSaving = false;
+        console.log("error: ", error);
+      }
+    );
+  }
+
+  makeOrderPayload(){
+    console.log("df", this.form.get('paymentMethod').value, this.paymentMethodMap.get(this.form.get('paymentMethod').value));
+    let payload = {
+      "name": "Sample Order",
+      "image": "sample_image_url.jpg",
+      "isActive": true,
+      "isArchived": false,
+      "orderId": "12345629",
+      "customer": "60f64e9a8a58c500153b1a24", // ObjectId referring to a User
+      "customerName": this.form.get('name').value,
+      "customerPhone": this.form.get('phone').value,
+      "customerAddress": this.form.get('address').value,
+      "paymentMethod": this.paymentMethodMap.get(this.form.get('paymentMethod').value) || "",
+      "products": [
+        {
+          "productId": "60f64e9a8a58c500153b1a25", // ObjectId referring to a Product
+          "quantity": 2,
+          "price": 29.99
+        },
+        {
+          "productId": "60f64e9a8a58c500153b1a26", // ObjectId referring to another Product
+          "quantity": 1,
+          "price": 39.99
+        }
+      ],
+      "totalAmount": 99.97,
+      "status": "Processing"
+    }
+    return payload;
   }
 
   openSuccessSnackBar(){

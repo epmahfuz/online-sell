@@ -43,8 +43,9 @@
         
     </div>
     <div *ngIf="cartTotalPrice" class="cart-footer">
-        <button (click)="onClickPlaceOrder()" class="place-order-amount">
-            <span class="place-order">Place Order</span>
+        <button (click)="onClickPlaceOrder()" class="place-order-amount" [class.cursor-pointer]="currentRoute != 'checkout'">
+            <span *ngIf="currentRoute != 'checkout'" class="place-order">Place Order</span>
+            <span *ngIf="currentRoute == 'checkout'" class="place-order">Item Total</span>
             <span class="total-amount">৳ {{cartTotalPrice}}</span>
         </button>
     </div>

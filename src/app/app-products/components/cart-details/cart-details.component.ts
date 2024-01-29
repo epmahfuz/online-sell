@@ -13,16 +13,22 @@ export class CartDetailsComponent implements OnInit {
   addedInCart: ProductModel[] = [];
   cartItemCounter:number = 0;
   cartTotalPrice: number = 0;
+  currentRoute = '';
   constructor(
     private cartService: CartService,
     private productService: ProductService,
     private router: Router,
   ) { }
   ngOnInit(): void {
+    this.getCurrentRoute();
     this.patchCartInfo();
     this.cartUpdateRealtime();
   }
-
+  getCurrentRoute(){
+    if(this.router.url.includes('checkout')){
+      this.currentRoute = 'checkout';
+    }
+  }
   patchCartInfo() {
     this.addedInCart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -87,7 +93,10 @@ export class CartDetailsComponent implements OnInit {
   }
 
   onClickPlaceOrder(){
-    this.router.navigate(['checkout']).then((r) => r);
+    if(!this.router.url.includes('checkout')){
+      this.router.navigate(['checkout']).then((r) => r);
+    }
+    
   }
 
   closeCartView(){

@@ -4,6 +4,8 @@ import { CommonService } from '../../../app-shared/services/common.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { SnackBarService } from '../../../app-shared/snack-bar/service/snack-bar.service';
+import { ProductModel } from '../../../app-shared/models/all-models';
+import { CartService } from '../../../app-shared/services/cart.service';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -15,8 +17,11 @@ export class CheckoutComponent implements OnInit {
     private commonService: CommonService,
     private fb: FormBuilder,
     private snackBarService: SnackBarService,
+    private cartService: CartService,
   ) { }
 
+  addedInCart: ProductModel[] = [];
+  totalAmountIncart = 0;
   isCartViewOn = true;
   showCategorySidebar = true;
   imgUploading = false;
@@ -37,23 +42,39 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.cartViewChangeDetect();
     this.categorySidebarChange();
+    this.getTotalAmountFirstTime();
+    this.getTotalAmountRealTime();
   }
-  
+  cartViewChangeDetect() {
+    this.productService.$cartViewChange.subscribe((cartViewStatus: boolean) => {
+      if(this.isCartViewOn){
+        this.isCartViewOn = false;
+      } else {
+        this.isCartViewOn = true;
+      }
+    })
+  }
   categorySidebarChange(){
     this.commonService.$showCategorySidebar.subscribe(isOpenSidebar=>{
       this.showCategorySidebar = this.showCategorySidebar ? false : true;
     })
   }
-
-  findValue(){
-    this.form.get('email').value;
+  getTotalAmountFirstTime(){
+    this.totalAmountIncart = 0;
+    this.addedInCart = JSON.parse(localStorage.getItem('cart')) || [];
+    this.addedInCart.forEach((product:ProductModel) => {
+      this.totalAmountIncart += (product.price*product.counterInCart);
+    });
   }
-
+  getTotalAmountRealTime() {
+    this.cartService.$updateCartInfo.subscribe((cartItem) => {
+      this.makeProductList();
+    });
+  }
   onClickPlaceOrder(){
     this.isSaving = true;
     this.orderPlace();
   }
-
   orderPlace(){
     let payload = this.makeOrderPayload();
     this.productService.addOrder(payload).subscribe(
@@ -70,36 +91,40 @@ export class CheckoutComponent implements OnInit {
       }
     );
   }
-
   makeOrderPayload(){
     console.log("df", this.form.get('paymentMethod').value, this.paymentMethodMap.get(this.form.get('paymentMethod').value));
     let payload = {
       "name": "Sample Order",
       "image": "sample_image_url.jpg",
-      "isActive": true,
-      "isArchived": false,
-      "orderId": "12345629",
-      "customer": "60f64e9a8a58c500153b1a24", // ObjectId referring to a User
+      "customer": "60f64e9a8a58c500153b1a24",
       "customerName": this.form.get('name').value,
       "customerPhone": this.form.get('phone').value,
       "customerAddress": this.form.get('address').value,
       "paymentMethod": this.paymentMethodMap.get(this.form.get('paymentMethod').value) || "",
-      "products": [
-        {
-          "productId": "60f64e9a8a58c500153b1a25", // ObjectId referring to a Product
-          "quantity": 2,
-          "price": 29.99
-        },
-        {
-          "productId": "60f64e9a8a58c500153b1a26", // ObjectId referring to another Product
-          "quantity": 1,
-          "price": 39.99
-        }
-      ],
-      "totalAmount": 99.97,
+      "products": this.makeProductList(),
+      "subtotal": this.totalAmountIncart,
+      "shippingCost": 50,
+      "totalAmount": this.totalAmountIncart+50,
       "status": "Processing"
     }
     return payload;
+  }
+  makeProductList(){
+    this.totalAmountIncart = 0;
+    let productInOrder = [];
+    this.addedInCart = JSON.parse(localStorage.getItem('cart')) || [];
+    this.addedInCart.forEach((product:ProductModel) => {
+      this.totalAmountIncart += (product.price*product.counterInCart);
+      productInOrder.push(
+        {
+          "productId": product._id,
+          "name": product.name,
+          "quantity": product.counterInCart,
+          "price": product.price
+        }
+      );
+    });
+    return productInOrder;
   }
 
   openSuccessSnackBar(){
@@ -109,23 +134,10 @@ export class CheckoutComponent implements OnInit {
       status: 'create',
     });
   }
-  
   makeEmptyCart(){
     localStorage.removeItem('cart');
   }
-
   redirectToHomePage(){
     this.commonService.redirectTo('');
   }
-
-  cartViewChangeDetect() {
-    this.productService.$cartViewChange.subscribe((cartViewStatus: boolean) => {
-      if(this.isCartViewOn){
-        this.isCartViewOn = false;
-      } else {
-        this.isCartViewOn = true;
-      }
-    })
-  }
-
 }

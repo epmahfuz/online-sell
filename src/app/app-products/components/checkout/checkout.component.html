@@ -48,15 +48,6 @@
                   />
                   <!-- <mat-error *ngIf="Phone.invalid && Phone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
                 </mat-form-field>
-                <!-- <mat-form-field class="mat-form-field" appearance="outline">
-                  <mat-label class="label-text">Alternative Phone No</mat-label>
-                  <input
-                    required
-                    matInput
-                    name="Alternative Phone No"
-                    placeholder="Enter your alternative Phone No"
-                  />
-                </mat-form-field> -->
               </div>
               <mat-form-field class="mat-form-field" appearance="outline">
                 <mat-label class="label-text">Address</mat-label>
@@ -69,6 +60,26 @@
                 />
                 <!-- <mat-error *ngIf="Address.invalid && Address.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
               </mat-form-field>
+            </div>
+            <div class="summery m-24">
+              <h3 class="checkout-title">
+                Order Summary
+              </h3>
+              <div class="summary-main mb-20">
+                <div class="total-single-line w-100 p-8-24"  fxLayout="row" fxLayoutAlign="space-between start">
+                  <div class="subtotal-text">Subtotal</div>
+                  <div class="subtotal-value">{{ totalAmountIncart }}</div>
+                </div>
+                <div class="total-single-line w-100 p-8-24"  fxLayout="row" fxLayoutAlign="space-between start">
+                  <div class="subtotal-text">Shipping Cost</div>
+                  <div class="subtotal-value">50</div>
+                </div>
+                <hr>
+                <div class="total-single-line w-100 p-8-24 bold"  fxLayout="row" fxLayoutAlign="space-between start">
+                  <div class="subtotal-text">Total Payable</div>
+                  <div class="subtotal-value"> ৳ {{ totalAmountIncart+50 }}</div>
+                </div>
+              </div>
             </div>
             <h3 class="checkout-title">
               Payment Method

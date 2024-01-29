@@ -4,8 +4,8 @@
     <div class="main">
        <app-top-bar></app-top-bar> 
        
-        <!-- ======================= product list ================== -->
-        <div id="productlist-content" class="content">
+        <!-- ======================= Product list ================== -->
+        <div class="content">
             <div class="product-list">
                 <div class="pro-header" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="space-between center">
                     <div class="primary-color"  fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="space-between center">
@@ -37,7 +37,7 @@
                                     <img *ngIf="category.image" class="product-img-list" src="{{category.image}}" alt="">
                                 </td>
                                 <td>
-                                    <span class="status product-list-pending">Pending</span>
+                                    <span class="status pending-status">Pending</span>
                                 </td>
                             </tr>
                         </tbody>

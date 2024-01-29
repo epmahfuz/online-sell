@@ -52,5 +52,15 @@ export class CategoryService {
       `${environment.BusinessService}/category/getAll`
     );
   }
-
+  getAllOrder() {
+    return this.http.get(
+      `${environment.BusinessService}/order/getAll`
+    );
+  }
+  updateAOrder(payload: any, orderId:string){
+    return this.http.patch(
+      `${environment.BusinessService}/order/update/${orderId}`,
+      payload
+    );
+  }
 }

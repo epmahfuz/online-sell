@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoryService } from '../../services/category.service'
+import { CategoryService } from '../../../services/category.service'
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -22,7 +22,7 @@ export class ProductListComponent implements OnInit {
     this.getProductsByCategoryId(this.categoryId);
   }
   onClickAddProduct(){
-    this.router.navigate([`admin-panel/add-product/${this.categoryId}`]).then((r) => r);
+    this.router.navigate([`admin-panel/menu/add-product/${this.categoryId}`]).then((r) => r);
   }
   onClickAdminPanel(){
     this.router.navigate(['admin-panel']).then((r) => r);
@@ -30,8 +30,8 @@ export class ProductListComponent implements OnInit {
   
   getProductsByCategoryId(categoryId:string) {
     this.categoryService.getProductByCategoryId(categoryId).subscribe(
-      (products: any[]) => {
-        this.products = products;
+      (products: any) => {
+        this.products = products.Data;
       },
       (error) => {
         console.error(error);

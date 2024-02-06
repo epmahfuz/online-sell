@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { NguCarouselConfig } from '@ngu/carousel';
 
 @Component({
@@ -6,7 +6,7 @@ import { NguCarouselConfig } from '@ngu/carousel';
   templateUrl: './top-carousel.component.html',
   styleUrls: ['./top-carousel.component.scss']
 })
-export class TopCarouselComponent implements OnInit { 
+export class TopCarouselComponent implements OnInit, AfterViewInit{ 
   @ViewChild('myCarousel', { static: false }) myCarousel;
   carouselConfig: NguCarouselConfig = {
     grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
@@ -27,7 +27,13 @@ export class TopCarouselComponent implements OnInit {
     {name: 'four', price:'5.3', img: '../../../../assets/images/BG/2.jpeg'},
   ]
 
-  constructor() { }
+  constructor(
+    private cdr: ChangeDetectorRef
+  ) {}
+  
+  ngAfterViewInit(): void {
+    this.cdr.detectChanges();
+  }
 
   ngOnInit(): void {
   }

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { AppHomeComponent } from './components/app-home/app-home.component';
 import { RouterModule, Routes } from '@angular/router';
 import {AppCoreModule} from '../app-core/app-core.module';
@@ -11,7 +10,7 @@ import { HighlightedCategoryComponent } from './components/highlighted-category/
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MyAccountComponent } from '../app-my-section/components/my-account/my-account.component';
-import { MaterialModule } from '../app-shared/material.module';
+import { MaterialModule } from '../app-material/material.module';
 import { CommonFooterComponent } from './components/common-footer/common-footer.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -38,7 +37,6 @@ const routes: Routes = [
     CommonFooterComponent
   ],
   imports: [
-    CommonModule,
     RouterModule.forChild(routes),
     NguCarouselModule,
     AppCoreModule,

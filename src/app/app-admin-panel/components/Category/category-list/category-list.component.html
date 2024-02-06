@@ -2,15 +2,15 @@
     <app-left-sidebar></app-left-sidebar>
     <!-- ========================= Main ==================== -->
     <div class="main">
-       <app-top-bar></app-top-bar> 
-       
+        <app-top-bar></app-top-bar>
+
         <!-- ======================= Product list ================== -->
         <div class="content">
             <div class="product-list">
                 <div class="pro-header" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="space-between center">
-                    <div class="primary-color"  fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="space-between center">
+                    <div class="primary-color" fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="space-between center">
                         <!-- <i class="fa-solid fa-arrow-left back-icon" (click)="onClickAdminPanel()"></i> -->
-                        <h2>Category Lists</h2> 
+                        <h2>Category Lists</h2>
                     </div>
                     <button class="btn" (click)="onClickAddCategory()">
                         <i class="fa-solid fa-plus mr-4"></i>
@@ -24,6 +24,7 @@
                                 <td>Name</td>
                                 <td>Image</td>
                                 <td>Status</td>
+                                <td>Action</td>
                             </tr>
                         </thead>
 
@@ -33,11 +34,33 @@
                                     {{ category.name }}
                                 </td>
                                 <td class="pt-0 pb-0">
-                                    <img *ngIf="!category.image" class="product-img-list" src="../../../../assets/images/no-image.jpg" alt="">
-                                    <img *ngIf="category.image" class="product-img-list" src="{{category.image}}" alt="">
+                                    <img *ngIf="!category.image" class="product-img-list"
+                                        src="../../../../assets/images/no-image.jpg" alt="">
+                                    <img *ngIf="category.image" class="product-img-list" src="{{category.image}}"
+                                        alt="">
                                 </td>
                                 <td>
-                                    <span class="status pending-status">Pending</span>
+                                    <span class="status delivered-status">Active</span>
+                                </td>
+                                <td (click)="onClickAction($event, category._id)">
+                                    <!-- <span class="material-symbols-outlined button">more_vert</span> -->
+                                    <!-- <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                                        <mat-icon>more_vert</mat-icon>
+                                      </button> -->
+                                    <button mat-icon-button [matMenuTriggerFor]="menu"
+                                        aria-label="Example icon-button with a menu">
+                                        <mat-icon>more_vert</mat-icon>
+                                    </button>
+                                    <mat-menu #menu="matMenu">
+                                        <button (click)="editItem(category._id)" mat-menu-item>
+                                            <mat-icon>edit</mat-icon>
+                                            <span>Edit</span>
+                                        </button>
+                                        <button (click)="deleteItem(category._id)" mat-menu-item>
+                                            <mat-icon>delete</mat-icon>
+                                            <span>Delete</span>
+                                        </button>
+                                    </mat-menu>
                                 </td>
                             </tr>
                         </tbody>

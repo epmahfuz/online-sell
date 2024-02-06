@@ -8,12 +8,8 @@ import { AddCategoryComponent } from './components/Category/add-category/add-cat
 import { AddProductComponent } from './components/Product/add-product/add-product.component';
 import { LeftSidebarComponent } from './components/left-sidebar/left-sidebar.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
-import { MaterialModule } from '../app-shared/material.module';
+import { MaterialModule } from '../app-material/material.module';
 import { AdminOrderComponent } from './components/Order/admin-order/admin-order.component';
-import { FormsModule } from '@angular/forms';
-import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
 
 const routes: Routes = [
   { path: '', redirectTo: 'menu/category-list', pathMatch: 'full' },
@@ -38,13 +34,8 @@ const routes: Routes = [
     AdminOrderComponent
   ],
   imports: [
-    CommonModule,
     RouterModule.forChild(routes),
     MaterialModule,
-    FormsModule,
-    MatSelectModule,
-    MatInputModule,
-    MatButtonModule,
   ],
   exports: [DashboardComponent]
 })

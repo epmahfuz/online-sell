@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { MyAccountComponent } from './components/my-account/my-account.component';
-import { MaterialModule } from '../app-shared/material.module';
+import { MaterialModule } from '../app-material/material.module';
 
 const routes: Routes = [
   { path: 'profile', component: MyAccountComponent },
@@ -11,7 +10,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
     RouterModule.forChild(routes),
     MaterialModule
   ]

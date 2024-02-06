@@ -14,8 +14,9 @@ import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { SnackBarService } from './snack-bar/service/snack-bar.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { FormsModule } from '@angular/forms';
+import {MatMenuModule} from '@angular/material/menu';
+//import { DecisionModalComponent } from './components/decision-modal/decision-modal.component';
 
 @NgModule({
   imports: [
@@ -30,9 +31,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatRadioModule,
     MatDialogModule,
     MatFormFieldModule,
-    
+    MatMenuModule,
+
     FlexLayoutModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   exports: [
     CommonModule,
@@ -46,9 +49,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatRadioModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatMenuModule,
 
     FlexLayoutModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   declarations: [SnackBarComponent],
   entryComponents: [SnackBarComponent],

@@ -2,8 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { CommonService } from '../../../app-shared/services/common.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import { SnackBarService } from '../../../app-shared/snack-bar/service/snack-bar.service';
+import { SnackBarService } from '../../../app-material/snack-bar/service/snack-bar.service';
 import { ProductModel } from '../../../app-shared/models/all-models';
 import { CartService } from '../../../app-shared/services/cart.service';
 @Component({

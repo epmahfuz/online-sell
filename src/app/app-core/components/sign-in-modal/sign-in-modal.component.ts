@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import {SignUpService} from '../../services/sign-up.service'
 @Component({
   selector: 'app-sign-in-modal',
@@ -10,7 +10,6 @@ import {SignUpService} from '../../services/sign-up.service'
 export class SignInModalComponent implements OnInit {
 
   constructor(
-    private dialog: MatDialog,
     public dialogRef: MatDialogRef<SignInModalComponent>,
     private signUpService: SignUpService,
     private fb: FormBuilder,

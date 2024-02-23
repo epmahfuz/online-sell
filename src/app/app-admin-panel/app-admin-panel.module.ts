@@ -10,6 +10,7 @@ import { LeftSidebarComponent } from './components/left-sidebar/left-sidebar.com
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { MaterialModule } from '../app-material/material.module';
 import { AdminOrderComponent } from './components/Order/admin-order/admin-order.component';
+import { DecisionModalComponent } from './components/decision-modal/decision-modal.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'menu/category-list', pathMatch: 'full' },
@@ -31,12 +32,14 @@ const routes: Routes = [
     AddProductComponent,
     LeftSidebarComponent,
     TopBarComponent,
-    AdminOrderComponent
+    AdminOrderComponent,
+    DecisionModalComponent
   ],
   imports: [
     RouterModule.forChild(routes),
     MaterialModule,
   ],
-  exports: [DashboardComponent]
+  exports: [DashboardComponent],
+  entryComponents:[DecisionModalComponent]
 })
 export class AppAdminPanelModule { }

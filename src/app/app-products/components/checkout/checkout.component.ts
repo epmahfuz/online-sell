@@ -35,14 +35,22 @@ export class CheckoutComponent implements OnInit {
     name: ['', Validators.required],
     phone: ['', Validators.required], // Initialize the FormControl for the file
     address: ['', Validators.required], // Initialize the FormControl for the file
-    paymentMethod: ['', Validators.required] // Initialize the FormControl for the file
+    paymentMethod: [1, Validators.required] // Initialize the FormControl for the file
   });
   
   ngOnInit(): void {
+    this.getLoggedInUser();
     this.cartViewChangeDetect();
     this.categorySidebarChange();
     this.getTotalAmountFirstTime();
     this.getTotalAmountRealTime();
+  }
+  getLoggedInUser(){
+    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if(loggedInUser){
+      this.form.get('name').setValue(loggedInUser.username);
+      this.form.get('phone').setValue(loggedInUser.mobile);
+    }
   }
   cartViewChangeDetect() {
     this.productService.$cartViewChange.subscribe((cartViewStatus: boolean) => {
@@ -104,7 +112,7 @@ export class CheckoutComponent implements OnInit {
       "subtotal": this.totalAmountIncart,
       "shippingCost": 50,
       "totalAmount": this.totalAmountIncart+50,
-      "status": "Processing"
+      "status": "Pending"
     }
     return payload;
   }

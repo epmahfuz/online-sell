@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryService } from '../../../services/category.service'
 import { CommonService } from 'src/app/app-shared/services/common.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DecisionModalComponent } from '../../decision-modal/decision-modal.component';
 
 @Component({
   selector: 'app-category-list',
@@ -14,6 +16,7 @@ export class CategoryListComponent implements OnInit {
     private router: Router,
     private categoryService: CategoryService,
     private commonService: CommonService,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -52,7 +55,14 @@ export class CategoryListComponent implements OnInit {
     let data = {
       name: "Sample"
     }
-    this.commonService.openDecisionModal(data)
+    const dialogRef = this.dialog.open(DecisionModalComponent, {
+      width: '320px',
+      disableClose: false,
+      data: data
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
 
   }
 }

@@ -7,6 +7,8 @@ import { SignInModalComponent } from '../sign-in-modal/sign-in-modal.component';
 import { CommonService } from '../../../app-shared/services/common.service';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../../../app-shared/services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search-bar',
@@ -16,31 +18,33 @@ import { TranslateService } from '@ngx-translate/core';
 export class SearchBarComponent implements OnInit {
   cartItemCounter:number = 0;
   cartTotalPrice: number = 0;
-  loggedIn = false;
+
+  loggedInUser$: Observable<any>;
+
   constructor(
     private cartService: CartService,
     private productService: ProductService,
     private dialog: MatDialog,
     private commmonService: CommonService,
     private router: Router,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private authService: AuthService,
   ) { }
  
   ngOnInit(): void {
+    this.getLoggedInUser();
     this.patchCartInfo();
     this.cartUpdateRealtime(); 
-    
-    // Set the default language
-    this.translate.setDefaultLang('en');
-    // Use the current browser language or the default language
-    this.translate.use(this.translate.getBrowserLang() || 'en');
+    this.setDefaultLanguage();
   }
 
-  switchLanguage(language: string) {
-    this.translate.use(language);
-  }
-  onClickMenuBar(){
-    this.commmonService.$showCategorySidebar.next(true);
+  getLoggedInUser(){
+    this.loggedInUser$ = this.authService.loggedInUser$;
+
+    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if(loggedInUser){
+      this.authService.setLoggedInUser(loggedInUser);
+    }
   }
 
   patchCartInfo(){
@@ -55,11 +59,23 @@ export class SearchBarComponent implements OnInit {
   cartUpdateRealtime(){
     this.cartService.$updateCartInfo.subscribe((cartItem)=>{
      if(cartItem){
-
         this.cartTotalPrice +=  cartItem.price * cartItem.counter;
         this.cartItemCounter += cartItem.counter;
       }
     });
+  }
+
+  setDefaultLanguage(){
+    this.translate.setDefaultLang('en');
+    this.translate.use(this.translate.getBrowserLang() || 'en');
+  }
+
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+  
+  onClickMenuBar(){
+    this.commmonService.$showCategorySidebar.next(true);
   }
 
   onClickSignIn(){
@@ -79,10 +95,17 @@ export class SearchBarComponent implements OnInit {
   onLogoClick(){
     this.router.navigate(['']).then((r) => r);
   }
-  cardVisible = false;
 
-  toggleCardVisibility() {
-    this.cardVisible = !this.cardVisible;
+  goToMyAccount(){
     this.router.navigate(['/my-section/profile']).then((r) => r);
   }
+
+  goToAdminPanel(){
+    this.router.navigate(['/admin-panel']).then((r) => r);
+  }
+
+  onClickSignOut(){
+    this.authService.doLoggedOut();
+  }
+
 }

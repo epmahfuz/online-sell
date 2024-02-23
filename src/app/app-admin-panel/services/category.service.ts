@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
 import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,21 @@ export class CategoryService {
     withCredentials: true,
   };
   
-  constructor(private http: HttpClient,) { }
-  
+  constructor(
+    private http: HttpClient,
+    private cookieService: CookieService,
+  ) { }
+
+  getHeader(){
+    const token = this.cookieService.get('authToken');
+    var options = {
+      headers:{
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    return options;
+  }
+
   addProduct(payload: any): Observable<any> {
     return this.http.post(
       `${environment.BusinessService}/product/add`, 
@@ -43,7 +57,8 @@ export class CategoryService {
   addCategory(payload: any): Observable<any> {
     return this.http.post(
       `${environment.BusinessService}/category/add`, 
-      payload
+      payload,
+      this.getHeader()
     );
   }
 
@@ -54,13 +69,15 @@ export class CategoryService {
   }
   getAllOrder() {
     return this.http.get(
-      `${environment.BusinessService}/order/getAll`
+      `${environment.BusinessService}/order/getAll`,
+      this.getHeader()
     );
   }
   updateAOrder(payload: any, orderId:string){
     return this.http.patch(
       `${environment.BusinessService}/order/update/${orderId}`,
-      payload
+      payload,
+      this.getHeader()
     );
   }
 }

@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { CookieService } from 'ngx-cookie-service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -36,6 +37,10 @@ const routes: Routes = [
       ),
     data: { isFullScreen: false, isPublic: false },
   },
+  { 
+    path: '**', 
+    redirectTo: ''
+  },
 ];
 
 @NgModule({
@@ -58,7 +63,7 @@ const routes: Routes = [
       },
     }),
   ],
-  providers: [],
+  providers: [CookieService],
   exports: [RouterModule],
   bootstrap: [AppComponent]
 })

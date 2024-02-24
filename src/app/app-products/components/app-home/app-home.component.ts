@@ -12,11 +12,11 @@ export class AppHomeComponent implements OnInit, AfterViewInit{
   @ViewChild('topCarousel') topCarousel: ElementRef;
 
   isCartViewOn = false;
-  showCategorySidebar = true;
+  showCategorySidebar:boolean;
   constructor(
     private productService: ProductService,
     private commonService: CommonService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.cartViewChangeDetect();
@@ -35,8 +35,14 @@ export class AppHomeComponent implements OnInit, AfterViewInit{
   }
   
   categorySidebarChange(){
+    if(localStorage.getItem('showCategorySidebar') == 'false'){
+      this.showCategorySidebar = false;
+    } else {
+      this.showCategorySidebar = true;
+    }
+    
     this.commonService.$showCategorySidebar.subscribe(isOpenSidebar=>{
-      this.showCategorySidebar = this.showCategorySidebar ? false : true;
+      this.showCategorySidebar = isOpenSidebar;
     })
   }
 

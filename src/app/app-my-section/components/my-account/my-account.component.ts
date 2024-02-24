@@ -11,7 +11,7 @@ import { CommonService } from '../../../app-shared/services/common.service';
 export class MyAccountComponent implements OnInit {
 
   isCartViewOn = true;
-  showCategorySidebar = true;
+  showCategorySidebar:Boolean;
   constructor(
     private productService: ProductService,
     private commonService: CommonService
@@ -23,8 +23,14 @@ export class MyAccountComponent implements OnInit {
   }
 
   categorySidebarChange(){
+    if(localStorage.getItem('showCategorySidebar') == 'false'){
+      this.showCategorySidebar = false;
+    } else {
+      this.showCategorySidebar = true;
+    }
+
     this.commonService.$showCategorySidebar.subscribe(isOpenSidebar=>{
-      this.showCategorySidebar = this.showCategorySidebar ? false : true;
+      this.showCategorySidebar = isOpenSidebar;
     })
   }
 

@@ -1,5 +1,32 @@
+@media screen and (max-width: 765px) {
+    .cart-details {
+        height: 100vh !important;
+        .cart-item-list{
+            height: calc(100vh - 130px) !important;
+        }
+        .cart-footer{
+            bottom: unset !important;
+            position: unset !important;
+            width: unset !important;
+
+            .place-order-amount{
+                height: 48px !important;
+
+                .place-order {
+                    font-size: 19px !important;
+                    line-height: 48px !important;
+                }
+    
+                .total-amount {
+                    font-size: 19px !important;
+                    line-height: 48px !important;
+                }
+            }
+        }
+    }
+}
 .cart-details {
-    height: calc(100vh - 64px);
+    height: calc(100vh - 65px);
     //width: 320px;
     //padding: 12px;
     background-color: #fff;

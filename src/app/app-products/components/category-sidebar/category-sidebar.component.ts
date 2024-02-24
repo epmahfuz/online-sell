@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Category } from '../../../../app/app-shared/models/all-models';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { CommonService } from '../../../app-shared/services/common.service';
 
 @Component({
   selector: 'app-category-sidebar',
@@ -13,6 +14,7 @@ export class CategorySidebarComponent implements OnInit {
   selectedCatId = "all";
   constructor(
     private productService: ProductService,
+    private commmonService: CommonService,
     private router: Router
   ) {}
 
@@ -53,7 +55,21 @@ export class CategorySidebarComponent implements OnInit {
     localStorage.setItem('selectedCatId', selectedCatId);
     localStorage.setItem('selectedCatName', selectedCatName);
 
+    this.keepOpneOrCloseSidebar();
+
     this.decideToRedirect(selectedCatId, selectedCatName);
+  }
+
+  keepOpneOrCloseSidebar(){
+    if (window.innerWidth <= 765) {
+      this.setShowCategorySidebar();
+      
+      this.commmonService.$showCategorySidebar.next(false);
+    }
+  }
+
+  setShowCategorySidebar(){
+    localStorage.setItem('showCategorySidebar', "false");
   }
 
   decideToRedirect(selectedCatId:string, selectedCatName:string){

@@ -18,6 +18,7 @@ import { Observable } from 'rxjs';
 export class SearchBarComponent implements OnInit {
   cartItemCounter:number = 0;
   cartTotalPrice: number = 0;
+  showCategorySidebar:boolean;
 
   loggedInUser$: Observable<any>;
 
@@ -25,17 +26,30 @@ export class SearchBarComponent implements OnInit {
     private cartService: CartService,
     private productService: ProductService,
     private dialog: MatDialog,
-    private commmonService: CommonService,
+    private commonService: CommonService,
     private router: Router,
     private translate: TranslateService,
     private authService: AuthService,
-  ) { }
+  ) {}
  
   ngOnInit(): void {
+    this.getShowCategorySidebar();
     this.getLoggedInUser();
     this.patchCartInfo();
     this.cartUpdateRealtime(); 
     this.setDefaultLanguage();
+  }
+
+  getShowCategorySidebar(){
+    if(localStorage.getItem('showCategorySidebar') == 'false'){
+      this.showCategorySidebar = false;
+    } else {
+      this.showCategorySidebar = true;
+    }
+    
+    this.commonService.$showCategorySidebar.subscribe(isOpenSidebar=>{
+      this.showCategorySidebar = isOpenSidebar;
+    })
   }
 
   getLoggedInUser(){
@@ -75,7 +89,13 @@ export class SearchBarComponent implements OnInit {
   }
   
   onClickMenuBar(){
-    this.commmonService.$showCategorySidebar.next(true);
+    this.showCategorySidebar = this.showCategorySidebar ? false : true; 
+    this.commonService.$showCategorySidebar.next(this.showCategorySidebar);
+    this.setShowCategorySidebar();
+  }
+
+  setShowCategorySidebar(){
+    localStorage.setItem('showCategorySidebar', this.showCategorySidebar.toString())
   }
 
   onClickSignIn(){

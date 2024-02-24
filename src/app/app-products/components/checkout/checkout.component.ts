@@ -21,7 +21,7 @@ export class CheckoutComponent implements OnInit {
 
   addedInCart: ProductModel[] = [];
   totalAmountIncart = 0;
-  isCartViewOn = true;
+  isCartViewOn = false;
   showCategorySidebar = true;
   imgUploading = false;
   isSaving = false;
@@ -62,8 +62,14 @@ export class CheckoutComponent implements OnInit {
     })
   }
   categorySidebarChange(){
+    if(localStorage.getItem('showCategorySidebar') == 'false'){
+      this.showCategorySidebar = false;
+    } else {
+      this.showCategorySidebar = true;
+    }
+
     this.commonService.$showCategorySidebar.subscribe(isOpenSidebar=>{
-      this.showCategorySidebar = this.showCategorySidebar ? false : true;
+      this.showCategorySidebar = isOpenSidebar;
     })
   }
   getTotalAmountFirstTime(){

@@ -18,7 +18,7 @@
                     <div class="item-name-quantity h-100" fxLayout="column" fxLayoutGap="12px" fxLayoutAlign="space-between start">
                         <div class="item-name">
                             {{product.name}}
-                            <div class="short-description"> {{product.quantity}}</div>
+                            <div class="short-description"> {{product.quantity}} {{product.quantityType}}</div>
                         </div>
                         <div class="counter-increase-decrease" fxLayout="row" fxLayoutAlign="space-between center">
                             <button (click)="decreaseInCart(product)" class="add-remove-button remove-button">

@@ -10,10 +10,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-  @ViewChild('productInput') productInput!: ElementRef;
-  @ViewChild('descriptionInput') descriptionInput!: ElementRef;
-  @ViewChild('quantityInput') quantityInput!: ElementRef;
-  @ViewChild('priceInput') priceInput!: ElementRef;
 
   categoryId:string;
   
@@ -28,8 +24,9 @@ export class AddProductComponent implements OnInit {
   form: FormGroup = this.fb.group({
     name: ['', Validators.required],
     description: ['', Validators.required],
-    quantity: [0, Validators.required],
-    price: [0, Validators.required],
+    quantityType: ['pcs', Validators.required],
+    quantity: [null, Validators.required],
+    price: [null, Validators.required],
     image: [null, Validators.required] // Initialize the FormControl for the file
   });
   isSaving = false;
@@ -50,6 +47,7 @@ export class AddProductComponent implements OnInit {
     formData.append('name', this.form.get('name').value);
     formData.append('image', this.form.get('image').value);
     formData.append('description', this.form.get('description').value);
+    formData.append('quantityType', this.form.get('quantityType').value);
     formData.append('quantity', this.form.get('quantity').value);
     formData.append('price', this.form.get('price').value);
     formData.append('categoryId', this.categoryId);
@@ -70,27 +68,4 @@ export class AddProductComponent implements OnInit {
       this.imgUploading = false;
     }
   }
-
-  onClickAddProduct2(){
-    const productName = this.productInput.nativeElement.value;
-    const productDescription = this.descriptionInput.nativeElement.value;
-    const productQuantity = this.quantityInput.nativeElement.value;
-    const productPrice = this.priceInput.nativeElement.value;
-
-    let productPayload = {
-      categoryId: this.categoryId,
-      name: productName,
-      description:productDescription,
-      quantity:productQuantity,
-      price:productPrice
-    };
-
-    console.log(productPayload);
-
-    this.categoryService.addProduct(productPayload).subscribe(res => {
-      console.log("A product created !: ", res);
-      this.onClickProductList();
-    });
-  }
-
 }

@@ -3,60 +3,36 @@
     <app-search-bar></app-search-bar>
   </div>
   <div class="main-content" fxLayout="row" fxLayoutAlign="start start">
-   
 
-    <div
-      [ngClass]="showCategorySidebar == true ? '' : 'display-none'"
-      class="category-products"
-    >
+
+    <div [ngClass]="showCategorySidebar == true ? '' : 'display-none'" class="category-products">
       <app-category-sidebar></app-category-sidebar>
     </div>
-    <div
-      [ngClass]="{'w-100' : showCategorySidebar == false, 'place-content-center' : isCartViewOn==false }"
-      class="products-carousel-and-cart"
-      fxLayout="row"
-    >
-      <div fxLayout="row" fxLayoutAlign="center start" class="p-20" [ngClass]="isCartViewOn==true ? 'checkout-main': 'w-100'"> 
+    <div [ngClass]="{'w-100' : showCategorySidebar == false, 'place-content-center' : isCartViewOn==false }"
+      class="products-carousel-and-cart" fxLayout="row">
+      <div fxLayout="row" fxLayoutAlign="center start" class="p-20"
+        [ngClass]="isCartViewOn==true ? 'checkout-main': 'w-100'">
         <div class="checkout-container">
           <form class="checkout-form" [formGroup]="form">
             <h3 class="checkout-title">
-              Shipping Information 
+              Shipping Information
             </h3>
-            <div 
-            class="checkout-field-parent">
+            <div class="checkout-field-parent">
               <mat-form-field class="mat-form-field" appearance="outline">
                 <mat-label class="label-text">Full Name</mat-label>
-                <input
-                  formControlName="name"
-                  required
-                  matInput
-                  name="FirstName"
-                  placeholder="Enter your full name"
-                />
+                <input formControlName="name" required matInput name="FirstName" placeholder="Enter your full name" />
                 <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
               </mat-form-field>
               <div class="checkout-field-parent">
                 <mat-form-field class="mat-form-field" appearance="outline">
                   <mat-label class="label-text">Phone No</mat-label>
-                  <input
-                    formControlName="phone"
-                    required
-                    matInput
-                    name="Phone No"
-                    placeholder="Enter your Phone No"
-                  />
+                  <input formControlName="phone" required matInput name="Phone No" placeholder="Enter your Phone No" />
                   <!-- <mat-error *ngIf="Phone.invalid && Phone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
                 </mat-form-field>
               </div>
               <mat-form-field class="mat-form-field" appearance="outline">
                 <mat-label class="label-text">Address</mat-label>
-                <input
-                  formControlName="address"
-                  required
-                  matInput
-                  name="Address"
-                  placeholder="Enter your address"
-                />
+                <input formControlName="address" required matInput name="Address" placeholder="Enter your address" />
                 <!-- <mat-error *ngIf="Address.invalid && Address.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
               </mat-form-field>
             </div>
@@ -65,16 +41,16 @@
                 Order Summary
               </h3>
               <div class="summary-main mb-20">
-                <div class="total-single-line w-100 p-8-24"  fxLayout="row" fxLayoutAlign="space-between start">
+                <div class="total-single-line w-100 p-8-24" fxLayout="row" fxLayoutAlign="space-between start">
                   <div class="subtotal-text">Subtotal</div>
                   <div class="subtotal-value">{{ totalAmountIncart }}</div>
                 </div>
-                <div class="total-single-line w-100 p-8-24"  fxLayout="row" fxLayoutAlign="space-between start">
+                <div class="total-single-line w-100 p-8-24" fxLayout="row" fxLayoutAlign="space-between start">
                   <div class="subtotal-text">Shipping Cost</div>
                   <div class="subtotal-value">50</div>
                 </div>
                 <hr>
-                <div class="total-single-line w-100 p-8-24 bold"  fxLayout="row" fxLayoutAlign="space-between start">
+                <div class="total-single-line w-100 p-8-24 bold" fxLayout="row" fxLayoutAlign="space-between start">
                   <div class="subtotal-text">Total Payable</div>
                   <div class="subtotal-value"> ৳ {{ totalAmountIncart+50 }}</div>
                 </div>
@@ -86,7 +62,7 @@
                 >(Please select only one! payment method)</span
               > -->
             </h3>
-          
+
             <mat-radio-group aria-label="Select an option" formControlName="paymentMethod">
               <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="space-between center" class="mb-16">
                 <mat-radio-button [value]="1" class="radio-button">
@@ -95,35 +71,32 @@
                     <p>Cash on Delivery</p>
                   </div>
                 </mat-radio-button>
-                <mat-radio-button [value]="2" class="radio-button">
+                <!-- <mat-radio-button [value]="2" class="radio-button">
                   <div class="radio-content" fxLayout="column" fxLayoutAlign="center start">
                     <img  src="https://www.rokomari.com/static/200/images/bkash.png" alt="Option 2 Image" height="35">
                     <p>pay by Bkash</p>
                   </div>
-                </mat-radio-button>
+                </mat-radio-button> -->
               </div>
-              <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="space-between center">
-              <mat-radio-button [value]="3" class="radio-button">
-                <div class="radio-content" fxLayout="column" fxLayoutAlign="center start">
-                  <img  src="https://www.rokomari.com/static/200/images/Nagad-Logo.png" alt="Option 2 Image" height="35">
-                  <p>Pay by Nagad</p>
-                </div>
-              </mat-radio-button>
-              <mat-radio-button [value]="4" class="radio-button">
-                <div class="radio-content" fxLayout="column" fxLayoutAlign="center start">
-                  <img  src="https://www.rokomari.com/static/200/images/rocket.png" alt="Option 2 Image" height="35">
-                  <p>Pay by Rocket</p>
-                </div>
-              </mat-radio-button>
-            </div>
+              <!-- <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="space-between center">
+                <mat-radio-button [value]="3" class="radio-button">
+                  <div class="radio-content" fxLayout="column" fxLayoutAlign="center start">
+                    <img src="https://www.rokomari.com/static/200/images/Nagad-Logo.png" alt="Option 2 Image"
+                      height="35">
+                    <p>Pay by Nagad</p>
+                  </div>
+                </mat-radio-button>
+                <mat-radio-button [value]="4" class="radio-button">
+                  <div class="radio-content" fxLayout="column" fxLayoutAlign="center start">
+                    <img src="https://www.rokomari.com/static/200/images/rocket.png" alt="Option 2 Image" height="35">
+                    <p>Pay by Rocket</p>
+                  </div>
+                </mat-radio-button>
+              </div> -->
             </mat-radio-group>
 
-            <button 
-              class="mt-52 btn"
-              (click)="onClickPlaceOrder()"
-              [class.save-disabled]="form.invalid || isSaving" 
-              [disabled]="form.invalid || isSaving"
-              type="submit">
+            <button class="mt-52 btn" (click)="onClickPlaceOrder()" [class.save-disabled]="form.invalid || isSaving"
+              [disabled]="form.invalid || isSaving" type="submit">
               Place Order
               <!-- <mat-spinner class="float-r" diameter="24"></mat-spinner> -->
             </button>
@@ -135,6 +108,6 @@
         <app-cart-details></app-cart-details>
       </div>
     </div>
-    
+
   </div>
 </div>

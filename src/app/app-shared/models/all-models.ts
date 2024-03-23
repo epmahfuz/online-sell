@@ -4,6 +4,7 @@ export interface ProductModel {
     name: string, 
     price: number,
     quantity: number,
+    quantityType: string,
     image:string, 
     counterInCart: number
 }

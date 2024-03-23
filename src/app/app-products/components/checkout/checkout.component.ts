@@ -132,7 +132,9 @@ export class CheckoutComponent implements OnInit {
         {
           "productId": product._id,
           "name": product.name,
-          "quantity": product.counterInCart,
+          "counterInCart": product.counterInCart,
+          "quantity": product.quantity,
+          "quantityType": product.quantityType,
           "price": product.price
         }
       );

@@ -11,15 +11,51 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { MaterialModule } from '../app-material/material.module';
 import { AdminOrderComponent } from './components/Order/admin-order/admin-order.component';
 import { DecisionModalComponent } from './components/decision-modal/decision-modal.component';
+import { RoleGuard } from '../app-shared/services/role.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'menu/category-list', pathMatch: 'full' },
-  { path: 'menu/category-list', component: CategoryListComponent },
-  { path: 'menu/add-category', component: AddCategoryComponent },
-  { path: 'menu/product-list/:id', component: ProductListComponent },
-  { path: 'menu/add-product/:id', component: AddProductComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'order', component: AdminOrderComponent },
+  { 
+    path: '', 
+    redirectTo: 'menu/category-list', 
+    pathMatch: 'full', 
+    canActivate: [RoleGuard], 
+    data: { expectedRole: 'admin' } 
+  },
+  { path: 'menu/category-list', 
+    component: CategoryListComponent , 
+    canActivate: [RoleGuard], 
+    data: { expectedRole: 'admin' } 
+  },
+  { 
+    path: 'menu/add-category', 
+    component: AddCategoryComponent , 
+    canActivate: [RoleGuard], 
+    data: { expectedRole: 'admin' } 
+  },
+  { 
+      path: 'menu/product-list/:id', 
+    component: ProductListComponent , 
+    canActivate: [RoleGuard], 
+    data: { expectedRole: 'admin' } 
+  },
+  { 
+      path: 'menu/add-product/:id', 
+    component: AddProductComponent , 
+    canActivate: [RoleGuard], 
+    data: { expectedRole: 'admin' } 
+  },
+  { 
+      path: 'dashboard', 
+    component: DashboardComponent , 
+    canActivate: [RoleGuard], 
+    data: { expectedRole: 'admin' } 
+  },
+  { 
+      path: 'order', 
+    component: AdminOrderComponent , 
+    canActivate: [RoleGuard], 
+    data: { expectedRole: 'admin' } 
+  },
 ]
 
 

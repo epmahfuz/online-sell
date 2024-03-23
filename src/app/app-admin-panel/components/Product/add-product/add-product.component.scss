@@ -12,6 +12,14 @@
     width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
+
+    ::ng-deep {
+      .mat-form-field.mat-form-field-appearance-outline .mat-form-field-suffix {
+        //position: absolute;
+        top: -4px; /* Adjust this value to move the suffix up or down */
+        //right: 10px; /* Adjust this value to move the suffix left or right */
+      }
+    }
   }
   
   

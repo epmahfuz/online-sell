@@ -45,6 +45,9 @@ body {
   .mr-4{
     margin-right: 4px !important;
   }
+  .mr-16{
+    margin-right: 16px !important;
+  }
   .mr-24{
     margin-right: 24px !important;
   }
@@ -361,10 +364,16 @@ body {
     flex-direction: column;
   }
   
-  .product-phone-feild-conteiner {
+  .two-column {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 15px;
+  }
+  .radio-group-single-line{
+    padding-bottom: 28px;
+  }
+  .radio-group-single-line-lebel{
+
   }
   
   h2,

@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   getLoggedInUser() {
-    return this.loggedInUserSubject.value;
+    return JSON.parse(localStorage.getItem("loggedInUser"));
   }
 
   clearLoggedInUser() {
@@ -51,4 +51,10 @@ export class AuthService {
   isLoggedIn() {
     return !!this.getLoggedInUser();
   }
+
+  hasRole(expectedRole : string) : boolean {
+    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    return loggedInUser.role == expectedRole;
+  }
+
 }

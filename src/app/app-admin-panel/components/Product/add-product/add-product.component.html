@@ -1,98 +1,81 @@
+<div class="container">
+
+    <app-left-sidebar></app-left-sidebar>
+    <!-- ========================= Main ==================== -->
+    <div class="main">
+        <app-top-bar></app-top-bar>
+        <!-- ======================= product ================== -->
 
 
-    <div class="container">
-    
-        <app-left-sidebar></app-left-sidebar>
-            <!-- ========================= Main ==================== -->
-            <div class="main">
-                <app-top-bar></app-top-bar> 
-                    <!-- ======================= product ================== -->
-                  
-                            
-                <div class="content">
-                    <div class="product-list">  
-                    <div class="pro-header" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="space-between center">
-                        <div class="primary-color"  fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="space-between center">
-                            <i class="fa-solid fa-arrow-left back-icon" (click)="onClickProductList()"></i>
-                            <h2>Add Product</h2> 
-                        </div>
-                        
-                        <button class="btn" (click)="onClickAddProduct()">
-                            <!-- <i class="fa-solid fa-plus mr-4"></i> -->
-                            <i class="fa-solid fa-floppy-disk mr-4"></i>
-                            Save</button>
+        <div class="content">
+            <div class="product-list">
+                <div class="pro-header" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="space-between center">
+                    <div class="primary-color" fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="space-between center">
+                        <i class="fa-solid fa-arrow-left back-icon" (click)="onClickProductList()"></i>
+                        <h2>Add Product</h2>
                     </div>
-                    <div class="product-container">
-                        <form [formGroup]="form" class="product-form">
+
+                    <button class="btn" (click)="onClickAddProduct()">
+                        <!-- <i class="fa-solid fa-plus mr-4"></i> -->
+                        <i class="fa-solid fa-floppy-disk mr-4"></i>
+                        Save</button>
+                </div>
+                <div class="product-container">
+                    <form [formGroup]="form" class="product-form">
                         <div class="product-title">
                             Basic Information
                         </div>
                         <div class="product-field-parent">
                             <mat-form-field class="mat-form-field product-field" appearance="outline">
-                            <mat-label class="label-text">Product Name</mat-label>
-                            <input
-                                required
-                                matInput
-                                #productInput
-                                name="ProductName"
-                                formControlName="name"
-                                placeholder="Enter your product Name"
-                            />
-                            <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
+                                <mat-label class="label-text">Product Name</mat-label>
+                                <input required matInput name="ProductName" formControlName="name"
+                                    placeholder="Enter your product Name" />
+                                <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
                             </mat-form-field>
+
                             <mat-form-field class="mat-form-field product-field" appearance="outline">
-                            <mat-label class="label-text">Product description</mat-label>
-                            <input
-                                required
-                                matInput
-                                #descriptionInput
-                                name="Product description"
-                                formControlName="description"
-                                placeholder="Enter your product description"
-                            />
-                            <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
+                                <mat-label class="label-text">Product description</mat-label>
+                                <input required matInput name="Product description" formControlName="description"
+                                    placeholder="Enter your product description" />
+                                <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
                             </mat-form-field>
-                            <div class="product-phone-feild-conteiner product-field">
-                            <mat-form-field class="mat-form-field" appearance="outline">
-                                <mat-label class="label-text">Product Quantity</mat-label>
-                                <input
-                                required
-                                matInput
-                                #quantityInput
-                                name="Product quantity"
-                                formControlName="quantity"
-                                placeholder="Enter your product quantity"
-                                />
-                                <!-- <mat-error *ngIf="Phone.invalid && Phone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
-                            </mat-form-field>
-                            <mat-form-field class="mat-form-field" appearance="outline">
-                                <mat-label class="label-text">Product price</mat-label>
-                                <input
-                                required
-                                matInput
-                                #priceInput
-                                name="Product price"
-                                formControlName="price"
-                                placeholder="Enter your product price"
-                                />
-                                <!-- <mat-error *ngIf="AlternativePhone.invalid && AlternativePhone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
-                            </mat-form-field>
+
+                            <div class="radio-group-single-line">
+                                <mat-label class="label-text mr-24">Quantity Type</mat-label>
+                                <mat-radio-group aria-label="Select an option" formControlName="quantityType">
+                                    <mat-radio-button class="mr-16" value="pcs">pcs</mat-radio-button>
+                                    <mat-radio-button class="mr-16" value="kg">kg</mat-radio-button>
+                                    <mat-radio-button class="mr-16" value="gm">gm</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            
+                            <div class="two-column product-field">
+                                <mat-form-field class="mat-form-field" appearance="outline">
+                                    <mat-label class="label-text">Product Quantity</mat-label>
+                                    <input required matInput name="Product quantity" formControlName="quantity"
+                                        placeholder="Enter your product quantity" />
+                                    <!-- <mat-error *ngIf="Phone.invalid && Phone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
+                                    <span matSuffix>{{ form.get('quantityType').value }} &nbsp;</span>
+                                </mat-form-field>
+                                <mat-form-field class="mat-form-field" appearance="outline">
+                                    <mat-label class="label-text">Product price</mat-label>
+                                    <input required matInput name="Product price" formControlName="price"
+                                        placeholder="Enter your product price" />
+                                    <!-- <mat-error *ngIf="AlternativePhone.invalid && AlternativePhone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
+                                </mat-form-field>
                             </div>
                             <div style="padding-bottom:18px;">
                                 <div class="product-choose-label mb-16">Category Image *</div>
-                                <input size="60" type="file" name="image" placeholder="Avatar" (change)="onFileSelected($event)">
+                                <input size="60" type="file" name="image" placeholder="Avatar"
+                                    (change)="onFileSelected($event)">
                                 <mat-spinner *ngIf="imgUploading" [diameter]="40" class="float-r"></mat-spinner>
                             </div>
                         </div>
-                        </form>
-                    </div>
-                    
+                    </form>
                 </div>
-                </div>
-        
+
             </div>
         </div>
-    
-        
-     
- 
+
+    </div>
+</div>

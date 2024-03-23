@@ -10,7 +10,7 @@
         *ngFor="let product of productListShow">
             <img class="product-img" src="{{product.image}}" alt="">
             <div class="product-name">{{product.name}}</div>
-            <div class="product-quantity">{{product.quantity}} pcs</div>
+            <div class="product-quantity">{{product.quantity}} {{product.quantityType}}</div>
             <div class="product-price">৳ {{product.price}}</div>
             <div *ngIf="!product.counterInCart" class="primary-button" (click)="addToCart(product)"  fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
                 <mat-icon>add_shopping_cart</mat-icon>

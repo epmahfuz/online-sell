@@ -27,7 +27,7 @@ export class CategoryService {
     private cookieService: CookieService,
   ) { }
 
-  getHeader(){
+  getAuthorizedHeader(){
     const token = this.cookieService.get('authToken');
     var options = {
       headers:{
@@ -40,7 +40,8 @@ export class CategoryService {
   addProduct(payload: any): Observable<any> {
     return this.http.post(
       `${environment.BusinessService}/product/add`, 
-      payload
+      payload,
+      this.getAuthorizedHeader()
     );
   }
   getAllProduct() { 
@@ -58,7 +59,7 @@ export class CategoryService {
     return this.http.post(
       `${environment.BusinessService}/category/add`, 
       payload,
-      this.getHeader()
+      this.getAuthorizedHeader()
     );
   }
 
@@ -70,14 +71,14 @@ export class CategoryService {
   getAllOrder() {
     return this.http.get(
       `${environment.BusinessService}/order/getAll`,
-      this.getHeader()
+      this.getAuthorizedHeader()
     );
   }
   updateAOrder(payload: any, orderId:string){
     return this.http.patch(
       `${environment.BusinessService}/order/update/${orderId}`,
       payload,
-      this.getHeader()
+      this.getAuthorizedHeader()
     );
   }
 }

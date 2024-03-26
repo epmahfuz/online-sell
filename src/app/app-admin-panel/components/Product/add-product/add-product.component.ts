@@ -51,6 +51,7 @@ export class AddProductComponent implements OnInit {
     formData.append('quantity', this.form.get('quantity').value);
     formData.append('price', this.form.get('price').value);
     formData.append('categoryId', this.categoryId);
+    formData.append('counterInCart', "0");
 
     this.categoryService.addProduct(formData).subscribe(res => {
       console.log("A product created !: ", res);

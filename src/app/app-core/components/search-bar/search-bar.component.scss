@@ -20,6 +20,9 @@
             }
             .right-part {
                 width: 62% !important;
+                .cart-logo {
+                    margin-right: 8px !important;
+                }
             }
         }
     }
@@ -139,7 +142,7 @@
 
             .cart-section {
                 cursor: pointer;
-                width: 105px;
+                width: 106px;
 
                 .cart-logo {
                     mat-icon {

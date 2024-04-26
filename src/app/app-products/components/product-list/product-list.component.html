@@ -5,7 +5,7 @@
         </div>
         <div class="product-list-header-text">{{ selectedCategoryName }}</div>
     </div>
-    <div class="product-list-view" fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="start center">
+    <div class="product-list-view" fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="space-around center">
         <div class="single-product" fxLayout="column" fxLayoutGap="6px" fxLayoutAlign="center center"
         *ngFor="let product of productListShow">
             <img class="product-img" src="{{product.image}}" alt="">

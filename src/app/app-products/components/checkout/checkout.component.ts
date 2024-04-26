@@ -31,11 +31,14 @@ export class CheckoutComponent implements OnInit {
     [3, "Nagad"],
     [4, "Rocket"],
   ]);
+  shippingCost = 50;
+
   form: FormGroup = this.fb.group({
     name: ['', Validators.required],
     phone: ['', Validators.required], // Initialize the FormControl for the file
     address: ['', Validators.required], // Initialize the FormControl for the file
-    paymentMethod: [1, Validators.required] // Initialize the FormControl for the file
+    paymentMethod: [1, Validators.required], // Initialize the FormControl for the file
+    deliveryType: ['regular', Validators.required] // Initialize the FormControl for the file
   });
   
   ngOnInit(): void {
@@ -140,6 +143,14 @@ export class CheckoutComponent implements OnInit {
       );
     });
     return productInOrder;
+  }
+
+  ChangeShippingCost(){
+    if(this.form.get('deliveryType').value == 'regular'){
+      this.shippingCost = 50;
+    } else {
+      this.shippingCost = 100;
+    }
   }
 
   openSuccessSnackBar(){

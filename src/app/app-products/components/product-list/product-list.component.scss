@@ -1,3 +1,13 @@
+@media screen and (max-width: 765px) {
+    .single-product {
+        width: 160px !important;
+
+        .product-img {
+            width: 160px !important;
+            height: 160px !important;
+        }
+    }
+}
 .product-list-public {
     margin: 16px;
 

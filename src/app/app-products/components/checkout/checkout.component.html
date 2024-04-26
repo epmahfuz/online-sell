@@ -35,6 +35,10 @@
                 <input formControlName="address" required matInput name="Address" placeholder="Enter your address" />
                 <!-- <mat-error *ngIf="Address.invalid && Address.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
               </mat-form-field>
+              <mat-radio-group  (change)="ChangeShippingCost()" aria-label="Select an option" formControlName="deliveryType">
+                <mat-radio-button class="mr-16" value="regular">Regular Delivery</mat-radio-button>
+                <mat-radio-button class="mr-16" value="express">Express Delivery</mat-radio-button>
+            </mat-radio-group>
             </div>
             <div class="summery m-24">
               <h3 class="checkout-title">
@@ -47,12 +51,12 @@
                 </div>
                 <div class="total-single-line w-100 p-8-24" fxLayout="row" fxLayoutAlign="space-between start">
                   <div class="subtotal-text">Shipping Cost</div>
-                  <div class="subtotal-value">50</div>
+                  <div class="subtotal-value">{{ shippingCost }}</div>
                 </div>
                 <hr>
                 <div class="total-single-line w-100 p-8-24 bold" fxLayout="row" fxLayoutAlign="space-between start">
                   <div class="subtotal-text">Total Payable</div>
-                  <div class="subtotal-value"> ৳ {{ totalAmountIncart+50 }}</div>
+                  <div class="subtotal-value"> ৳ {{ totalAmountIncart + shippingCost }}</div>
                 </div>
               </div>
             </div>

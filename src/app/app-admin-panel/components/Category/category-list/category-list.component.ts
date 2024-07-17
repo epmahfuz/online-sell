@@ -49,7 +49,7 @@ export class CategoryListComponent implements OnInit {
     event.stopPropagation();
   }
   editItem(categoryId){
-
+    this.router.navigate([`admin-panel/menu/edit-category/${categoryId}`]).then((r) => r);
   }
   deleteItem(categoryId){
     let data = {

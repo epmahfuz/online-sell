@@ -54,7 +54,8 @@ export class CategoryService {
       `${environment.BusinessService}/product/getByCategoryId/${categoryId}`
     );
   }
-  
+
+  // Category Api's - start
   addCategory(payload: any): Observable<any> {
     return this.http.post(
       `${environment.BusinessService}/category/add`, 
@@ -68,12 +69,29 @@ export class CategoryService {
       `${environment.BusinessService}/category/getAll`
     );
   }
+
+  getACategory(catId:string) {
+    return this.http.get(
+      `${environment.BusinessService}/category/get/${catId}`
+    );
+  }
+
+  updateACategory(payload: any, catId:string){
+    return this.http.patch(
+      `${environment.BusinessService}/category/update/${catId}`,
+      payload,
+      this.getAuthorizedHeader()
+    );
+  }
+  // Category Api's - end
+
   getAllOrder() {
     return this.http.get(
       `${environment.BusinessService}/order/getAll`,
       this.getAuthorizedHeader()
     );
   }
+  
   updateAOrder(payload: any, orderId:string){
     return this.http.patch(
       `${environment.BusinessService}/order/update/${orderId}`,

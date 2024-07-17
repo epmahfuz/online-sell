@@ -12,6 +12,7 @@ import { MaterialModule } from '../app-material/material.module';
 import { AdminOrderComponent } from './components/Order/admin-order/admin-order.component';
 import { DecisionModalComponent } from './components/decision-modal/decision-modal.component';
 import { RoleGuard } from '../app-shared/services/role.guard';
+import { EditCategoryComponent } from './components/Category/edit-category/edit-category.component';
 
 const routes: Routes = [
   { 
@@ -29,6 +30,12 @@ const routes: Routes = [
   { 
     path: 'menu/add-category', 
     component: AddCategoryComponent , 
+    canActivate: [RoleGuard], 
+    data: { expectedRole: 'admin' } 
+  },
+  { 
+    path: 'menu/edit-category/:id', 
+    component: EditCategoryComponent , 
     canActivate: [RoleGuard], 
     data: { expectedRole: 'admin' } 
   },
@@ -69,7 +76,8 @@ const routes: Routes = [
     LeftSidebarComponent,
     TopBarComponent,
     AdminOrderComponent,
-    DecisionModalComponent
+    DecisionModalComponent,
+    EditCategoryComponent
   ],
   imports: [
     RouterModule.forChild(routes),

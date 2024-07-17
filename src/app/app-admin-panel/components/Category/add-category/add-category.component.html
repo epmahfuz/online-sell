@@ -11,11 +11,12 @@
                 <div class="pro-header" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="space-between center">
                     <div class="primary-color"  fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="space-between center">
                         <i class="fa-solid fa-arrow-left back-icon" (click)="goToCategoryList()"></i>
-                        <h2>Add Category</h2> 
+                        <h2 *ngIf="IsEditCategory">Edit Category</h2> 
+                        <h2 *ngIf="!IsEditCategory">Add Category</h2> 
                     </div>
                     
-                    <button class="btn" (click)="onClickAddCategory()"
-                            [class.save-disabled]="form.invalid || isSaving" [disabled]="form.invalid || isSaving">
+                    <button class="btn" (click)="onClickSave()"
+                            [class.save-disabled]="addCategoryForm.invalid || isSaving" [disabled]="addCategoryForm.invalid || isSaving">
                             <i class="fa-solid fa-floppy-disk mr-4"></i>
                             Save
                     </button>
@@ -24,7 +25,7 @@
                 <div class="product-container">
                     
 
-                    <form [formGroup]="form" class="product-form">
+                    <form [formGroup]="addCategoryForm" class="product-form">
                     <div class="product-title">
                         Basic Information
                     </div>
@@ -41,12 +42,20 @@
                         />
                         <!-- <mat-error *ngIf="Name.invalid && Name.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
                         </mat-form-field>
-                        <div style="padding-bottom:18px;">
+                        <div *ngIf="!imgUploaded" style="padding-bottom:18px;">
                             <div class="product-choose-label mb-16">Category Image *</div>
                             <input size="60" type="file" name="image" placeholder="Avatar" (change)="onFileSelected($event)">
                             <mat-spinner *ngIf="imgUploading" [diameter]="40" class="float-r"></mat-spinner>
                         </div>
-                        
+                        <div *ngIf="imgUploaded" class="preview-content">
+                            <span class="cross-mark"
+                              ><img
+                                src="../../../../../assets/icons/close_icon.png"
+                                alt=""
+                                (click)="removeSelectedFile()"
+                            /></span>
+                            <img src="{{ imgUrl }}" alt="" />
+                          </div>
                     </div>
                     
                     <!-- <button (click)="onClickAddCategory()" type="submit">Add</button> -->

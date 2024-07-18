@@ -8,18 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./decision-modal.component.scss']
 })
 export class DecisionModalComponent implements OnInit {
-  modalData;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private dialog: MatDialog,
-    private router: Router,
     public dialogRef: MatDialogRef<DecisionModalComponent>,
   ) {
   }
 
   ngOnInit(): void { }
   
-  closeModal(){
-    this.dialogRef.close(true);
+  onClickCancel(){
+    this.dialogRef.close(false);
+  }
+  onClickConfirm(){
+    this.dialogRef.close(true)
   }
 }

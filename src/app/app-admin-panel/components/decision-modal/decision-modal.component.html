@@ -1,1 +1,7 @@
-<p>decision-modal works! {{data.name}}</p>
+<div mat-dialog-content>{{ data.confirmMessage }}</div>
+<div mat-dialog-actions>
+  <button mat-raised-button class=" mr-16"
+          style="background: red; color: #FFFFFF"
+          (click)="onClickConfirm()">{{"Confirm"}}</button>
+  <button mat-button (click)="onClickCancel()" >{{"Cancel"}}</button>
+</div>

@@ -79,6 +79,9 @@ export class AddCategoryComponent implements OnInit {
   updateCategory(){
     const formData = new FormData();
     formData.append('name', this.addCategoryForm.get('name').value);
+    formData.append('isArchived', "false");
+    formData.append('isActive', "true");
+
     if(this.patchImgChanged == true){
       formData.append('image', this.addCategoryForm.get('image').value);
     }

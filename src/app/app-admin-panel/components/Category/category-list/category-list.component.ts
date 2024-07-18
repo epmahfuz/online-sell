@@ -51,17 +51,27 @@ export class CategoryListComponent implements OnInit {
   editItem(categoryId){
     this.router.navigate([`admin-panel/menu/edit-category/${categoryId}`]).then((r) => r);
   }
-  deleteItem(categoryId){
+
+  deleteItem(categoryId, categoryName){
     let data = {
-      name: "Sample"
+      confirmMessage: "Are you sure you want to delete?"
     }
     const dialogRef = this.dialog.open(DecisionModalComponent, {
       width: '320px',
       disableClose: false,
       data: data
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe(confirmDelete => {
+      if(confirmDelete){
+        let payload = {
+          isArchived: true,
+          isActive: true,
+          name: categoryName
+        }
+        this.categoryService.updateACategory(payload, categoryId).subscribe( res=>{
+          this.getAllCategories();
+        });
+      }
     });
 
   }

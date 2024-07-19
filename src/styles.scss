@@ -384,6 +384,23 @@ body {
   .product-choose-label{
     
   }
+  .preview-content {
+    margin-top: -8px;
+    display: grid;
+    text-align: end;
+    width: 120px;
+    .cross-mark {
+      margin-bottom: -13px;
+      margin-right: -7px;
+      z-index: 1000;
+      img {
+        cursor: pointer;
+      }
+    }
+    img {
+      width: inherit;
+    }
+  }
   // input[type="file"] {
   //   display: none;
   // }

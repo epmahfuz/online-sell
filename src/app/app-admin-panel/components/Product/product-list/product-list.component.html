@@ -26,6 +26,7 @@
                                 <td>Quantity</td>
                                 <td>Price</td>
                                 <td>Status</td>
+                                <td>Action</td>
                             </tr>
                         </thead>
 
@@ -35,6 +36,22 @@
                                 <td style="margin-left: -20px;">{{ product.quantity }}</td>
                                 <td>{{ product.price }}</td> 
                                 <td><span class="status delivered-status">Active</span></td>
+                                <td (click)="onClickAction($event, product._id)">
+                                    <button mat-icon-button [matMenuTriggerFor]="menu"
+                                        aria-label="Example icon-button with a menu">
+                                        <mat-icon>more_vert</mat-icon>
+                                    </button>
+                                    <mat-menu #menu="matMenu">
+                                        <button (click)="editItem(product._id)" mat-menu-item>
+                                            <mat-icon>edit</mat-icon>
+                                            <span>Edit</span>
+                                        </button>
+                                        <button (click)="deleteItem(product._id)" mat-menu-item>
+                                            <mat-icon>delete</mat-icon>
+                                            <span>Delete</span>
+                                        </button>
+                                    </mat-menu>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

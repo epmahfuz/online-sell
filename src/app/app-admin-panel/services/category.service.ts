@@ -44,6 +44,13 @@ export class CategoryService {
       this.getAuthorizedHeader()
     );
   }
+  updateAProduct(payload: any, productId:string) {
+    return this.http.patch(
+      `${environment.BusinessService}/product/update/${productId}`,
+      payload,
+      this.getAuthorizedHeader()
+    );
+  }
   getAllProduct() { 
     return this.http.get(
       `${environment.BusinessService}/product/getAll`
@@ -52,6 +59,18 @@ export class CategoryService {
   getProductByCategoryId(categoryId: string) { 
     return this.http.get(
       `${environment.BusinessService}/product/getByCategoryId/${categoryId}`
+    );
+  }
+  getAProduct(productId: string) { 
+    return this.http.get(
+      `${environment.BusinessService}/product/getAProduct/${productId}`
+    );
+  }
+  archiveAProduct(payload: any, productId:string){
+    return this.http.patch(
+      `${environment.BusinessService}/product/archive/${productId}`,
+      payload,
+      this.getAuthorizedHeader()
     );
   }
 
@@ -76,7 +95,7 @@ export class CategoryService {
     );
   }
 
-  updateACategory(payload: any, catId:string){
+  updateACategory(payload: any, catId:string) {
     return this.http.patch(
       `${environment.BusinessService}/category/update/${catId}`,
       payload,
@@ -91,7 +110,7 @@ export class CategoryService {
       this.getAuthorizedHeader()
     );
   }
-  
+
   updateAOrder(payload: any, orderId:string){
     return this.http.patch(
       `${environment.BusinessService}/order/update/${orderId}`,

@@ -12,16 +12,18 @@
                 <div class="pro-header" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="space-between center">
                     <div class="primary-color" fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="space-between center">
                         <i class="fa-solid fa-arrow-left back-icon" (click)="onClickProductList()"></i>
-                        <h2>Add Product</h2>
+                        <h2 *ngIf="isEditMode">Edit Product</h2> 
+                        <h2 *ngIf="!isEditMode">Add Product</h2> 
                     </div>
 
-                    <button class="btn" (click)="onClickAddProduct()">
+                    <button class="btn" (click)="onClickSave()"
+                            [class.save-disabled]="addProductForm.invalid || isSaving" [disabled]="addProductForm.invalid || isSaving">
                         <!-- <i class="fa-solid fa-plus mr-4"></i> -->
                         <i class="fa-solid fa-floppy-disk mr-4"></i>
                         Save</button>
                 </div>
                 <div class="product-container">
-                    <form [formGroup]="form" class="product-form">
+                    <form [formGroup]="addProductForm" class="product-form">
                         <div class="product-title">
                             Basic Information
                         </div>
@@ -55,7 +57,7 @@
                                     <input required matInput name="Product quantity" formControlName="quantity"
                                         placeholder="Enter your product quantity" />
                                     <!-- <mat-error *ngIf="Phone.invalid && Phone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
-                                    <span matSuffix>{{ form.get('quantityType').value }} &nbsp;</span>
+                                    <span matSuffix>{{ addProductForm.get('quantityType').value }} &nbsp;</span>
                                 </mat-form-field>
                                 <mat-form-field class="mat-form-field" appearance="outline">
                                     <mat-label class="label-text">Product price</mat-label>
@@ -64,12 +66,21 @@
                                     <!-- <mat-error *ngIf="AlternativePhone.invalid && AlternativePhone.value == ''">{{"REQUIRED_FIELD" | translate}}</mat-error> -->
                                 </mat-form-field>
                             </div>
-                            <div style="padding-bottom:18px;">
-                                <div class="product-choose-label mb-16">Category Image *</div>
+                            <div *ngIf="!imgUploaded" style="padding-bottom:18px;">
+                                <div class="product-choose-label mb-16">Product Image *</div>
                                 <input size="60" type="file" name="image" placeholder="Avatar"
                                     (change)="onFileSelected($event)">
                                 <mat-spinner *ngIf="imgUploading" [diameter]="40" class="float-r"></mat-spinner>
                             </div>
+                            <div *ngIf="imgUploaded" class="preview-content">
+                                <span class="cross-mark"
+                                  ><img
+                                    src="../../../../../assets/icons/close_icon.png"
+                                    alt=""
+                                    (click)="removeSelectedFile()"
+                                /></span>
+                                <img src="{{ imgUrl }}" alt="" />
+                              </div>
                         </div>
                     </form>
                 </div>

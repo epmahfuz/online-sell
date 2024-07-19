@@ -11,8 +11,8 @@
                 <div class="pro-header" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="space-between center">
                     <div class="primary-color"  fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="space-between center">
                         <i class="fa-solid fa-arrow-left back-icon" (click)="goToCategoryList()"></i>
-                        <h2 *ngIf="IsEditCategory">Edit Category</h2> 
-                        <h2 *ngIf="!IsEditCategory">Add Category</h2> 
+                        <h2 *ngIf="isEditMode">Edit Category</h2> 
+                        <h2 *ngIf="!isEditMode">Add Category</h2> 
                     </div>
                     
                     <button class="btn" (click)="onClickSave()"

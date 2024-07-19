@@ -13,6 +13,7 @@ import { AdminOrderComponent } from './components/Order/admin-order/admin-order.
 import { DecisionModalComponent } from './components/decision-modal/decision-modal.component';
 import { RoleGuard } from '../app-shared/services/role.guard';
 import { EditCategoryComponent } from './components/Category/edit-category/edit-category.component';
+import { EditProductComponent } from './components/Product/edit-product/edit-product.component';
 
 const routes: Routes = [
   { 
@@ -52,6 +53,12 @@ const routes: Routes = [
     data: { expectedRole: 'admin' } 
   },
   { 
+    path: 'menu/edit-product/:id', 
+  component: EditProductComponent , 
+  canActivate: [RoleGuard], 
+  data: { expectedRole: 'admin' } 
+},
+  { 
       path: 'dashboard', 
     component: DashboardComponent , 
     canActivate: [RoleGuard], 
@@ -77,7 +84,8 @@ const routes: Routes = [
     TopBarComponent,
     AdminOrderComponent,
     DecisionModalComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    EditProductComponent
   ],
   imports: [
     RouterModule.forChild(routes),

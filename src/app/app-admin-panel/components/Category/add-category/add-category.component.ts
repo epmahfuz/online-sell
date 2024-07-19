@@ -8,8 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-category.component.scss']
 })
 export class AddCategoryComponent implements OnInit {
-  @Input() public IsEditCategory:any = false;
-  @Input() public CategoryId:any = "";
+  @Input() public isEditMode:any = false;
+  @Input() public categoryId:any = "";
   @ViewChild('categoryInput') categoryInput!: ElementRef;
   constructor(
     private router: Router,
@@ -30,9 +30,8 @@ export class AddCategoryComponent implements OnInit {
   isSaving = false;
 
   ngOnInit(): void {
-    if(this.IsEditCategory){
-      console.log("IsEditCategory: ", this.IsEditCategory);
-      this.categoryService.getACategory(this.CategoryId).subscribe(res =>{
+    if(this.isEditMode){
+      this.categoryService.getACategory(this.categoryId).subscribe(res =>{
         console.log("res: ", res[0]);
         this.patchCategoryInfo(res[0]);
       });
@@ -55,7 +54,7 @@ export class AddCategoryComponent implements OnInit {
   }
   onClickSave(){
     this.isSaving = true;
-    if(this.IsEditCategory){
+    if(this.isEditMode){
       this.updateCategory();
     } else {
       this.addCategory();
@@ -86,7 +85,7 @@ export class AddCategoryComponent implements OnInit {
       formData.append('image', this.addCategoryForm.get('image').value);
     }
 
-    this.categoryService.updateACategory(formData, this.CategoryId).subscribe(res => {
+    this.categoryService.updateACategory(formData, this.categoryId).subscribe(res => {
       console.log("A category update !: ", res);
       this.goToCategoryList();
     }, (error=>{

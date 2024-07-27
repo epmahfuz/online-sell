@@ -91,8 +91,8 @@
             </button>
             <mat-error *ngIf="password.invalid && (password.dirty || password.touched)">
               <span *ngIf="password.errors.required">Password is required.</span>
-              <!-- <span *ngIf="password.errors.minlength">Password must be at least 8 characters long.</span> -->
-              <span *ngIf="!password.errors.required && (password.errors.minlength || password.errors.passwordStrength)">Try 8 characters mix of letter, number & symbol</span>
+              <span *ngIf="!password.errors.required && password.errors.minlength">Password must be at least 6 characters long.</span>
+              <!-- <span *ngIf="!password.errors.required && (password.errors.minlength || password.errors.passwordStrength)">Try 8 characters mix of letter, number & symbol</span> -->
             </mat-error>
           </mat-form-field>
         </p>

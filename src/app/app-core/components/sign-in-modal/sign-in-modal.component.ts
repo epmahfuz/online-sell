@@ -32,7 +32,8 @@ export class SignInModalComponent implements OnInit {
     name: ['', [Validators.required, Validators.pattern('^[a-zA-Z\\s]+$')]],
     mobile: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],
     email: ['', [Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8), this.passwordStrength()]],
+    //password: ['', [Validators.required, Validators.minLength(8), this.passwordStrength()]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
     image: [null],
   });
 

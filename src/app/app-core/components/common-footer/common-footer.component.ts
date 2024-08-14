@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-common-footer',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommonFooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   }
 
+  onClickTermsAndCondition(){
+    this.router.navigate(['info/terms-and-condition']).then((r) => r);
+  }
+
+  onClickPrivacyPolicy(){
+    this.router.navigate(['info/privacy-policy']).then((r) => r);
+  }
+  
 }

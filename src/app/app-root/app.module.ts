@@ -37,6 +37,14 @@ const routes: Routes = [
       ),
     data: { isFullScreen: false, isPublic: false },
   },
+  {
+    path: 'info',
+    loadChildren: () => 
+      import('../app-legal-info/app-legal-info.module').then(
+        (module) => module.AppLegalInfoModule
+      ),
+    data: { isFullScreen: false, isPublic: false },
+  },
   { 
     path: '**', 
     redirectTo: ''

@@ -42,6 +42,7 @@ const routes: Routes = [
         deps: [HttpClient],
       },
     }),
-  ]
+  ],
+  exports: [CategorySidebarComponent, CartDetailsComponent]
 })
 export class AppProductsModule { }

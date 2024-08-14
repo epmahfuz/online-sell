@@ -1,0 +1,30 @@
+<div class="app-home">
+    <div class="top-bar">
+        <app-search-bar></app-search-bar>
+    </div>
+    <div class="main-content" fxLayout="row" fxLayoutAlign="start start">
+        
+        <div [ngClass]="showCategorySidebar==true ? '': 'display-none'" class="category-products">
+            <app-category-sidebar></app-category-sidebar>
+            
+        </div>
+        
+        <div  #scrollContainer [ngClass]="showCategorySidebar==true ? '': 'w-100'" class="products-carousel-and-cart" fxLayout="row" fxLayoutAlign="space-between start">
+            <div [ngClass]="isCartViewOn==true ? 'products-carousel': ''">
+                <div #topCarousel>
+                    <app-top-carousel></app-top-carousel>
+                </div>
+                <ng-container *ngIf="pageName == 'Terms_condition'">
+                    <app-terms-and-condition></app-terms-and-condition>
+                </ng-container>
+                <ng-container *ngIf="pageName == 'Privacy_policy'">
+                    <app-privacy-policy></app-privacy-policy>
+                </ng-container>
+                <app-common-footer></app-common-footer>
+            </div>
+            <div *ngIf="isCartViewOn" class="cart-details">
+                <app-cart-details></app-cart-details>
+            </div>
+        </div>
+    </div>
+</div> 

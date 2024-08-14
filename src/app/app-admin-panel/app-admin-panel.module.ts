@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductListComponent } from './components/Product/product-list/product-list.component';
@@ -41,31 +40,31 @@ const routes: Routes = [
     data: { expectedRole: 'admin' } 
   },
   { 
-      path: 'menu/product-list/:id', 
+    path: 'menu/product-list/:id', 
     component: ProductListComponent , 
     canActivate: [RoleGuard], 
     data: { expectedRole: 'admin' } 
   },
   { 
-      path: 'menu/add-product/:id', 
+    path: 'menu/add-product/:id', 
     component: AddProductComponent , 
     canActivate: [RoleGuard], 
     data: { expectedRole: 'admin' } 
   },
   { 
     path: 'menu/edit-product/:id', 
-  component: EditProductComponent , 
-  canActivate: [RoleGuard], 
-  data: { expectedRole: 'admin' } 
-},
+    component: EditProductComponent , 
+    canActivate: [RoleGuard], 
+    data: { expectedRole: 'admin' } 
+  },
   { 
-      path: 'dashboard', 
+    path: 'dashboard', 
     component: DashboardComponent , 
     canActivate: [RoleGuard], 
     data: { expectedRole: 'admin' } 
   },
   { 
-      path: 'order', 
+    path: 'order', 
     component: AdminOrderComponent , 
     canActivate: [RoleGuard], 
     data: { expectedRole: 'admin' } 

@@ -55,8 +55,9 @@ export class HighlightedCategoryComponent implements OnInit{
       ) { }
     
       ngOnInit(): void {}
-      onClickCategory(catId){
+      onClickCategory(catId, catName){
         this.selectedCatId = catId;
-        this.productService.$selectedCategoryId.next(catId);
+        const categoryKeyValuePair = { key: catId, value: catName };
+        this.productService.$selectedCategoryId.next(categoryKeyValuePair);
       }
 }

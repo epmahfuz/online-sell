@@ -5,11 +5,12 @@
     /* Safari */
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 2;
+    border-bottom: 1px solid #ccc;
   }
 
   .main-content {
-    height: calc(100vh - 64px);
+    height: calc(100vh - 65px);
     z-index: 1;
     .category-products {
       height: 100%;
@@ -23,13 +24,13 @@
       overflow: auto;
 
       .checkout-main {
-        height: calc(100vh - 64px);
+        height: calc(100vh - 65px);
         width: calc(100% - 320px);
       }
       .cart-details {
         position: fixed;
         right: 0;
-        height: calc(100vh - 64px);
+        height: calc(100vh - 65px);
         width: 320px;
         box-shadow: -2px 0 12px 0 rgba(143, 143, 143, 0.38);
       }
@@ -52,7 +53,7 @@
   box-shadow: 0px 4px 6px -3px #9c9c9c;
   border-radius: 3px;
   padding: 20px;
-  border-top: 2px solid #33c24d;
+  border-top: 3px solid #33c24d;
   padding-top: 0;
 
  

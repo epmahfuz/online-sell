@@ -12,13 +12,13 @@
             <div class="cart-item" fxLayout="row" fxLayoutAlign="space-between center">
                 <div class="h-100" fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start center">
                     <div class="item-img">
-                        <img src="{{product.imgLink}}"
+                        <img src="{{product.image}}"
                             alt="">
                     </div>
                     <div class="item-name-quantity h-100" fxLayout="column" fxLayoutGap="12px" fxLayoutAlign="space-between start">
                         <div class="item-name">
                             {{product.name}}
-                            <div class="short-description"> {{product.quantity}}</div>
+                            <div class="short-description"> {{product.quantity}} {{product.quantityType}}</div>
                         </div>
                         <div class="counter-increase-decrease" fxLayout="row" fxLayoutAlign="space-between center">
                             <button (click)="decreaseInCart(product)" class="add-remove-button remove-button">
@@ -43,8 +43,9 @@
         
     </div>
     <div *ngIf="cartTotalPrice" class="cart-footer">
-        <button (click)="onClickPlaceOrder()" class="place-order-amount">
-            <span class="place-order">Place Order</span>
+        <button (click)="onClickPlaceOrder()" class="place-order-amount" [class.cursor-pointer]="currentRoute != 'checkout'">
+            <span *ngIf="currentRoute != 'checkout'" class="place-order">Checkout</span>
+            <span *ngIf="currentRoute == 'checkout'" class="place-order">Item Total</span>
             <span class="total-amount">৳ {{cartTotalPrice}}</span>
         </button>
     </div>

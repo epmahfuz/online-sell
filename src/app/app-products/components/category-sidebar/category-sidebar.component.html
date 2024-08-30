@@ -2,10 +2,11 @@
     <div class="category-list">
         <div class="category" fxLayout="row" fxLayoutAlign="space-between center"
         *ngFor="let category of categoryList"
-        [ngClass]="{'category-active' : category.id==selectedCatId}" (click)="onClickCategory(category.id)">
+        [ngClass]="{'category-active' : category._id==selectedCatId}" (click)="onClickCategory(category._id, category.name)">
             <div class="left" fxLayout="row" fxLayoutGap="12px" fxLayoutAlign="start center">
                 <div class="category-icon">
-                    <img src="{{category.iconLink}}" alt="">
+                    <img *ngIf="category._id != 'all' " src="{{category.image}}" alt="">
+                    <mat-icon *ngIf="category._id == 'all' ">redeem</mat-icon>
                     <!-- <mat-icon>shopping_cart</mat-icon> -->
                 </div>
                 <div class="category-name">{{ category.name}}</div>

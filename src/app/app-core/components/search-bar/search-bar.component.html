@@ -1,47 +1,68 @@
-<div class="search-bar" fxLayout="row" fxLayoutAlign="space-between center">
-    <div class="left-part" fxLayoutAlign="start center"  fxFlex="70%">
-        <button (click)="onClickMenuBar()" class="menu-icon">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <div (click)="onLogoClick()" class="logo">
-            <img src="../../../../assets/images/tartaja2.png" alt="">
-            <!-- <img src="https://agorasuperstores.com/assets/images/logo.png" alt=""> -->
+<div class="search-bar-wrapper">
+    <div class="search-bar" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="left-part" fxLayoutAlign="space-between center">
+            <button (click)="onClickMenuBar()" class="menu-icon">
+                <div  *ngIf="showCategorySidebar">
+                    <mat-icon id="menu-icon-menu">menu</mat-icon>
+                    <mat-icon id="menu-icon-close">close</mat-icon>
+                </div>
+                <div  *ngIf="!showCategorySidebar">
+                    <mat-icon>menu</mat-icon>
+                </div>
+            </button>
+            <div (click)="onLogoClick()" class="logo">
+                <img src="../../../../assets/images/tartaja2.png" alt="">
+                <!-- <img src="https://agorasuperstores.com/assets/images/logo.png" alt=""> -->
+            </div>
+            <div class="search-input"  fxFlex="70%" fxLayout="row" fxLayoutAlign="space-between center">
+                <input placeholder="Search" type="text">
+                <span class="search-icon" fxLayout="column" fxLayoutAlign="center center">
+                    <mat-icon>search</mat-icon>
+                </span>
+            </div>
         </div>
-        <div class="search-input"  fxFlex="70%" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="right-part" fxLayout="row" fxLayoutAlign="space-around center">
+            
+    <!-- <button (click)="switchLanguage('en')">English</button>
+    <button (click)="switchLanguage('fr')">French</button> -->
+    
+            <div *ngIf="(loggedInUser$ | async) as loggedInUser; else notLoggedIn" class="profile-button" [matMenuTriggerFor]="menu" fxLayout="row" fxLayoutAlign="center center" >
+                <!-- <img width="25px" height="25px" src="../../../../assets/images/tartaja.png" alt="">  -->
+                <div *ngIf="loggedInUser" class="primary-button-text">{{ loggedInUser.username }}</div>
+                <span class="material-symbols-outlined">arrow_drop_down</span>
+    
+                <mat-menu #menu="matMenu">
+                    <!-- <button (click)="goToMyAccount()" mat-menu-item>My Account</button> -->
+                    <button *ngIf="loggedInUser?.role == 'admin'" (click)="goToAdminPanel()" mat-menu-item>Admin Panel</button>
+                    <button (click)="onClickSignOut()" mat-menu-item>Sign Out</button>
+                </mat-menu>
+            </div>
+            
+            <ng-template #notLoggedIn>
+                <div class="primary-button" (click)="onClickSignIn()"  fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
+                    <mat-icon>login</mat-icon>
+                    <div class="primary-button-text">Sign in</div>
+                </div>
+            </ng-template>
+            
+            <div (click)="cartViewOn()" class="cart-section" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start center">
+                <div class="cart-logo">
+                    <mat-icon>shopping_cart</mat-icon>
+                    <span *ngIf="cartItemCounter" class="item-counter">{{cartItemCounter}}</span>
+                </div>
+                <div *ngIf="!cartItemCounter"  class="cart-price">My Cart</div>
+                <div *ngIf="cartItemCounter"  class="cart-price">৳ {{cartTotalPrice}}</div>
+            </div>
+    
+        </div>
+    </div>
+    <div class="mobile-search-bar">
+        <div class="search-input">
             <input placeholder="Search" type="text">
             <span class="search-icon" fxLayout="column" fxLayoutAlign="center center">
                 <mat-icon>search</mat-icon>
             </span>
         </div>
     </div>
-    <div class="right-part" fxFlex="32%" fxLayout="row" fxLayoutAlign="space-between center">
-        <div *ngIf="!loggedIn" class="primary-button" (click)="onClickSignIn()"  fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
-            <mat-icon>login</mat-icon>
-            <div class="primary-button-text">Sign in</div>
-        </div>
-
-        <div *ngIf="loggedIn" class="profile-button" fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center" (click)="toggleCardVisibility()">
-            <img width="25px" height="25px" src="../../../../assets/images/tartaja.png" alt="">
-            <div class="primary-button-text">Md. Sumon Mia</div>
-        </div>
-        <div (click)="cartViewOn()" class="cart-section" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start center">
-            <div class="cart-logo">
-                <mat-icon>shopping_cart</mat-icon>
-                <span *ngIf="cartItemCounter" class="item-counter">{{cartItemCounter}}</span>
-            </div>
-            <div *ngIf="!cartItemCounter"  class="cart-price">My Cart</div>
-            <div *ngIf="cartItemCounter"  class="cart-price">৳ {{cartTotalPrice}}</div>
-        </div>
-    </div>
-    <!-- <div class="profile-card-container" [style.display]="cardVisible ? 'block' : 'none'">
-        <div class="profile-card">
-          <p>My Acount</p>
-          <p>My Orders</p>
-          <div class="sign-out-button">
-            <mat-icon>logout</mat-icon>
-            <div class="primary-button-text">Sign out</div>
-          </div>
-        </div>
-    </div> -->
 </div>
 

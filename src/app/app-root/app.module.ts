@@ -3,7 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { CookieService } from 'ngx-cookie-service';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 const routes: Routes = [
   {
@@ -30,6 +37,18 @@ const routes: Routes = [
       ),
     data: { isFullScreen: false, isPublic: false },
   },
+  {
+    path: 'info',
+    loadChildren: () => 
+      import('../app-legal-info/app-legal-info.module').then(
+        (module) => module.AppLegalInfoModule
+      ),
+    data: { isFullScreen: false, isPublic: false },
+  },
+  { 
+    path: '**', 
+    redirectTo: ''
+  },
 ];
 
 @NgModule({
@@ -44,8 +63,15 @@ const routes: Routes = [
       paramsInheritanceStrategy: 'always',
       useHash: false,
     }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
-  providers: [],
+  providers: [CookieService],
   exports: [RouterModule],
   bootstrap: [AppComponent]
 })

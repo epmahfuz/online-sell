@@ -6,50 +6,103 @@
         <div class="cont_tabs_login">
             <ul class='ul_tabs'>
               <li [ngClass]="{'active' : submitFor=='signIn'}">
-                <a (click)="sign_in()">SIGN IN</a>
+                <a (click)="onClickSignIn()">SIGN IN</a>
                 <span class="linea_bajo_nom"></span>
               </li>
               <li [ngClass]="{'active' : submitFor=='signUp'}">
-                <a (click)="sign_up()">SIGN UP</a>
+                <a (click)="onClickSignUp()">SIGN UP</a>
                 <span class="linea_bajo_nom"></span>
               </li>
             </ul>
         </div>
     </div>
     <div class="body-section">
-      <form [formGroup]="form" (ngSubmit)="submit()">
-        <p *ngIf="submitFor=='signUp'">
+      <form *ngIf="submitFor=='signIn'" [formGroup]="signInForm" (ngSubmit)="SubmitForSignIn()">
+        <p>
           <mat-form-field>
-            <input type="text" matInput placeholder="Name" formControlName="name">
+            <mat-label>Mobile *</mat-label>
+            <input type="text" matInput placeholder="01512-345678" formControlName="username">
+            <mat-error *ngIf="username.invalid && (username.dirty || username.touched)">
+              <span *ngIf="username.errors.required">Mobile is required</span>
+              <span *ngIf="username.errors.pattern">Mobile number must be 11 digits</span>
+            </mat-error>
           </mat-form-field>
         </p>
         <p>
           <mat-form-field>
-            <input type="text" matInput placeholder="Email" formControlName="email">
+            <mat-label>Password *</mat-label>
+            <input [type]="hide ? 'passwordSignIn' : 'text'" matInput formControlName="passwordSignIn">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide passwordSignIn'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="passwordSignIn.invalid && (passwordSignIn.dirty || passwordSignIn.touched)">
+              <span *ngIf="passwordSignIn.errors.required">Password is required</span>
+            </mat-error>
           </mat-form-field>
+          <mat-error *ngIf="serverErrors?.common">
+            <span>Wrong password or mobile number</span>
+          </mat-error>
         </p>
-
-        <p>
-          <mat-form-field>
-            <input type="password" matInput placeholder="Password" formControlName="password">
-          </mat-form-field>
-        </p>
-        <p *ngIf="submitFor=='signUp'">
-          <mat-form-field>
-            <input type="text" matInput placeholder="Mobile" formControlName="mobile">
-          </mat-form-field>
-        </p>
-        <p *ngIf="submitFor=='signUp'">
-          <input type="file" name="avatar" placeholder="Avatar" formControlName="avatar"  (change)="onFileSelected($event)">
-        </p>
-
-        <p *ngIf="error" class="error">
-          {{ error }}
-        </p>
+        
 
         <div [ngClass]="changePosition==true ? 'left-position': 'right-position'" class="button" 
-          (mouseover)="changeButtonPosition()">
-          <button type="submit"  mat-raised-button>{{ submitFor=='signIn' ? 'Sign in' : 'Sign up'}}</button>
+          (mouseover)="changeButtonPositionSignIn()">
+          <button type="submit"  mat-raised-button>{{ 'Sign in' }}</button>
+        </div>
+      </form>
+      <form *ngIf="submitFor=='signUp'" [formGroup]="signUpForm" (ngSubmit)="SubmitForSignUp()">
+        <p>
+          <mat-form-field>
+            <mat-label>Name *</mat-label>
+            <input type="text" matInput placeholder="Mohammad Abdullah" formControlName="name">
+            <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+              <span *ngIf="name.errors.required">Name is required</span>
+              <span *ngIf="name.errors.pattern">Name must contain only alphabetic characters</span>
+            </mat-error> 
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <mat-label>Mobile *</mat-label>
+            <input type="text" matInput placeholder="01512-345678" formControlName="mobile">
+            <mat-error *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)">
+              <span *ngIf="mobile.errors.required">Mobile is required</span>
+              <span *ngIf="mobile.errors.pattern">Mobile must be 11 digits</span>
+              <span *ngIf="serverErrors?.mobile">{{ serverErrors.mobile.msg }}</span>
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="abdullah@example.com" formControlName="email">
+            <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">
+              <span *ngIf="email.errors.email">Please enter a valid email address</span>
+              <span *ngIf="serverErrors?.email">{{ serverErrors.email.msg }}</span>
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <mat-label>Password *</mat-label>
+            <input [type]="hide ? 'password' : 'text'" matInput formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="password.invalid && (password.dirty || password.touched)">
+              <span *ngIf="password.errors.required">Password is required.</span>
+              <span *ngIf="!password.errors.required && password.errors.minlength">Password must be at least 6 characters long.</span>
+              <!-- <span *ngIf="!password.errors.required && (password.errors.minlength || password.errors.passwordStrength)">Try 8 characters mix of letter, number & symbol</span> -->
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <!-- <p>
+          <input type="file" name="image" placeholder="Avatar" formControlName="image"  (change)="onFileSelected($event)">
+        </p> -->
+
+        <div [ngClass]="changePosition==true ? 'left-position': 'right-position'" class="button" 
+          (mouseover)="changeButtonPositionSignUp()">
+          <button type="submit"  mat-raised-button>{{'Sign up'}}</button>
         </div>
       </form>
     </div>

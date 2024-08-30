@@ -92,8 +92,10 @@
     .button {
       text-transform: capitalize;
       button{
+        color: white;
         background: var(--theme-primary-500);
         text-transform: capitalize;
+
       }
     }
     .left-position{

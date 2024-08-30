@@ -1,4 +1,14 @@
-.product-list {
+@media screen and (max-width: 765px) {
+    .single-product {
+        width: 160px !important;
+
+        .product-img {
+            width: 160px !important;
+            height: 160px !important;
+        }
+    }
+}
+.product-list-public {
     margin: 16px;
 
     .product-list-header {
@@ -31,12 +41,12 @@
         .single-product {
             border-radius: 4px;
             padding: 5px;
-            width: 200px;
+            width: 190px;
             margin-bottom: 40px;
 
             .product-img {
-                width: 200px;
-                height: 200px;
+                width: 190px;
+                height: 190px;
             }
 
             .product-name {

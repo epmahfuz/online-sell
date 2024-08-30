@@ -1,93 +1,166 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import {SignUpService} from '../../services/sign-up.service'
+import { AuthService } from '../../../app-shared/services/auth.service';
 @Component({
   selector: 'app-sign-in-modal',
   templateUrl: './sign-in-modal.component.html',
   styleUrls: ['./sign-in-modal.component.scss']
 })
+
 export class SignInModalComponent implements OnInit {
 
   constructor(
-    private dialog: MatDialog,
     public dialogRef: MatDialogRef<SignInModalComponent>,
     private signUpService: SignUpService,
     private fb: FormBuilder,
+    private authService: AuthService,
   ) { }
 
+  hide: boolean = true;
   submitFor = 'signIn';
   changePosition = false;
-  isValid = true;
-  form: FormGroup = this.fb.group({
-    email: [''],
-    password: [''],
-    mobile: [''],
-    name: [''],
-    avatar: [null] // Initialize the FormControl for the file
+  serverErrors: any = {};
+  signInServerError: any = {};
+
+  signInForm: FormGroup = this.fb.group({
+    username: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],
+    passwordSignIn: ['', [Validators.required]],
+  });
+  signUpForm: FormGroup = this.fb.group({
+    name: ['', [Validators.required, Validators.pattern('^[a-zA-Z\\s]+$')]],
+    mobile: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],
+    email: ['', [Validators.email]],
+    //password: ['', [Validators.required, Validators.minLength(8), this.passwordStrength()]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    image: [null],
   });
 
   ngOnInit(): void {
   }
 
   SubmitForSignIn(){
-    const formData = new FormData();
-    formData.append('username', this.form.get('email').value);
-    formData.append('password', this.form.get('password').value);
+    if (this.signInForm.valid) {
+      this.submitEM.emit(this.signInForm.value);
+      const formData = new FormData();
+      formData.append('username', this.signInForm.get('username').value);
+      formData.append('passwordSignIn', this.signInForm.get('passwordSignIn').value);
 
-    let payload = {
-      'username':  this.form.get('email').value,
-      'password' : this.form.get('password').value
+      let payload = {
+        'username':  this.signInForm.get('username').value,
+        'password' : this.signInForm.get('passwordSignIn').value
+      }
+
+      this.signUpService.signIn(payload).subscribe(res=>{
+
+        this.authService.doLoggedIn(res.access_token, res.loggedInUser);
+        
+        this.closeModal();
+      }, (error:any)=>{
+        this.serverErrors = error.error.errors;
+          this.setServerErrors();
+      });
     }
-
-    this.signUpService.logIn(payload).subscribe(res=>{
-      console.log("res: ", res);
-    });
   }
   
   SubmitForSignUp(){
-    const formData = new FormData();
-    formData.append('email', this.form.get('email').value);
-    formData.append('password', this.form.get('password').value);
-    formData.append('mobile', this.form.get('mobile').value);
-    formData.append('name', this.form.get('name').value);
-    formData.append('avatar', this.form.get('avatar').value);
-    
-    this.signUpService.addAnonymousUser(formData).subscribe(res=>{
-      console.log("res: ", res);
+    if (this.signUpForm.valid) {
+      this.submitEM.emit(this.signUpForm.value);
+
+      const formData = new FormData();
+      formData.append('email', this.signUpForm.get('email').value);
+      formData.append('password', this.signUpForm.get('password').value);
+      formData.append('mobile', this.signUpForm.get('mobile').value);
+      formData.append('name', this.signUpForm.get('name').value);
+      formData.append('image', this.signUpForm.get('image').value);
+      
+      this.signUpService.signUp(formData).subscribe(res=>{
+        console.log("res: ", res);
+        this.onClickSignIn();
+        //this.closeModal();
+      }, (error)=>{
+        console.log("error: ", error.error.errors);
+        if (error && error.error && error.error.errors) {
+          this.serverErrors = error.error.errors;
+          this.setServerErrors();
+        }
+      });
+    }
+  }
+  private setServerErrors() {
+    Object.keys(this.serverErrors).forEach(key => {
+      const control = this.signUpForm.get(key);
+      if (control) {
+        control.setErrors({ 'serverError': this.serverErrors[key].msg });
+      }
     });
   }
 
-  // less important segment
-  submit() {
-    if (this.form.valid) {
-      this.submitEM.emit(this.form.value);
+  passwordStrength(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const password: string = control.value;
+      const hasAlphabet = /[a-zA-Z]/.test(password);
+      const hasNumber = /\d/.test(password);
+      const hasSymbol = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+  
+      const isValid = hasAlphabet && hasNumber && hasSymbol && password.length >= 8;
+  
+      return isValid ? null : { passwordStrength: true };
+    };
+  }
+
+  changeButtonPositionSignIn(){
+    if(!this.signInForm.valid){
+      this.changePosition = this.changePosition === true ? false : true;
     }
-    if(this.submitFor == 'signUp'){
-      this.SubmitForSignUp();
-    } else {
-      this.SubmitForSignIn()
+  }
+  changeButtonPositionSignUp(){
+    if(!this.signUpForm.valid){
+      this.changePosition = this.changePosition === true ? false : true;
     }
+  }
+
+  onClickSignIn(){
+    this.submitFor = 'signIn';
+    this.signInForm.patchValue({
+      username: this.signUpForm.get('mobile').value
+    });
+  }
+  onClickSignUp(){
+    this.submitFor = 'signUp';
+
+    this.signUpForm.patchValue({
+      mobile: this.signInForm.get('username').value
+    });
   }
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
-    this.form.get('avatar').setValue(file);
+    this.signUpForm.get('image').setValue(file);
   }
-
   closeModal(){
     this.dialogRef.close(true);
   }
-  sign_in(){
-    this.submitFor = 'signIn';
+
+  get name() {
+    return this.signUpForm.get('name');
   }
-  sign_up(){
-    this.submitFor = 'signUp';
+  get mobile() {
+    return this.signUpForm.get('mobile');
   }
-  changeButtonPosition(){
-    if(this.isValid == false){
-      this.changePosition = this.changePosition === true ? false : true;
-    }
+  get email() {
+    return this.signUpForm.get('email');
+  }
+  get password() {
+    return this.signUpForm.get('password');
+  }
+
+  get username() {
+    return this.signInForm.get('username');
+  }
+  get passwordSignIn() {
+    return this.signInForm.get('passwordSignIn');
   }
 
   //No use segment

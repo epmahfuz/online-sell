@@ -21,32 +21,22 @@ export class SignUpService {
     withCredentials: true,
   };
 
-  constructor(private http: HttpClient,) { }
+  constructor(
+    private http: HttpClient,
+  ) { }
 
-  addAnonymousUser(payload:any): Observable<any>{
+  signIn(payload: any): Observable<any>{
+    return this.http.post(
+      `${environment.BusinessService}/access-control/login`,
+      payload
+    );
+  }
+
+  signUp(payload:any): Observable<any>{
     return this.http.post(
       `${environment.BusinessService}/users/addAnonymousUser`, 
       payload
     );
   }
 
-  logIn(payload: any): Observable<any>{
-    return this.http.post(
-      `${environment.BusinessService}/access-control/login`,
-      payload
-    );
-  }
-  
-  addCategory(payload: any): Observable<any> {
-    return this.http.post(
-      `${environment.BusinessService}/category/add`, 
-      payload
-    );
-  }
-
-  getAllCategory() {
-    return this.http.get(
-      `${environment.BusinessService}/category/getAll`
-    );
-  }
 }

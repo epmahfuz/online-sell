@@ -1,16 +1,23 @@
 export interface ProductModel {
-    catId: string,
-    id: string,
+    categoryId: string,
+    _id: string,
     name: string, 
     price: number,
     quantity: number,
-    imgLink:string, 
+    quantityType: string,
+    image:string, 
     counterInCart: number
-  }
+}
 
-  export interface cartItem {
-    id: string,
+export interface cartItem {
+    _id: string,
     price: number,
     counter: number,
     isDeleted: boolean
-  }
+}
+
+export interface Category {
+  _id: string;
+  name: string;
+  image: string;
+}

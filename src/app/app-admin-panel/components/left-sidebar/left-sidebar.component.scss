@@ -33,11 +33,16 @@
   }
   
   .navigation ul li {
+    cursor: pointer;
     position: relative;
     width: 100%;
     list-style: none;
     // border-top-left-radius: 30px;
     // border-bottom-left-radius: 30px;
+  }
+  .active-option{
+    background-color: var(--theme-primary-500);
+    color: white;
   }
   
   .navigation ul li:hover,
@@ -46,9 +51,13 @@
     color: white;
   }
   
-  .navigation ul li:nth-child(1) {
-    margin-bottom: 20px;
-    pointer-events: none;
+  // .navigation ul li:nth-child(1) {
+  //   margin-bottom: 20px;
+  //   pointer-events: none;
+  // }
+  .navigation ul li:nth-child(1):hover {
+    background-color: var(--theme-primary-light);  
+    color: black;
   }
   
   .navigation ul li p {
